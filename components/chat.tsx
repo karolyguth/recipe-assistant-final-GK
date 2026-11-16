@@ -2,7 +2,8 @@
 
 import { useChat } from '@ai-sdk/react';
 import { getToolName, isToolUIPart, type UIMessage } from 'ai';
-import { ChefHat, Loader2, Square } from 'lucide-react';
+import { BarChart3, ChefHat, Loader2, Square } from 'lucide-react';
+import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 
 import { notifyConversationsChanged } from '@/components/conversation-list';
@@ -54,12 +55,15 @@ export function Chat({ id, initialMessages, onSaved }: { id: string; initialMess
     <div className="flex min-h-0 flex-1 flex-col">
       <header className="mb-4 flex shrink-0 items-center gap-3">
         <ChefHat className="h-8 w-8 shrink-0" aria-hidden />
-        <div>
+        <div className="flex-1">
           <h1 className="text-xl font-semibold">Recipe Assistant</h1>
           <p className="text-sm text-muted-foreground">
             Ask about the recipes in the knowledge base: ingredients, quick ideas, techniques, substitutions.
           </p>
         </div>
+        <Link href="/dashboard" className="flex shrink-0 items-center gap-1 rounded-md border px-3 py-1.5 text-sm hover:bg-accent">
+          <BarChart3 className="h-4 w-4" /> Monitoring
+        </Link>
       </header>
 
       {messages.length === 0 && (
