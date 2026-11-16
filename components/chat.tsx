@@ -1,10 +1,11 @@
 'use client';
 
 import { useChat } from '@ai-sdk/react';
-import { getToolName, isToolUIPart } from 'ai';
+import { getToolName, isToolUIPart, type UIMessage } from 'ai';
 import { ChefHat, Loader2, Square } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 
+import { notifyConversationsChanged } from '@/components/conversation-list';
 import { notifyDocumentsChanged } from '@/components/document-list';
 import { Button } from '@/components/ui/button';
 
@@ -16,14 +17,22 @@ const EXAMPLE_QUESTIONS = [
   'Which vegetarian main dishes do you recommend?',
 ];
 
-export function Chat() {
+// Az id a beszélgetés azonosítója: a useChat elküldi a szervernek, az ez alapján menti az üzeneteket
+export function Chat({ id, initialMessages, onSaved }: { id: string; initialMessages: UIMessage[]; onSaved: () => void }) {
   const [input, setInput] = useState('');
   const { messages, sendMessage, status, error, regenerate, stop } = useChat({
-    // Új jegyzet mentésekor frissül a dokumentumlista
+    id,
+    messages: initialMessages,
     onFinish: ({ message }) => {
+      // Új jegyzet mentésekor frissül a dokumentumlista
       if (message.parts.some(p => isToolUIPart(p) && getToolName(p) === 'addResource')) {
         notifyDocumentsChanged();
       }
+      // A szerver a válasz végén menti a beszélgetést: frissül a lista és az URL
+      setTimeout(() => {
+        notifyConversationsChanged();
+        onSaved();
+      }, 300);
     },
   });
 
