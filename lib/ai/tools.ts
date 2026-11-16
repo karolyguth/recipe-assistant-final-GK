@@ -2,6 +2,7 @@ import { tool } from 'ai';
 import { z } from 'zod';
 import { createResource } from '@/lib/actions/resources';
 import { findRelevantContent } from '@/lib/ai/embedding';
+import type { SearchStats } from '@/lib/monitoring/metrics';
 
 export const addResource = tool({
   description: `Save a personal note about the user to the knowledge base, so it can be used in later conversations.
@@ -19,7 +20,8 @@ export const addResource = tool({
   execute: async ({ content }) => createResource({ content }),
 });
 
-export const getInformation = tool({
+// Kérésenként új példány: a keresések idejét és embedding tokenjeit a kérés statisztikájába gyűjti
+export const createGetInformation = (stats: SearchStats) => tool({
   description: `get information from your knowledge base to answer questions.
     Returns the most relevant entries with their title, source ("upload" = a recipe document,
     "chat" = a note the user asked you to remember), a vector similarity score and a rerank score
@@ -27,5 +29,13 @@ export const getInformation = tool({
   inputSchema: z.object({
     question: z.string().describe('the users question'),
   }),
-  execute: async ({ question }) => findRelevantContent(question),
+  execute: async ({ question }) =>
+    findRelevantContent(question, {
+      onStats: ({ embeddingTokens, searchMs, rerankMs }) => {
+        stats.searches += 1;
+        stats.embeddingTokens += embeddingTokens;
+        stats.searchMs += searchMs;
+        stats.rerankMs += rerankMs;
+      },
+    }),
 });

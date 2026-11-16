@@ -11,7 +11,8 @@ import {
   formatRecipeHeader,
 } from "@/lib/ai/recipe-metadata";
 
-const embeddingModel = openai.embedding("text-embedding-3-small");
+export const EMBEDDING_MODEL = "text-embedding-3-small";
+const embeddingModel = openai.embedding(EMBEDDING_MODEL);
 
 export const generateEmbeddings = async (
   value: string,
@@ -33,13 +34,17 @@ export const generateEmbeddings = async (
   return embeddings.map((e, i) => ({ content: chunks[i], embedding: e }));
 };
 
-export const generateEmbedding = async (value: string): Promise<number[]> => {
+export const generateEmbedding = async (value: string): Promise<number[]> =>
+  (await embedQuery(value)).embedding;
+
+// A token használatot is visszaadja a monitoringhoz
+const embedQuery = async (value: string) => {
   const input = value.replaceAll("\n", " ");
-  const { embedding } = await embed({
+  const { embedding, usage } = await embed({
     model: embeddingModel,
     value: input,
   });
-  return embedding;
+  return { embedding, tokens: usage?.tokens ?? 0 };
 };
 // Két lépcsős keresés: a pgvector SEARCH_CANDIDATES jelöltet ad, a cross-encoder ezekből választja ki a legjobb SEARCH_TOP_K-t
 export const SEARCH_CANDIDATES = 20;
@@ -55,15 +60,26 @@ export type SearchResult = {
   content: string;
 };
 
-export type SearchOptions = { rerank?: boolean; candidates?: number; topK?: number };
+// Egy keresés mérései a monitoringhoz
+export type SearchTiming = { embeddingTokens: number; searchMs: number; rerankMs: number };
+
+export type SearchOptions = {
+  rerank?: boolean;
+  candidates?: number;
+  topK?: number;
+  onStats?: (stats: SearchTiming) => void;
+};
 
 const round = (n: number) => Math.round(n * 1000) / 1000;
 
 export const findRelevantContent = async (
   userQuery: string,
-  { rerank = true, candidates = SEARCH_CANDIDATES, topK = SEARCH_TOP_K }: SearchOptions = {},
+  { rerank = true, candidates = SEARCH_CANDIDATES, topK = SEARCH_TOP_K, onStats }: SearchOptions = {},
 ) => {
-  const userQueryEmbedded = await generateEmbedding(userQuery);
+  const started = Date.now();
+  let rerankMs = 0;
+  const { embedding: userQueryEmbedded, tokens } = await embedQuery(userQuery);
+  const report = () => onStats?.({ embeddingTokens: tokens, searchMs: Date.now() - started, rerankMs });
   const similarity = sql<number>`1 - (${cosineDistance(
     embeddings.embedding,
     userQueryEmbedded,
@@ -83,6 +99,7 @@ export const findRelevantContent = async (
     .limit(rerank ? candidates : topK);
 
   if (rows.length === 0) {
+    report();
     return {
       results: [],
       message: "No relevant information found in the knowledge base.",
@@ -97,11 +114,14 @@ export const findRelevantContent = async (
 
   // Reranking: a jelölteket a cross-encoder pontszáma szerint rendezzük újra
   if (rerank) {
+    const rerankStarted = Date.now();
     const scores = await rerankScores(userQuery, results.map((r) => r.content));
+    rerankMs = Date.now() - rerankStarted;
     results = results
       .map((r, i) => ({ ...r, rerankScore: round(scores[i]) }))
       .sort((a, b) => b.rerankScore! - a.rerankScore!)
       .slice(0, topK);
   }
+  report();
   return { results };
 };

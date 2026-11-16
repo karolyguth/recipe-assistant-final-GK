@@ -7,7 +7,10 @@ import {
   stepCountIs,
 } from 'ai';
 import { saveConversation } from '@/lib/conversations';
-import { addResource, getInformation } from '@/lib/ai/tools';
+import { EMBEDDING_MODEL } from '@/lib/ai/embedding';
+import { addResource, createGetInformation } from '@/lib/ai/tools';
+import { emptySearchStats, recordChatMetric } from '@/lib/monitoring/metrics';
+import { chatCostUsd, embeddingCostUsd } from '@/lib/monitoring/pricing';
 import { env } from '@/lib/env.mjs';
 import { listUserNotes } from '@/lib/documents';
 
@@ -65,10 +68,30 @@ export async function POST(req: Request) {
   let firstTokenMs: number | null = null;
   const lastUserText =
     messages.at(-1)?.parts.find(p => p.type === 'text')?.text.slice(0, 80) ?? '';
+  const question = messages.at(-1)?.parts.find(p => p.type === 'text')?.text.slice(0, 500) ?? '';
+
+  // Monitoring: a keresések statisztikája, és az asszisztens válasz azonosítója (ehhez kötődik majd a visszajelzés)
+  const searchStats = emptySearchStats();
+  const assistantMessageId = createIdGenerator({ prefix: 'msg', size: 16 })();
+  const toolNames = (steps: { toolCalls: { toolName: string }[] }[]) =>
+    steps.flatMap(step => step.toolCalls.map(call => call.toolName));
+  const baseMetric = () => ({
+    conversationId: id ?? null,
+    messageId: assistantMessageId,
+    model: env.CHAT_MODEL,
+    question,
+    firstTokenMs,
+    totalMs: Date.now() - startedAt,
+    searchMs: searchStats.searchMs,
+    rerankMs: searchStats.rerankMs,
+    embeddingTokens: searchStats.embeddingTokens,
+  });
 
   const result = streamText({
     model: openai(env.CHAT_MODEL),
     messages: convertToModelMessages(messages),
+    // A böngésző Stop gombja megszakítja a kérést: a modellhívás is leáll, és az onAbort rögzíti
+    abortSignal: req.signal,
     stopWhen: stepCountIs(MAX_STEPS),
     // Az utolsó lépésben nincs tool hívás, így mindig lesz válasz
     prepareStep: ({ stepNumber }) =>
@@ -76,29 +99,63 @@ export async function POST(req: Request) {
     system: `${SYSTEM_PROMPT}\n\n## Saved notes about the user\n${
       notes.length > 0 ? notes.map(note => `- ${note}`).join('\n') : '(none yet)'
     }`,
-    tools: { addResource, getInformation },
+    tools: { addResource, getInformation: createGetInformation(searchStats) },
     onChunk: ({ chunk }) => {
       if (chunk.type === 'text-delta' && firstTokenMs === null) firstTokenMs = Date.now() - startedAt;
     },
-    onFinish: ({ steps, totalUsage }) => {
+    onFinish: async ({ steps, totalUsage }) => {
+      // Megszakításkor az onAbort rögzíti a kérést, itt nem számoljuk kétszer
+      if (req.signal.aborted) return;
       const toolCalls = steps
         .flatMap(step => step.toolCalls)
         .map(call => `${call.toolName}(${JSON.stringify(call.input)})`);
+      const usage = {
+        inputTokens: totalUsage.inputTokens ?? 0,
+        cachedInputTokens: totalUsage.cachedInputTokens ?? 0,
+        outputTokens: totalUsage.outputTokens ?? 0,
+      };
+      const costUsd =
+        chatCostUsd(env.CHAT_MODEL, usage) + embeddingCostUsd(EMBEDDING_MODEL, searchStats.embeddingTokens);
       console.info(
         `[chat] model=${env.CHAT_MODEL} firstToken=${firstTokenMs ?? '-'}ms total=${Date.now() - startedAt}ms ` +
-          `steps=${steps.length} tokens=${totalUsage.inputTokens ?? '?'}in/${totalUsage.outputTokens ?? '?'}out ` +
+          `steps=${steps.length} tokens=${usage.inputTokens}in/${usage.outputTokens}out cost=$${costUsd.toFixed(4)} ` +
           `question="${lastUserText}" tools=[${toolCalls.join(', ')}]`,
       );
+      await recordChatMetric({
+        ...baseMetric(),
+        status: 'ok',
+        ...usage,
+        reasoningTokens: totalUsage.reasoningTokens ?? 0,
+        costUsd,
+        steps: steps.length,
+        toolCalls: toolNames(steps),
+      });
     },
-    onError: ({ error }) => {
+    onError: async ({ error }) => {
       console.error(`[chat] failed after ${Date.now() - startedAt}ms for "${lastUserText}":`, error);
+      await recordChatMetric({
+        ...baseMetric(),
+        status: 'error',
+        error: error instanceof Error ? error.message : String(error),
+        costUsd: embeddingCostUsd(EMBEDDING_MODEL, searchStats.embeddingTokens),
+      });
+    },
+    // A felhasználó leállította a választ (Stop gomb)
+    onAbort: async ({ steps }) => {
+      await recordChatMetric({
+        ...baseMetric(),
+        status: 'aborted',
+        costUsd: embeddingCostUsd(EMBEDDING_MODEL, searchStats.embeddingTokens),
+        steps: steps.length,
+        toolCalls: toolNames(steps),
+      });
     },
   });
 
   return result.toUIMessageStreamResponse({
     originalMessages: messages,
     // A szerver ad azonosítót az új asszisztens üzenetnek, így mentés után is ugyanaz marad
-    generateMessageId: createIdGenerator({ prefix: 'msg', size: 16 }),
+    generateMessageId: () => assistantMessageId,
     onFinish: async ({ messages: all }) => {
       if (!id) return;
       try {
