@@ -38,3 +38,6 @@ next-env.d.ts
 
 # receptadatok (klónozva, lásd scripts/seed.ts)
 /data/
+
+# letöltött lokális modellek (cross-encoder)
+/.cache/

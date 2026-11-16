@@ -5,6 +5,7 @@ import { cosineDistance, desc, eq, gt, sql } from "drizzle-orm";
 import { db } from "@/lib/db";
 import { embeddings, resources } from "@/lib/db/schema/resources";
 import { chunkDocument } from "@/lib/ai/chunking";
+import { rerankScores } from "@/lib/ai/rerank";
 import {
   extractRecipeMetadata,
   formatRecipeHeader,
@@ -40,6 +41,8 @@ export const generateEmbedding = async (value: string): Promise<number[]> => {
   });
   return embedding;
 };
+// Két lépcsős keresés: a pgvector SEARCH_CANDIDATES jelöltet ad, a cross-encoder ezekből választja ki a legjobb SEARCH_TOP_K-t
+export const SEARCH_CANDIDATES = 20;
 export const SEARCH_TOP_K = 4;
 export const SEARCH_MIN_SIMILARITY = 0.3;
 
@@ -48,10 +51,18 @@ export type SearchResult = {
   fileName: string | null;
   source: "upload" | "chat";
   similarity: number;
+  rerankScore: number | null;
   content: string;
 };
 
-export const findRelevantContent = async (userQuery: string) => {
+export type SearchOptions = { rerank?: boolean; candidates?: number; topK?: number };
+
+const round = (n: number) => Math.round(n * 1000) / 1000;
+
+export const findRelevantContent = async (
+  userQuery: string,
+  { rerank = true, candidates = SEARCH_CANDIDATES, topK = SEARCH_TOP_K }: SearchOptions = {},
+) => {
   const userQueryEmbedded = await generateEmbedding(userQuery);
   const similarity = sql<number>`1 - (${cosineDistance(
     embeddings.embedding,
@@ -69,7 +80,7 @@ export const findRelevantContent = async (userQuery: string) => {
     .innerJoin(resources, eq(embeddings.resourceId, resources.id))
     .where(gt(similarity, SEARCH_MIN_SIMILARITY))
     .orderBy((t) => desc(t.similarity))
-    .limit(SEARCH_TOP_K);
+    .limit(rerank ? candidates : topK);
 
   if (rows.length === 0) {
     return {
@@ -78,9 +89,19 @@ export const findRelevantContent = async (userQuery: string) => {
     };
   }
 
-  const results: SearchResult[] = rows.map((row) => ({
+  let results: SearchResult[] = rows.map((row) => ({
     ...row,
-    similarity: Math.round(Number(row.similarity) * 1000) / 1000,
+    similarity: round(Number(row.similarity)),
+    rerankScore: null,
   }));
+
+  // Reranking: a jelölteket a cross-encoder pontszáma szerint rendezzük újra
+  if (rerank) {
+    const scores = await rerankScores(userQuery, results.map((r) => r.content));
+    results = results
+      .map((r, i) => ({ ...r, rerankScore: round(scores[i]) }))
+      .sort((a, b) => b.rerankScore! - a.rerankScore!)
+      .slice(0, topK);
+  }
   return { results };
 };
