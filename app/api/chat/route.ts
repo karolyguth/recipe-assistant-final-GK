@@ -1,10 +1,12 @@
 import { openai } from '@ai-sdk/openai';
 import {
   convertToModelMessages,
+  createIdGenerator,
   streamText,
   UIMessage,
   stepCountIs,
 } from 'ai';
+import { saveConversation } from '@/lib/conversations';
 import { addResource, getInformation } from '@/lib/ai/tools';
 import { env } from '@/lib/env.mjs';
 import { listUserNotes } from '@/lib/documents';
@@ -52,7 +54,8 @@ The collection is small: many well-known dishes are NOT in it.
 const MAX_STEPS = 6;
 
 export async function POST(req: Request) {
-  const { messages }: { messages: UIMessage[] } = await req.json();
+  // Az id a beszélgetés azonosítója (a böngésző chat küldi); nélküle (pl. evaluációs kliens) nincs mentés
+  const { id, messages }: { id?: string; messages: UIMessage[] } = await req.json();
 
   // Időmérés a teszt riporthoz: első token és teljes idő
   const startedAt = Date.now();
@@ -92,5 +95,17 @@ export async function POST(req: Request) {
     },
   });
 
-  return result.toUIMessageStreamResponse();
+  return result.toUIMessageStreamResponse({
+    originalMessages: messages,
+    // A szerver ad azonosítót az új asszisztens üzenetnek, így mentés után is ugyanaz marad
+    generateMessageId: createIdGenerator({ prefix: 'msg', size: 16 }),
+    onFinish: async ({ messages: all }) => {
+      if (!id) return;
+      try {
+        await saveConversation(id, all);
+      } catch (e) {
+        console.error(`[chat] saving conversation ${id} failed:`, e);
+      }
+    },
+  });
 }
