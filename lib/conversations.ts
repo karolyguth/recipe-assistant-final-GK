@@ -3,6 +3,7 @@ import { asc, desc, eq, sql } from 'drizzle-orm';
 
 import { db } from '@/lib/db';
 import { conversations, messages } from '@/lib/db/schema/conversations';
+import { feedbackFor } from '@/lib/feedback';
 
 // Service réteg a beszélgetésekhez: a chat végpont menti, az API listázza, betölti és törli őket
 
@@ -36,7 +37,9 @@ export async function getConversation(id: string) {
     .where(eq(messages.conversationId, id))
     .orderBy(asc(messages.createdAt));
   const uiMessages = rows.map(r => ({ id: r.id, role: r.role, parts: r.parts }) as UIMessage);
-  return { conversation, messages: uiMessages };
+  // A korábbi 👍 / 👎 értékelések is visszatöltődnek
+  const ratings = await feedbackFor(uiMessages.filter(m => m.role === 'assistant').map(m => m.id));
+  return { conversation, messages: uiMessages, feedback: ratings };
 }
 
 // A teljes beszélgetést menti a válasz végén: új beszélgetést létrehoz, a meglévő üzeneteket frissíti

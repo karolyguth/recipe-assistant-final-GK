@@ -131,6 +131,43 @@ export default async function Dashboard({ searchParams }: { searchParams: { rang
             </Card>
           </div>
 
+          <Card title="User feedback" subtitle="👍 / 👎 on the answers, with the question and the user's comment">
+            {data.feedback.positive + data.feedback.negative === 0 ? (
+              <p className="text-sm text-muted-foreground">No feedback in this time range yet.</p>
+            ) : (
+              <div className="grid gap-4 md:grid-cols-[12rem_1fr]">
+                <div>
+                  <p className="text-2xl font-semibold tabular-nums">
+                    {Math.round((data.feedback.positive / (data.feedback.positive + data.feedback.negative)) * 100)}%
+                  </p>
+                  <p className="text-sm text-muted-foreground">helpful</p>
+                  <p className="mt-1 text-xs text-muted-foreground">
+                    {data.feedback.positive} 👍 · {data.feedback.negative} 👎
+                  </p>
+                </div>
+                <div>
+                  <p className="mb-1 text-sm font-medium">Most recent 👎</p>
+                  {data.feedback.negatives.length === 0 ? (
+                    <p className="text-sm text-muted-foreground">None – every rated answer was helpful.</p>
+                  ) : (
+                    <ul className="divide-y text-sm">
+                      {data.feedback.negatives.map((n, i) => (
+                        <li key={i} className="py-2">
+                          <p className="truncate">{n.question ?? '(question not recorded)'}</p>
+                          <p className="mt-0.5 text-xs text-muted-foreground">
+                            {time(n.updatedAt)}
+                            {n.totalMs !== null ? ` · answered in ${sec(n.totalMs)}` : ''}
+                            {n.comment ? ` · “${n.comment}”` : ' · no comment'}
+                          </p>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              </div>
+            )}
+          </Card>
+
           <Card title="Slowest requests" subtitle="successful requests, slowest first">
             <div className="overflow-x-auto">
               <table className="w-full text-left text-sm">

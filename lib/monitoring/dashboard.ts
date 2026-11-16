@@ -1,6 +1,7 @@
-import { and, desc, gte, inArray, sql } from 'drizzle-orm';
+import { and, desc, eq, gte, inArray, sql } from 'drizzle-orm';
 
 import { db } from '@/lib/db';
+import { feedback } from '@/lib/db/schema/feedback';
 import { chatMetrics } from '@/lib/db/schema/metrics';
 
 // A dashboard adatai: összesítések, idősorok és listák a chat_metrics táblából
@@ -132,6 +133,36 @@ export async function getDashboardData(range: RangeKey) {
     ),
     slowest: slowest.map(r => ({ ...r, createdAt: r.createdAt.toISOString() })),
     problems: problems.map(r => ({ ...r, createdAt: r.createdAt.toISOString() })),
+    feedback: await getFeedbackSummary(since),
+  };
+}
+
+// Felhasználói visszajelzések: arány, és a legutóbbi negatívak a kérdéssel és a mérésekkel együtt
+async function getFeedbackSummary(since: Date | null) {
+  const inRange = since ? gte(feedback.updatedAt, since) : undefined;
+  const [counts] = await db
+    .select({
+      positive: sql<number>`count(*) filter (where ${feedback.rating} = 1)::int`,
+      negative: sql<number>`count(*) filter (where ${feedback.rating} = -1)::int`,
+    })
+    .from(feedback)
+    .where(inRange);
+  const negatives = await db
+    .select({
+      updatedAt: feedback.updatedAt,
+      comment: feedback.comment,
+      question: chatMetrics.question,
+      totalMs: chatMetrics.totalMs,
+    })
+    .from(feedback)
+    .leftJoin(chatMetrics, eq(chatMetrics.messageId, feedback.messageId))
+    .where(and(inRange, eq(feedback.rating, -1)))
+    .orderBy(desc(feedback.updatedAt))
+    .limit(8);
+  return {
+    positive: counts.positive,
+    negative: counts.negative,
+    negatives: negatives.map(n => ({ ...n, updatedAt: n.updatedAt.toISOString() })),
   };
 }
 

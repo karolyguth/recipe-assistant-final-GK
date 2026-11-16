@@ -19,14 +19,14 @@ function setUrl(id: string | null) {
   window.history.replaceState(null, '', url);
 }
 
-type Active = { id: string; messages: UIMessage[] };
+type Active = { id: string; messages: UIMessage[]; feedback: Record<string, 1 | -1> };
 
 export function Workspace() {
   const [active, setActive] = useState<Active | null>(null);
   const [loadingId, setLoadingId] = useState<string | null>(null);
 
   const startNew = useCallback(() => {
-    setActive({ id: nanoid(), messages: [] });
+    setActive({ id: nanoid(), messages: [], feedback: {} });
     setUrl(null);
   }, []);
 
@@ -37,7 +37,7 @@ export function Workspace() {
         const res = await fetch(`/api/conversations/${encodeURIComponent(id)}`);
         const body = await res.json().catch(() => ({}));
         if (!res.ok) throw new Error(body.error ?? `HTTP ${res.status}`);
-        setActive({ id, messages: body.messages });
+        setActive({ id, messages: body.messages, feedback: body.feedback ?? {} });
         setUrl(id);
       } catch (e) {
         toast.error(`Could not open the conversation: ${e instanceof Error ? e.message : 'unknown error'}`);
@@ -60,7 +60,13 @@ export function Workspace() {
       <section className="order-1 flex min-h-[85vh] flex-1 flex-col md:order-2 md:min-h-0">
         {active && !loadingId ? (
           // A key miatt beszélgetésváltáskor a chat állapota tisztán újraindul
-          <Chat key={active.id} id={active.id} initialMessages={active.messages} onSaved={() => setUrl(active.id)} />
+          <Chat
+            key={active.id}
+            id={active.id}
+            initialMessages={active.messages}
+            initialFeedback={active.feedback}
+            onSaved={() => setUrl(active.id)}
+          />
         ) : (
           <p className="flex items-center gap-2 text-sm text-muted-foreground">
             <Loader2 className="h-4 w-4 animate-spin" /> Loading the conversation…

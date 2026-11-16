@@ -8,6 +8,7 @@ import { useEffect, useRef, useState } from 'react';
 
 import { notifyConversationsChanged } from '@/components/conversation-list';
 import { notifyDocumentsChanged } from '@/components/document-list';
+import { FeedbackButtons } from '@/components/feedback-buttons';
 import { Button } from '@/components/ui/button';
 
 const EXAMPLE_QUESTIONS = [
@@ -19,7 +20,17 @@ const EXAMPLE_QUESTIONS = [
 ];
 
 // Az id a beszélgetés azonosítója: a useChat elküldi a szervernek, az ez alapján menti az üzeneteket
-export function Chat({ id, initialMessages, onSaved }: { id: string; initialMessages: UIMessage[]; onSaved: () => void }) {
+export function Chat({
+  id,
+  initialMessages,
+  initialFeedback,
+  onSaved,
+}: {
+  id: string;
+  initialMessages: UIMessage[];
+  initialFeedback: Record<string, 1 | -1>;
+  onSaved: () => void;
+}) {
   const [input, setInput] = useState('');
   const { messages, sendMessage, status, error, regenerate, stop } = useChat({
     id,
@@ -82,9 +93,11 @@ export function Chat({ id, initialMessages, onSaved }: { id: string; initialMess
       )}
 
       <div className="flex-1 space-y-4 md:min-h-0 md:overflow-y-auto md:pr-2">
-        {messages.map(m => {
+        {messages.map((m, i) => {
           const textParts = m.parts.filter(p => p.type === 'text');
           const toolParts = m.parts.filter(isToolUIPart);
+          // Értékelni csak a kész választ lehet (a még érkezőt nem)
+          const rateable = m.role === 'assistant' && textParts.length > 0 && !(busy && i === messages.length - 1);
 
           return (
             <div
@@ -128,6 +141,10 @@ export function Chat({ id, initialMessages, onSaved }: { id: string; initialMess
                       ))}
                     </div>
                   </details>
+                )}
+
+                {rateable && (
+                  <FeedbackButtons messageId={m.id} conversationId={id} initial={initialFeedback[m.id] ?? null} />
                 )}
               </div>
             </div>
