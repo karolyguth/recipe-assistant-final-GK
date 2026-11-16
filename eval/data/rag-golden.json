@@ -1,0 +1,444 @@
+{
+  "description": "RAG szintű tesztkészlet: kérdés -> releváns receptfájl(ok), a receptek szövege alapján kijelölve. Pontos kérdések (r01-r30): egy konkrét ételre vagy technikára kérdeznek. Tág kérdések (m01-m10, type 'broad'): több recept is jó válasz. Magyar kérdések (h01-h06): mi történik, ha a magyar kérdés fordítás nélkül megy a keresésbe.",
+  "cases": [
+    {
+      "id": "r01",
+      "lang": "en",
+      "type": "dish",
+      "query": "chickpea curry with tomatoes and garam masala",
+      "relevant": [
+        "channa-masala"
+      ]
+    },
+    {
+      "id": "r02",
+      "lang": "en",
+      "type": "dish",
+      "query": "extra smooth hummus with tahini",
+      "relevant": [
+        "hummus"
+      ]
+    },
+    {
+      "id": "r03",
+      "lang": "en",
+      "type": "ingredient",
+      "query": "smoky eggplant dip",
+      "relevant": [
+        "baba-ganoush"
+      ]
+    },
+    {
+      "id": "r04",
+      "lang": "en",
+      "type": "dish",
+      "query": "salad dressing made with tahini and lemon",
+      "relevant": [
+        "lemon-tahini-dressing"
+      ]
+    },
+    {
+      "id": "r05",
+      "lang": "en",
+      "type": "dish",
+      "query": "stir-fried rice noodles with tamarind, tofu and peanuts",
+      "relevant": [
+        "pad-thai"
+      ]
+    },
+    {
+      "id": "r06",
+      "lang": "en",
+      "type": "dish",
+      "query": "fluffy buttermilk pancakes for breakfast",
+      "relevant": [
+        "diner-style-pancakes"
+      ]
+    },
+    {
+      "id": "r07",
+      "lang": "en",
+      "type": "technique",
+      "query": "breaded and pan-fried chicken cutlets",
+      "relevant": [
+        "chicken-schnitzel"
+      ]
+    },
+    {
+      "id": "r08",
+      "lang": "en",
+      "type": "dish",
+      "query": "Thai minced chicken salad with toasted rice powder and herbs",
+      "relevant": [
+        "larb-gai"
+      ]
+    },
+    {
+      "id": "r09",
+      "lang": "en",
+      "type": "technique",
+      "query": "smoking a pork shoulder low and slow for pulled pork",
+      "relevant": [
+        "smoked-pork-shoulder"
+      ]
+    },
+    {
+      "id": "r10",
+      "lang": "en",
+      "type": "technique",
+      "query": "how to dry brine and smoke a whole turkey",
+      "relevant": [
+        "smoked-whole-turkey"
+      ]
+    },
+    {
+      "id": "r11",
+      "lang": "en",
+      "type": "ingredient",
+      "query": "green salsa made from tomatillos",
+      "relevant": [
+        "tomatillo-salsa",
+        "carnitas-with-salsa-verde"
+      ]
+    },
+    {
+      "id": "r12",
+      "lang": "en",
+      "type": "ingredient",
+      "query": "crispy fried okra with Indian spices",
+      "relevant": [
+        "bhindi-fry"
+      ]
+    },
+    {
+      "id": "r13",
+      "lang": "en",
+      "type": "ingredient",
+      "query": "fried cauliflower in a spicy Indo-Chinese sauce",
+      "relevant": [
+        "gobi-manchurian"
+      ]
+    },
+    {
+      "id": "r14",
+      "lang": "en",
+      "type": "ingredient",
+      "query": "lentil dal finished with spices tempered in ghee",
+      "relevant": [
+        "tarka-dal"
+      ]
+    },
+    {
+      "id": "r15",
+      "lang": "en",
+      "type": "ingredient",
+      "query": "Thai pomelo salad",
+      "relevant": [
+        "thai-pomelo-salad"
+      ]
+    },
+    {
+      "id": "r16",
+      "lang": "en",
+      "type": "ingredient",
+      "query": "stir-fried morning glory with garlic and chilies",
+      "relevant": [
+        "stir-fried-morning-glory"
+      ]
+    },
+    {
+      "id": "r17",
+      "lang": "en",
+      "type": "category",
+      "query": "homemade pizza dough",
+      "relevant": [
+        "pizza-dough",
+        "no-knead-pan-pizza",
+        "thin-crust-pizza"
+      ]
+    },
+    {
+      "id": "r18",
+      "lang": "en",
+      "type": "dish",
+      "query": "chewy boiled bagels",
+      "relevant": [
+        "bagels"
+      ]
+    },
+    {
+      "id": "r19",
+      "lang": "en",
+      "type": "dish",
+      "query": "soft pretzels with a baking soda bath",
+      "relevant": [
+        "soft-pretzels-1",
+        "soft-pretzels-2"
+      ]
+    },
+    {
+      "id": "r20",
+      "lang": "en",
+      "type": "category",
+      "query": "unleavened Indian flatbread cooked on a griddle",
+      "relevant": [
+        "roti"
+      ]
+    },
+    {
+      "id": "r21",
+      "lang": "en",
+      "type": "dish",
+      "query": "pocket bread baked in a hot oven",
+      "relevant": [
+        "pita-bread"
+      ]
+    },
+    {
+      "id": "r22",
+      "lang": "en",
+      "type": "ingredient",
+      "query": "tofu with Sichuan peppercorns and chilies",
+      "relevant": [
+        "sichuan-three-pepper-tofu"
+      ]
+    },
+    {
+      "id": "r23",
+      "lang": "en",
+      "type": "technique",
+      "query": "green beans dry-fried until blistered",
+      "relevant": [
+        "sichuan-dry-fried-green-beans"
+      ]
+    },
+    {
+      "id": "r24",
+      "lang": "en",
+      "type": "dish",
+      "query": "Persian rice layered with green beans and meat",
+      "relevant": [
+        "lubia-polo"
+      ]
+    },
+    {
+      "id": "r25",
+      "lang": "en",
+      "type": "dish",
+      "query": "cranberry sauce with jalapeño and lime for Thanksgiving",
+      "relevant": [
+        "smoky-jalepeno-and-lime-cranberry-sauce"
+      ]
+    },
+    {
+      "id": "r26",
+      "lang": "en",
+      "type": "dish",
+      "query": "North African chili paste hot sauce",
+      "relevant": [
+        "harissa-hot-sauce"
+      ]
+    },
+    {
+      "id": "r27",
+      "lang": "en",
+      "type": "dish",
+      "query": "Yemeni green chili and cilantro sauce",
+      "relevant": [
+        "yemeni-hot-sauce"
+      ]
+    },
+    {
+      "id": "r28",
+      "lang": "en",
+      "type": "dish",
+      "query": "gin cocktail with raspberries and elderflower",
+      "relevant": [
+        "raspberry-and-elderflower-gin-and-tonic"
+      ]
+    },
+    {
+      "id": "r29",
+      "lang": "en",
+      "type": "dish",
+      "query": "creamy horseradish soup",
+      "relevant": [
+        "austro-hungarian-cream-of-horseradish-soup"
+      ]
+    },
+    {
+      "id": "r30",
+      "lang": "en",
+      "type": "ingredient",
+      "query": "potato and pea curry",
+      "relevant": [
+        "aloo-matar"
+      ]
+    },
+    {
+      "id": "m01",
+      "lang": "en",
+      "type": "broad",
+      "query": "spicy Thai rice noodle stir-fry",
+      "relevant": [
+        "pad-thai",
+        "pad-see-ew"
+      ]
+    },
+    {
+      "id": "m02",
+      "lang": "en",
+      "type": "broad",
+      "query": "Thai curry with coconut milk",
+      "relevant": [
+        "massaman-curry"
+      ]
+    },
+    {
+      "id": "m03",
+      "lang": "en",
+      "type": "broad",
+      "query": "Mexican salsa for tacos",
+      "relevant": [
+        "tomatillo-salsa",
+        "smoky-three-chile-salsa",
+        "toasted-guajillo-salsa",
+        "salsa-amarilla"
+      ]
+    },
+    {
+      "id": "m04",
+      "lang": "en",
+      "type": "broad",
+      "query": "homemade hot sauce",
+      "relevant": [
+        "burning-bike-hot-sauce",
+        "harissa-hot-sauce",
+        "jalepeño-hot-sauce",
+        "portuguese-hot-sauce",
+        "yemeni-hot-sauce"
+      ]
+    },
+    {
+      "id": "m05",
+      "lang": "en",
+      "type": "broad",
+      "query": "meat to cook on a smoker or grill for a barbecue",
+      "relevant": [
+        "smoked-pork-shoulder",
+        "smoked-whole-turkey",
+        "memphis-style-ribs",
+        "carne-asada"
+      ]
+    },
+    {
+      "id": "m06",
+      "lang": "en",
+      "type": "broad",
+      "query": "Indian rice dish made with basmati",
+      "relevant": [
+        "egg-biryani",
+        "black-pepper-rice"
+      ]
+    },
+    {
+      "id": "m07",
+      "lang": "en",
+      "type": "broad",
+      "query": "vegetarian main dish with tofu",
+      "relevant": [
+        "sesame-tofu",
+        "sichuan-three-pepper-tofu",
+        "phat-phrik-khing"
+      ]
+    },
+    {
+      "id": "m08",
+      "lang": "en",
+      "type": "broad",
+      "query": "flatbread to make at home",
+      "relevant": [
+        "roti",
+        "pita-bread",
+        "flour-tortillas"
+      ]
+    },
+    {
+      "id": "m09",
+      "lang": "en",
+      "type": "broad",
+      "query": "enchiladas",
+      "relevant": [
+        "black-bean-enchiladas",
+        "creamy-chicken-enchiladas",
+        "enchilada-sauce"
+      ]
+    },
+    {
+      "id": "m10",
+      "lang": "en",
+      "type": "broad",
+      "query": "Middle Eastern dip or spread",
+      "relevant": [
+        "hummus",
+        "baba-ganoush"
+      ]
+    },
+    {
+      "id": "h01",
+      "lang": "hu",
+      "type": "dish",
+      "query": "csicseriborsós curry",
+      "relevant": [
+        "channa-masala"
+      ]
+    },
+    {
+      "id": "h02",
+      "lang": "hu",
+      "type": "dish",
+      "query": "írós palacsinta reggelire",
+      "relevant": [
+        "diner-style-pancakes"
+      ]
+    },
+    {
+      "id": "h03",
+      "lang": "hu",
+      "type": "technique",
+      "query": "rántott csirkemell",
+      "relevant": [
+        "chicken-schnitzel"
+      ]
+    },
+    {
+      "id": "h04",
+      "lang": "hu",
+      "type": "dish",
+      "query": "tormaleves",
+      "relevant": [
+        "austro-hungarian-cream-of-horseradish-soup"
+      ]
+    },
+    {
+      "id": "h05",
+      "lang": "hu",
+      "type": "category",
+      "query": "házi pizzatészta",
+      "relevant": [
+        "pizza-dough",
+        "no-knead-pan-pizza",
+        "thin-crust-pizza"
+      ]
+    },
+    {
+      "id": "h06",
+      "lang": "hu",
+      "type": "ingredient",
+      "query": "padlizsánkrém",
+      "relevant": [
+        "baba-ganoush"
+      ]
+    }
+  ]
+}

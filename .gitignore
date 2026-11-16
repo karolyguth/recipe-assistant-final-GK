@@ -41,3 +41,6 @@ next-env.d.ts
 
 # letöltött lokális modellek (cross-encoder)
 /.cache/
+
+# evaluáció: embedding és LLM cache (újrafuttatáskor nem fizetünk újra)
+/eval/.cache/

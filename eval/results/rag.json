@@ -1,0 +1,6892 @@
+{
+  "k": 4,
+  "candidates": 20,
+  "variants": [
+    {
+      "id": "recipe-small",
+      "label": "Receptenként, 3-small, rerank nélkül",
+      "strategy": "recipe",
+      "model": "text-embedding-3-small",
+      "rerank": null
+    },
+    {
+      "id": "fixed-small",
+      "label": "Fix 800 karakter, 3-small, rerank nélkül",
+      "strategy": "fixed",
+      "model": "text-embedding-3-small",
+      "rerank": null
+    },
+    {
+      "id": "section-small",
+      "label": "Szekciónként, 3-small, rerank nélkül",
+      "strategy": "section",
+      "model": "text-embedding-3-small",
+      "rerank": null
+    },
+    {
+      "id": "recipe-large",
+      "label": "Receptenként, 3-large, rerank nélkül",
+      "strategy": "recipe",
+      "model": "text-embedding-3-large",
+      "rerank": null
+    },
+    {
+      "id": "recipe-small-rerank-fp32",
+      "label": "Receptenként, 3-small, rerank fp32 / 512 token",
+      "strategy": "recipe",
+      "model": "text-embedding-3-small",
+      "rerank": {
+        "dtype": "fp32",
+        "maxTokens": 512
+      }
+    },
+    {
+      "id": "recipe-small-rerank-q8",
+      "label": "Receptenként, 3-small, rerank q8 / 256 token (éles)",
+      "strategy": "recipe",
+      "model": "text-embedding-3-small",
+      "rerank": {
+        "dtype": "q8",
+        "maxTokens": 256
+      }
+    },
+    {
+      "id": "live",
+      "label": "Élő rendszer: pgvector + rerank (a chat kódja)",
+      "strategy": "recipe",
+      "model": "text-embedding-3-small",
+      "rerank": {
+        "dtype": "q8",
+        "maxTokens": 256
+      },
+      "live": true
+    }
+  ],
+  "cases": [
+    {
+      "id": "r01",
+      "lang": "en",
+      "type": "dish",
+      "query": "chickpea curry with tomatoes and garam masala",
+      "relevant": [
+        "channa-masala"
+      ]
+    },
+    {
+      "id": "r02",
+      "lang": "en",
+      "type": "dish",
+      "query": "extra smooth hummus with tahini",
+      "relevant": [
+        "hummus"
+      ]
+    },
+    {
+      "id": "r03",
+      "lang": "en",
+      "type": "ingredient",
+      "query": "smoky eggplant dip",
+      "relevant": [
+        "baba-ganoush"
+      ]
+    },
+    {
+      "id": "r04",
+      "lang": "en",
+      "type": "dish",
+      "query": "salad dressing made with tahini and lemon",
+      "relevant": [
+        "lemon-tahini-dressing"
+      ]
+    },
+    {
+      "id": "r05",
+      "lang": "en",
+      "type": "dish",
+      "query": "stir-fried rice noodles with tamarind, tofu and peanuts",
+      "relevant": [
+        "pad-thai"
+      ]
+    },
+    {
+      "id": "r06",
+      "lang": "en",
+      "type": "dish",
+      "query": "fluffy buttermilk pancakes for breakfast",
+      "relevant": [
+        "diner-style-pancakes"
+      ]
+    },
+    {
+      "id": "r07",
+      "lang": "en",
+      "type": "technique",
+      "query": "breaded and pan-fried chicken cutlets",
+      "relevant": [
+        "chicken-schnitzel"
+      ]
+    },
+    {
+      "id": "r08",
+      "lang": "en",
+      "type": "dish",
+      "query": "Thai minced chicken salad with toasted rice powder and herbs",
+      "relevant": [
+        "larb-gai"
+      ]
+    },
+    {
+      "id": "r09",
+      "lang": "en",
+      "type": "technique",
+      "query": "smoking a pork shoulder low and slow for pulled pork",
+      "relevant": [
+        "smoked-pork-shoulder"
+      ]
+    },
+    {
+      "id": "r10",
+      "lang": "en",
+      "type": "technique",
+      "query": "how to dry brine and smoke a whole turkey",
+      "relevant": [
+        "smoked-whole-turkey"
+      ]
+    },
+    {
+      "id": "r11",
+      "lang": "en",
+      "type": "ingredient",
+      "query": "green salsa made from tomatillos",
+      "relevant": [
+        "tomatillo-salsa",
+        "carnitas-with-salsa-verde"
+      ]
+    },
+    {
+      "id": "r12",
+      "lang": "en",
+      "type": "ingredient",
+      "query": "crispy fried okra with Indian spices",
+      "relevant": [
+        "bhindi-fry"
+      ]
+    },
+    {
+      "id": "r13",
+      "lang": "en",
+      "type": "ingredient",
+      "query": "fried cauliflower in a spicy Indo-Chinese sauce",
+      "relevant": [
+        "gobi-manchurian"
+      ]
+    },
+    {
+      "id": "r14",
+      "lang": "en",
+      "type": "ingredient",
+      "query": "lentil dal finished with spices tempered in ghee",
+      "relevant": [
+        "tarka-dal"
+      ]
+    },
+    {
+      "id": "r15",
+      "lang": "en",
+      "type": "ingredient",
+      "query": "Thai pomelo salad",
+      "relevant": [
+        "thai-pomelo-salad"
+      ]
+    },
+    {
+      "id": "r16",
+      "lang": "en",
+      "type": "ingredient",
+      "query": "stir-fried morning glory with garlic and chilies",
+      "relevant": [
+        "stir-fried-morning-glory"
+      ]
+    },
+    {
+      "id": "r17",
+      "lang": "en",
+      "type": "category",
+      "query": "homemade pizza dough",
+      "relevant": [
+        "pizza-dough",
+        "no-knead-pan-pizza",
+        "thin-crust-pizza"
+      ]
+    },
+    {
+      "id": "r18",
+      "lang": "en",
+      "type": "dish",
+      "query": "chewy boiled bagels",
+      "relevant": [
+        "bagels"
+      ]
+    },
+    {
+      "id": "r19",
+      "lang": "en",
+      "type": "dish",
+      "query": "soft pretzels with a baking soda bath",
+      "relevant": [
+        "soft-pretzels-1",
+        "soft-pretzels-2"
+      ]
+    },
+    {
+      "id": "r20",
+      "lang": "en",
+      "type": "category",
+      "query": "unleavened Indian flatbread cooked on a griddle",
+      "relevant": [
+        "roti"
+      ]
+    },
+    {
+      "id": "r21",
+      "lang": "en",
+      "type": "dish",
+      "query": "pocket bread baked in a hot oven",
+      "relevant": [
+        "pita-bread"
+      ]
+    },
+    {
+      "id": "r22",
+      "lang": "en",
+      "type": "ingredient",
+      "query": "tofu with Sichuan peppercorns and chilies",
+      "relevant": [
+        "sichuan-three-pepper-tofu"
+      ]
+    },
+    {
+      "id": "r23",
+      "lang": "en",
+      "type": "technique",
+      "query": "green beans dry-fried until blistered",
+      "relevant": [
+        "sichuan-dry-fried-green-beans"
+      ]
+    },
+    {
+      "id": "r24",
+      "lang": "en",
+      "type": "dish",
+      "query": "Persian rice layered with green beans and meat",
+      "relevant": [
+        "lubia-polo"
+      ]
+    },
+    {
+      "id": "r25",
+      "lang": "en",
+      "type": "dish",
+      "query": "cranberry sauce with jalapeño and lime for Thanksgiving",
+      "relevant": [
+        "smoky-jalepeno-and-lime-cranberry-sauce"
+      ]
+    },
+    {
+      "id": "r26",
+      "lang": "en",
+      "type": "dish",
+      "query": "North African chili paste hot sauce",
+      "relevant": [
+        "harissa-hot-sauce"
+      ]
+    },
+    {
+      "id": "r27",
+      "lang": "en",
+      "type": "dish",
+      "query": "Yemeni green chili and cilantro sauce",
+      "relevant": [
+        "yemeni-hot-sauce"
+      ]
+    },
+    {
+      "id": "r28",
+      "lang": "en",
+      "type": "dish",
+      "query": "gin cocktail with raspberries and elderflower",
+      "relevant": [
+        "raspberry-and-elderflower-gin-and-tonic"
+      ]
+    },
+    {
+      "id": "r29",
+      "lang": "en",
+      "type": "dish",
+      "query": "creamy horseradish soup",
+      "relevant": [
+        "austro-hungarian-cream-of-horseradish-soup"
+      ]
+    },
+    {
+      "id": "r30",
+      "lang": "en",
+      "type": "ingredient",
+      "query": "potato and pea curry",
+      "relevant": [
+        "aloo-matar"
+      ]
+    },
+    {
+      "id": "m01",
+      "lang": "en",
+      "type": "broad",
+      "query": "spicy Thai rice noodle stir-fry",
+      "relevant": [
+        "pad-thai",
+        "pad-see-ew"
+      ]
+    },
+    {
+      "id": "m02",
+      "lang": "en",
+      "type": "broad",
+      "query": "Thai curry with coconut milk",
+      "relevant": [
+        "massaman-curry"
+      ]
+    },
+    {
+      "id": "m03",
+      "lang": "en",
+      "type": "broad",
+      "query": "Mexican salsa for tacos",
+      "relevant": [
+        "tomatillo-salsa",
+        "smoky-three-chile-salsa",
+        "toasted-guajillo-salsa",
+        "salsa-amarilla"
+      ]
+    },
+    {
+      "id": "m04",
+      "lang": "en",
+      "type": "broad",
+      "query": "homemade hot sauce",
+      "relevant": [
+        "burning-bike-hot-sauce",
+        "harissa-hot-sauce",
+        "jalepeño-hot-sauce",
+        "portuguese-hot-sauce",
+        "yemeni-hot-sauce"
+      ]
+    },
+    {
+      "id": "m05",
+      "lang": "en",
+      "type": "broad",
+      "query": "meat to cook on a smoker or grill for a barbecue",
+      "relevant": [
+        "smoked-pork-shoulder",
+        "smoked-whole-turkey",
+        "memphis-style-ribs",
+        "carne-asada"
+      ]
+    },
+    {
+      "id": "m06",
+      "lang": "en",
+      "type": "broad",
+      "query": "Indian rice dish made with basmati",
+      "relevant": [
+        "egg-biryani",
+        "black-pepper-rice"
+      ]
+    },
+    {
+      "id": "m07",
+      "lang": "en",
+      "type": "broad",
+      "query": "vegetarian main dish with tofu",
+      "relevant": [
+        "sesame-tofu",
+        "sichuan-three-pepper-tofu",
+        "phat-phrik-khing"
+      ]
+    },
+    {
+      "id": "m08",
+      "lang": "en",
+      "type": "broad",
+      "query": "flatbread to make at home",
+      "relevant": [
+        "roti",
+        "pita-bread",
+        "flour-tortillas"
+      ]
+    },
+    {
+      "id": "m09",
+      "lang": "en",
+      "type": "broad",
+      "query": "enchiladas",
+      "relevant": [
+        "black-bean-enchiladas",
+        "creamy-chicken-enchiladas",
+        "enchilada-sauce"
+      ]
+    },
+    {
+      "id": "m10",
+      "lang": "en",
+      "type": "broad",
+      "query": "Middle Eastern dip or spread",
+      "relevant": [
+        "hummus",
+        "baba-ganoush"
+      ]
+    },
+    {
+      "id": "h01",
+      "lang": "hu",
+      "type": "dish",
+      "query": "csicseriborsós curry",
+      "relevant": [
+        "channa-masala"
+      ]
+    },
+    {
+      "id": "h02",
+      "lang": "hu",
+      "type": "dish",
+      "query": "írós palacsinta reggelire",
+      "relevant": [
+        "diner-style-pancakes"
+      ]
+    },
+    {
+      "id": "h03",
+      "lang": "hu",
+      "type": "technique",
+      "query": "rántott csirkemell",
+      "relevant": [
+        "chicken-schnitzel"
+      ]
+    },
+    {
+      "id": "h04",
+      "lang": "hu",
+      "type": "dish",
+      "query": "tormaleves",
+      "relevant": [
+        "austro-hungarian-cream-of-horseradish-soup"
+      ]
+    },
+    {
+      "id": "h05",
+      "lang": "hu",
+      "type": "category",
+      "query": "házi pizzatészta",
+      "relevant": [
+        "pizza-dough",
+        "no-knead-pan-pizza",
+        "thin-crust-pizza"
+      ]
+    },
+    {
+      "id": "h06",
+      "lang": "hu",
+      "type": "ingredient",
+      "query": "padlizsánkrém",
+      "relevant": [
+        "baba-ganoush"
+      ]
+    }
+  ],
+  "results": {
+    "recipe-small": [
+      {
+        "id": "r01",
+        "ranked": [
+          "channa-masala",
+          "aloo-matar",
+          "masala-green-beans",
+          "tarka-dal",
+          "massaman-curry",
+          "phat-phrik-khing",
+          "black-pepper-rice",
+          "bhindi-fry",
+          "biryani-shorba",
+          "vegetarian-chicken-salad"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 2
+      },
+      {
+        "id": "r02",
+        "ranked": [
+          "hummus",
+          "lemon-tahini-dressing",
+          "baba-ganoush",
+          "yemeni-hot-sauce",
+          "harissa-hot-sauce",
+          "halal-cart-red-sauce",
+          "sesame-tofu",
+          "salami-chips-with-white-bean-dip",
+          "guasacaca",
+          "kofte-kebabs"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1
+      },
+      {
+        "id": "r03",
+        "ranked": [
+          "baba-ganoush",
+          "salami-chips-with-white-bean-dip",
+          "smoky-three-chile-salsa",
+          "queso-dip",
+          "guasacaca",
+          "toasted-guajillo-salsa",
+          "smoky-jalepeno-and-lime-cranberry-sauce",
+          "hummus",
+          "potato-and-green-chili-hash",
+          "smoked-pork-shoulder"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 0
+      },
+      {
+        "id": "r04",
+        "ranked": [
+          "lemon-tahini-dressing",
+          "vegetarian-chicken-salad",
+          "thai-pomelo-salad",
+          "hummus",
+          "cucumber-raita",
+          "baba-ganoush",
+          "halal-cart-chicken",
+          "sesame-tofu",
+          "halal-cart-red-sauce",
+          "harissa-hot-sauce"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 0
+      },
+      {
+        "id": "r05",
+        "ranked": [
+          "pad-thai",
+          "thai-fried-rice",
+          "phat-phrik-khing",
+          "sesame-tofu",
+          "sichuan-three-pepper-tofu",
+          "pad-see-ew",
+          "stir-fried-pork-with-hot-basil",
+          "vegetarian-pho",
+          "stir-fried-morning-glory",
+          "larb-gai"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 0
+      },
+      {
+        "id": "r06",
+        "ranked": [
+          "diner-style-pancakes",
+          "vada",
+          "flour-tortillas",
+          "roti",
+          "chicken-schnitzel",
+          "bagels",
+          "soft-pretzels-1",
+          "hasselback-butternut-squash",
+          "soft-pretzels-2",
+          "potato-and-green-chili-hash"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1
+      },
+      {
+        "id": "r07",
+        "ranked": [
+          "chicken-schnitzel",
+          "chicken-nuggets",
+          "teriyaki-chicken",
+          "halal-cart-chicken",
+          "creamy-chicken-enchiladas",
+          "diner-style-pancakes",
+          "no-knead-pan-pizza",
+          "pita-bread",
+          "roti",
+          "vegetarian-chicken-salad"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 0
+      },
+      {
+        "id": "r08",
+        "ranked": [
+          "larb-gai",
+          "vegetarian-chicken-salad",
+          "halal-cart-chicken",
+          "thai-fried-rice",
+          "thai-pomelo-salad",
+          "pad-thai",
+          "teriyaki-chicken",
+          "stir-fried-pork-with-hot-basil",
+          "phat-phrik-khing",
+          "cucumber-raita"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 0
+      },
+      {
+        "id": "r09",
+        "ranked": [
+          "smoked-pork-shoulder",
+          "memphis-style-ribs",
+          "smoked-whole-turkey",
+          "carnitas-with-salsa-verde",
+          "vietnamese-pork-chops",
+          "chile-colorado",
+          "barbeque-sauce",
+          "portuguese-hot-sauce",
+          "smoky-jalepeno-and-lime-cranberry-sauce",
+          "teriyaki-chicken"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 0
+      },
+      {
+        "id": "r10",
+        "ranked": [
+          "smoked-whole-turkey",
+          "smoky-jalepeno-and-lime-cranberry-sauce",
+          "smoked-pork-shoulder",
+          "memphis-style-ribs",
+          "hasselback-butternut-squash",
+          "spicy-whole-grain-pub-mustard",
+          "teriyaki-chicken",
+          "sichuan-dry-fried-green-beans",
+          "halal-cart-chicken",
+          "roasted-parsnips-and-carrots"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1
+      },
+      {
+        "id": "r11",
+        "ranked": [
+          "tomatillo-salsa",
+          "toasted-guajillo-salsa",
+          "smoky-three-chile-salsa",
+          "salsa-amarilla",
+          "carnitas-with-salsa-verde",
+          "black-bean-enchiladas",
+          "enchilada-sauce",
+          "smoky-jalepeno-and-lime-cranberry-sauce",
+          "queso-dip",
+          "jalepeño-hot-sauce"
+        ],
+        "p": 0.25,
+        "r": 0.5,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 0
+      },
+      {
+        "id": "r12",
+        "ranked": [
+          "bhindi-fry",
+          "vada",
+          "gobi-manchurian",
+          "cucumber-raita",
+          "channa-masala",
+          "phat-phrik-khing",
+          "roti",
+          "thai-fried-rice",
+          "aloo-matar",
+          "masala-green-beans"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 0
+      },
+      {
+        "id": "r13",
+        "ranked": [
+          "gobi-manchurian",
+          "sesame-tofu",
+          "sichuan-three-pepper-tofu",
+          "garlicky-cabbage-and-fish-sauce",
+          "phat-phrik-khing",
+          "thai-fried-rice",
+          "bonchon-style-sauce",
+          "stir-fried-pork-with-hot-basil",
+          "halal-cart-chicken",
+          "channa-masala"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 0
+      },
+      {
+        "id": "r14",
+        "ranked": [
+          "tarka-dal",
+          "lubia-polo",
+          "channa-masala",
+          "masala-green-beans",
+          "black-pepper-rice",
+          "aloo-matar",
+          "bhindi-fry",
+          "vada",
+          "larb-gai",
+          "gobi-manchurian"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 0
+      },
+      {
+        "id": "r15",
+        "ranked": [
+          "thai-pomelo-salad",
+          "pad-thai",
+          "lemon-tahini-dressing",
+          "larb-gai",
+          "stir-fried-pork-with-hot-basil",
+          "thai-fried-rice",
+          "stir-fried-morning-glory",
+          "vietnamese-pork-chops",
+          "phat-phrik-khing",
+          "vegetarian-chicken-salad"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1
+      },
+      {
+        "id": "r16",
+        "ranked": [
+          "stir-fried-morning-glory",
+          "thai-fried-rice",
+          "garlicky-cabbage-and-fish-sauce",
+          "sichuan-dry-fried-green-beans",
+          "stir-fried-pork-with-hot-basil",
+          "sichuan-three-pepper-tofu",
+          "gobi-manchurian",
+          "phat-phrik-khing",
+          "pad-thai",
+          "bonchon-style-sauce"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 0
+      },
+      {
+        "id": "r17",
+        "ranked": [
+          "pizza-dough",
+          "no-knead-pan-pizza",
+          "thin-crust-pizza",
+          "homemade-pasta",
+          "pita-bread",
+          "flour-tortillas",
+          "soft-pretzels-2",
+          "garlic-bread",
+          "bagels",
+          "roti"
+        ],
+        "p": 0.75,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 0
+      },
+      {
+        "id": "r18",
+        "ranked": [
+          "bagels",
+          "soft-pretzels-2",
+          "soft-pretzels-1",
+          "salami-chips-with-white-bean-dip",
+          "yemeni-hot-sauce",
+          "spicy-whole-grain-pub-mustard",
+          "stir-fried-morning-glory",
+          "sichuan-dry-fried-green-beans",
+          "potato-and-green-chili-hash",
+          "hummus"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 0
+      },
+      {
+        "id": "r19",
+        "ranked": [
+          "soft-pretzels-2",
+          "soft-pretzels-1",
+          "bagels",
+          "chicken-schnitzel",
+          "spicy-whole-grain-pub-mustard",
+          "salami-chips-with-white-bean-dip",
+          "hummus",
+          "flour-tortillas",
+          "pita-bread",
+          "hasselback-butternut-squash"
+        ],
+        "p": 0.5,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1
+      },
+      {
+        "id": "r20",
+        "ranked": [
+          "roti",
+          "vada",
+          "bhindi-fry",
+          "pita-bread",
+          "flour-tortillas",
+          "egg-biryani",
+          "cucumber-raita",
+          "gobi-manchurian",
+          "no-knead-pan-pizza",
+          "black-pepper-rice"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 0
+      },
+      {
+        "id": "r21",
+        "ranked": [
+          "pita-bread",
+          "garlic-bread",
+          "no-knead-pan-pizza",
+          "roti",
+          "thin-crust-pizza",
+          "soft-pretzels-1",
+          "pizza-dough",
+          "bagels",
+          "soft-pretzels-2",
+          "samosa-pie"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 0
+      },
+      {
+        "id": "r22",
+        "ranked": [
+          "sichuan-three-pepper-tofu",
+          "sesame-tofu",
+          "sichuan-dry-fried-green-beans",
+          "phat-phrik-khing",
+          "garlicky-cabbage-and-fish-sauce",
+          "gobi-manchurian",
+          "chile-colorado",
+          "thai-fried-rice",
+          "stir-fried-pork-with-hot-basil",
+          "oaxacan-black-beans"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 0
+      },
+      {
+        "id": "r23",
+        "ranked": [
+          "sichuan-dry-fried-green-beans",
+          "masala-green-beans",
+          "thai-fried-rice",
+          "phat-phrik-khing",
+          "gobi-manchurian",
+          "oaxacan-black-beans",
+          "sesame-tofu",
+          "sichuan-three-pepper-tofu",
+          "bhindi-fry",
+          "salami-chips-with-white-bean-dip"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1
+      },
+      {
+        "id": "r24",
+        "ranked": [
+          "lubia-polo",
+          "thai-fried-rice",
+          "masala-green-beans",
+          "sichuan-dry-fried-green-beans",
+          "spanish-rice",
+          "egg-biryani",
+          "biryani-shorba",
+          "black-pepper-rice",
+          "phat-phrik-khing",
+          "vegetarian-pho"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 0
+      },
+      {
+        "id": "r25",
+        "ranked": [
+          "smoky-jalepeno-and-lime-cranberry-sauce",
+          "jalepeño-hot-sauce",
+          "halal-cart-red-sauce",
+          "chile-colorado",
+          "portuguese-hot-sauce",
+          "toasted-guajillo-salsa",
+          "barbeque-sauce",
+          "carnitas-with-salsa-verde",
+          "smoked-whole-turkey",
+          "guasacaca"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 0
+      },
+      {
+        "id": "r26",
+        "ranked": [
+          "harissa-hot-sauce",
+          "portuguese-hot-sauce",
+          "jalepeño-hot-sauce",
+          "halal-cart-red-sauce",
+          "yemeni-hot-sauce",
+          "burning-bike-hot-sauce",
+          "chile-colorado",
+          "smoky-three-chile-salsa",
+          "enchilada-sauce",
+          "toasted-guajillo-salsa"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 0
+      },
+      {
+        "id": "r27",
+        "ranked": [
+          "halal-cart-red-sauce",
+          "yemeni-hot-sauce",
+          "enchilada-sauce",
+          "chile-colorado",
+          "harissa-hot-sauce",
+          "portuguese-hot-sauce",
+          "smoky-jalepeno-and-lime-cranberry-sauce",
+          "salsa-amarilla",
+          "bonchon-style-sauce",
+          "smoky-three-chile-salsa"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 0.5,
+        "hit1": 0,
+        "ms": 1
+      },
+      {
+        "id": "r28",
+        "ranked": [
+          "raspberry-and-elderflower-gin-and-tonic",
+          "smoky-jalepeno-and-lime-cranberry-sauce",
+          "austro-hungarian-cream-of-horseradish-soup",
+          "cucumber-raita",
+          "memphis-style-ribs",
+          "smoky-three-chile-salsa",
+          "toasted-guajillo-salsa",
+          "thai-pomelo-salad",
+          "lemon-tahini-dressing",
+          "guasacaca"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 0
+      },
+      {
+        "id": "r29",
+        "ranked": [
+          "austro-hungarian-cream-of-horseradish-soup",
+          "spicy-whole-grain-pub-mustard",
+          "smoky-jalepeno-and-lime-cranberry-sauce",
+          "roasted-parsnips-and-carrots",
+          "mac-and-cheese",
+          "potato-and-green-chili-hash",
+          "burning-bike-hot-sauce",
+          "hasselback-butternut-squash",
+          "queso-dip",
+          "jalepeño-hot-sauce"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 0
+      },
+      {
+        "id": "r30",
+        "ranked": [
+          "aloo-matar",
+          "massaman-curry",
+          "channa-masala",
+          "black-pepper-rice",
+          "lubia-polo",
+          "masala-green-beans",
+          "tarka-dal",
+          "phat-phrik-khing",
+          "samosa-pie",
+          "biryani-shorba"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 0
+      },
+      {
+        "id": "m01",
+        "ranked": [
+          "thai-fried-rice",
+          "pad-thai",
+          "pad-see-ew",
+          "stir-fried-pork-with-hot-basil",
+          "phat-phrik-khing",
+          "garlicky-cabbage-and-fish-sauce",
+          "larb-gai",
+          "vegetarian-pho",
+          "stir-fried-morning-glory",
+          "spanish-rice"
+        ],
+        "p": 0.5,
+        "r": 1,
+        "rr": 0.5,
+        "hit1": 0,
+        "ms": 1
+      },
+      {
+        "id": "m02",
+        "ranked": [
+          "massaman-curry",
+          "phat-phrik-khing",
+          "thai-fried-rice",
+          "stir-fried-pork-with-hot-basil",
+          "pad-thai",
+          "larb-gai",
+          "stir-fried-morning-glory",
+          "channa-masala",
+          "black-pepper-rice",
+          "vegetarian-pho"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 0
+      },
+      {
+        "id": "m03",
+        "ranked": [
+          "tomatillo-salsa",
+          "smoky-three-chile-salsa",
+          "carnitas-with-salsa-verde",
+          "salsa-amarilla",
+          "toasted-guajillo-salsa",
+          "beef-tacos",
+          "enchilada-sauce",
+          "queso-dip",
+          "carne-asada",
+          "black-bean-enchiladas"
+        ],
+        "p": 0.75,
+        "r": 0.75,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 0
+      },
+      {
+        "id": "m04",
+        "ranked": [
+          "jalepeño-hot-sauce",
+          "harissa-hot-sauce",
+          "portuguese-hot-sauce",
+          "burning-bike-hot-sauce",
+          "halal-cart-red-sauce",
+          "enchilada-sauce",
+          "toasted-guajillo-salsa",
+          "bonchon-style-sauce",
+          "yemeni-hot-sauce",
+          "tomatillo-salsa"
+        ],
+        "p": 1,
+        "r": 0.8,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 0
+      },
+      {
+        "id": "m05",
+        "ranked": [
+          "memphis-style-ribs",
+          "smoked-pork-shoulder",
+          "smoked-whole-turkey",
+          "barbeque-sauce",
+          "carne-asada",
+          "kofte-kebabs",
+          "smoky-jalepeno-and-lime-cranberry-sauce",
+          "carnitas-with-salsa-verde",
+          "beef-tacos",
+          "halal-cart-chicken"
+        ],
+        "p": 0.75,
+        "r": 0.75,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1
+      },
+      {
+        "id": "m06",
+        "ranked": [
+          "egg-biryani",
+          "lubia-polo",
+          "black-pepper-rice",
+          "spanish-rice",
+          "biryani-shorba",
+          "thai-fried-rice",
+          "cucumber-raita",
+          "halal-cart-chicken",
+          "aloo-matar",
+          "masala-green-beans"
+        ],
+        "p": 0.5,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 0
+      },
+      {
+        "id": "m07",
+        "ranked": [
+          "sesame-tofu",
+          "sichuan-three-pepper-tofu",
+          "phat-phrik-khing",
+          "vegetarian-pho",
+          "vegetarian-chicken-salad",
+          "gobi-manchurian",
+          "thai-fried-rice",
+          "masala-green-beans",
+          "kofte-kebabs",
+          "aloo-matar"
+        ],
+        "p": 0.75,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 0
+      },
+      {
+        "id": "m08",
+        "ranked": [
+          "no-knead-pan-pizza",
+          "pita-bread",
+          "pizza-dough",
+          "thin-crust-pizza",
+          "roti",
+          "flour-tortillas",
+          "homemade-pasta",
+          "garlic-bread",
+          "soft-pretzels-2",
+          "soft-pretzels-1"
+        ],
+        "p": 0.25,
+        "r": 0.3333333333333333,
+        "rr": 0.5,
+        "hit1": 0,
+        "ms": 0
+      },
+      {
+        "id": "m09",
+        "ranked": [
+          "creamy-chicken-enchiladas",
+          "black-bean-enchiladas",
+          "enchilada-sauce",
+          "queso-dip",
+          "chile-colorado",
+          "oaxacan-black-beans",
+          "toasted-guajillo-salsa",
+          "tomatillo-salsa",
+          "flour-tortillas",
+          "smoky-three-chile-salsa"
+        ],
+        "p": 0.75,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1
+      },
+      {
+        "id": "m10",
+        "ranked": [
+          "baba-ganoush",
+          "hummus",
+          "yemeni-hot-sauce",
+          "kofte-kebabs",
+          "salami-chips-with-white-bean-dip",
+          "lemon-tahini-dressing",
+          "halal-cart-red-sauce",
+          "harissa-hot-sauce",
+          "queso-dip",
+          "halal-cart-chicken"
+        ],
+        "p": 0.5,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 0
+      },
+      {
+        "id": "h01",
+        "ranked": [
+          "massaman-curry",
+          "biryani-shorba",
+          "portuguese-hot-sauce",
+          "chile-colorado",
+          "potato-and-green-chili-hash",
+          "cucumber-raita",
+          "austro-hungarian-cream-of-horseradish-soup",
+          "lubia-polo",
+          "harissa-hot-sauce",
+          "spanish-rice"
+        ],
+        "p": 0,
+        "r": 0,
+        "rr": 0,
+        "hit1": 0,
+        "ms": 0
+      },
+      {
+        "id": "h02",
+        "ranked": [
+          "potato-and-green-chili-hash",
+          "austro-hungarian-cream-of-horseradish-soup",
+          "diner-style-pancakes",
+          "spanish-rice",
+          "lubia-polo",
+          "egg-biryani",
+          "guasacaca",
+          "salami-chips-with-white-bean-dip",
+          "thin-crust-pizza",
+          "flour-tortillas"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 0.3333333333333333,
+        "hit1": 0,
+        "ms": 0
+      },
+      {
+        "id": "h03",
+        "ranked": [
+          "smoky-jalepeno-and-lime-cranberry-sauce",
+          "austro-hungarian-cream-of-horseradish-soup",
+          "cucumber-raita",
+          "mac-and-cheese",
+          "carnitas-with-salsa-verde",
+          "spicy-whole-grain-pub-mustard",
+          "potato-and-green-chili-hash",
+          "portuguese-hot-sauce",
+          "burning-bike-hot-sauce",
+          "hasselback-butternut-squash"
+        ],
+        "p": 0,
+        "r": 0,
+        "rr": 0,
+        "hit1": 0,
+        "ms": 1
+      },
+      {
+        "id": "h04",
+        "ranked": [
+          "flour-tortillas",
+          "austro-hungarian-cream-of-horseradish-soup",
+          "tarka-dal",
+          "smoky-three-chile-salsa",
+          "tomatillo-salsa",
+          "beef-tacos",
+          "vegetarian-pho",
+          "carnitas-with-salsa-verde",
+          "aloo-matar",
+          "thai-pomelo-salad"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 0.5,
+        "hit1": 0,
+        "ms": 0
+      },
+      {
+        "id": "h05",
+        "ranked": [
+          "pizza-dough",
+          "thin-crust-pizza",
+          "no-knead-pan-pizza",
+          "pita-bread",
+          "samosa-pie",
+          "soft-pretzels-2",
+          "hummus",
+          "portuguese-hot-sauce",
+          "soft-pretzels-1",
+          "hasselback-butternut-squash"
+        ],
+        "p": 0.75,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 0
+      },
+      {
+        "id": "h06",
+        "ranked": [
+          "austro-hungarian-cream-of-horseradish-soup",
+          "smoky-jalepeno-and-lime-cranberry-sauce",
+          "portuguese-hot-sauce",
+          "creamy-chicken-enchiladas",
+          "chicken-schnitzel",
+          "salami-chips-with-white-bean-dip",
+          "dad's-spaghetti-sauce",
+          "jalepeño-hot-sauce",
+          "spicy-whole-grain-pub-mustard",
+          "chile-colorado"
+        ],
+        "p": 0,
+        "r": 0,
+        "rr": 0,
+        "hit1": 0,
+        "ms": 0
+      }
+    ],
+    "fixed-small": [
+      {
+        "id": "r01",
+        "ranked": [
+          "channa-masala",
+          "aloo-matar",
+          "biryani-shorba",
+          "tarka-dal",
+          "masala-green-beans",
+          "cucumber-raita",
+          "lubia-polo",
+          "black-pepper-rice",
+          "vada",
+          "phat-phrik-khing"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 2
+      },
+      {
+        "id": "r02",
+        "ranked": [
+          "hummus",
+          "salami-chips-with-white-bean-dip",
+          "baba-ganoush",
+          "lemon-tahini-dressing",
+          "harissa-hot-sauce",
+          "halal-cart-red-sauce",
+          "sesame-tofu",
+          "vegetarian-chicken-salad",
+          "kofte-kebabs",
+          "yemeni-hot-sauce"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 0
+      },
+      {
+        "id": "r03",
+        "ranked": [
+          "baba-ganoush",
+          "salami-chips-with-white-bean-dip",
+          "smoky-three-chile-salsa",
+          "potato-and-green-chili-hash",
+          "stir-fried-pork-with-hot-basil",
+          "guasacaca",
+          "hummus",
+          "egg-biryani",
+          "kofte-kebabs",
+          "mac-and-cheese"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1
+      },
+      {
+        "id": "r04",
+        "ranked": [
+          "lemon-tahini-dressing",
+          "thai-pomelo-salad",
+          "hummus",
+          "vegetarian-chicken-salad",
+          "baba-ganoush",
+          "halal-cart-chicken",
+          "sesame-tofu",
+          "salami-chips-with-white-bean-dip",
+          "cucumber-raita",
+          "kofte-kebabs"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1
+      },
+      {
+        "id": "r05",
+        "ranked": [
+          "pad-thai",
+          "phat-phrik-khing",
+          "sesame-tofu",
+          "vegetarian-pho",
+          "thai-fried-rice",
+          "pad-see-ew",
+          "sichuan-three-pepper-tofu",
+          "larb-gai",
+          "stir-fried-pork-with-hot-basil",
+          "vietnamese-pork-chops"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 0
+      },
+      {
+        "id": "r06",
+        "ranked": [
+          "diner-style-pancakes",
+          "vada",
+          "flour-tortillas",
+          "chicken-schnitzel",
+          "roti",
+          "potato-and-green-chili-hash",
+          "egg-biryani",
+          "soft-pretzels-1",
+          "pita-bread",
+          "queso-dip"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1
+      },
+      {
+        "id": "r07",
+        "ranked": [
+          "chicken-schnitzel",
+          "chicken-nuggets",
+          "creamy-chicken-enchiladas",
+          "halal-cart-chicken",
+          "teriyaki-chicken",
+          "diner-style-pancakes",
+          "roti",
+          "flour-tortillas",
+          "larb-gai",
+          "pita-bread"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1
+      },
+      {
+        "id": "r08",
+        "ranked": [
+          "larb-gai",
+          "vegetarian-chicken-salad",
+          "thai-pomelo-salad",
+          "halal-cart-chicken",
+          "thai-fried-rice",
+          "teriyaki-chicken",
+          "pad-thai",
+          "stir-fried-pork-with-hot-basil",
+          "garlicky-cabbage-and-fish-sauce",
+          "vietnamese-pork-chops"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1
+      },
+      {
+        "id": "r09",
+        "ranked": [
+          "smoked-pork-shoulder",
+          "carnitas-with-salsa-verde",
+          "memphis-style-ribs",
+          "chile-colorado",
+          "smoked-whole-turkey",
+          "vietnamese-pork-chops",
+          "sichuan-dry-fried-green-beans",
+          "barbeque-sauce",
+          "carne-asada",
+          "hasselback-butternut-squash"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 0
+      },
+      {
+        "id": "r10",
+        "ranked": [
+          "smoked-whole-turkey",
+          "smoky-jalepeno-and-lime-cranberry-sauce",
+          "memphis-style-ribs",
+          "smoked-pork-shoulder",
+          "halal-cart-chicken",
+          "carnitas-with-salsa-verde",
+          "hasselback-butternut-squash",
+          "creamy-chicken-enchiladas",
+          "soft-pretzels-2",
+          "chicken-schnitzel"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1
+      },
+      {
+        "id": "r11",
+        "ranked": [
+          "tomatillo-salsa",
+          "carnitas-with-salsa-verde",
+          "toasted-guajillo-salsa",
+          "smoky-three-chile-salsa",
+          "salsa-amarilla",
+          "black-bean-enchiladas",
+          "creamy-chicken-enchiladas",
+          "oaxacan-black-beans",
+          "queso-dip",
+          "smoky-jalepeno-and-lime-cranberry-sauce"
+        ],
+        "p": 0.5,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1
+      },
+      {
+        "id": "r12",
+        "ranked": [
+          "bhindi-fry",
+          "vada",
+          "egg-biryani",
+          "roti",
+          "gobi-manchurian",
+          "biryani-shorba",
+          "cucumber-raita",
+          "aloo-matar",
+          "channa-masala",
+          "halal-cart-chicken"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 0
+      },
+      {
+        "id": "r13",
+        "ranked": [
+          "gobi-manchurian",
+          "sesame-tofu",
+          "garlicky-cabbage-and-fish-sauce",
+          "biryani-shorba",
+          "sichuan-three-pepper-tofu",
+          "phat-phrik-khing",
+          "lubia-polo",
+          "halal-cart-chicken",
+          "thai-fried-rice",
+          "pad-thai"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1
+      },
+      {
+        "id": "r14",
+        "ranked": [
+          "tarka-dal",
+          "aloo-matar",
+          "biryani-shorba",
+          "channa-masala",
+          "black-pepper-rice",
+          "lubia-polo",
+          "samosa-pie",
+          "egg-biryani",
+          "vada",
+          "masala-green-beans"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1
+      },
+      {
+        "id": "r15",
+        "ranked": [
+          "thai-pomelo-salad",
+          "larb-gai",
+          "vietnamese-pork-chops",
+          "garlicky-cabbage-and-fish-sauce",
+          "stir-fried-pork-with-hot-basil",
+          "lemon-tahini-dressing",
+          "pad-thai",
+          "stir-fried-morning-glory",
+          "thai-fried-rice",
+          "pad-see-ew"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1
+      },
+      {
+        "id": "r16",
+        "ranked": [
+          "stir-fried-morning-glory",
+          "pad-thai",
+          "stir-fried-pork-with-hot-basil",
+          "garlicky-cabbage-and-fish-sauce",
+          "larb-gai",
+          "sichuan-dry-fried-green-beans",
+          "gobi-manchurian",
+          "sichuan-three-pepper-tofu",
+          "thai-fried-rice",
+          "pad-see-ew"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 0
+      },
+      {
+        "id": "r17",
+        "ranked": [
+          "pizza-dough",
+          "no-knead-pan-pizza",
+          "thin-crust-pizza",
+          "homemade-pasta",
+          "soft-pretzels-2",
+          "pita-bread",
+          "soft-pretzels-1",
+          "bagels",
+          "flour-tortillas",
+          "garlic-bread"
+        ],
+        "p": 0.75,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1
+      },
+      {
+        "id": "r18",
+        "ranked": [
+          "bagels",
+          "soft-pretzels-1",
+          "soft-pretzels-2",
+          "spicy-whole-grain-pub-mustard",
+          "vada",
+          "vegetarian-pho",
+          "salami-chips-with-white-bean-dip",
+          "sichuan-dry-fried-green-beans",
+          "yemeni-hot-sauce",
+          "austro-hungarian-cream-of-horseradish-soup"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1
+      },
+      {
+        "id": "r19",
+        "ranked": [
+          "soft-pretzels-2",
+          "soft-pretzels-1",
+          "spicy-whole-grain-pub-mustard",
+          "bagels",
+          "chicken-schnitzel",
+          "hummus",
+          "garlic-bread",
+          "pita-bread",
+          "vada",
+          "flour-tortillas"
+        ],
+        "p": 0.5,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 0
+      },
+      {
+        "id": "r20",
+        "ranked": [
+          "roti",
+          "vada",
+          "flour-tortillas",
+          "pita-bread",
+          "no-knead-pan-pizza",
+          "garlic-bread",
+          "samosa-pie",
+          "egg-biryani",
+          "bhindi-fry",
+          "diner-style-pancakes"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1
+      },
+      {
+        "id": "r21",
+        "ranked": [
+          "garlic-bread",
+          "pita-bread",
+          "no-knead-pan-pizza",
+          "bagels",
+          "roti",
+          "soft-pretzels-1",
+          "soft-pretzels-2",
+          "thin-crust-pizza",
+          "flour-tortillas",
+          "pizza-dough"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 0.5,
+        "hit1": 0,
+        "ms": 1
+      },
+      {
+        "id": "r22",
+        "ranked": [
+          "sichuan-three-pepper-tofu",
+          "phat-phrik-khing",
+          "sesame-tofu",
+          "sichuan-dry-fried-green-beans",
+          "garlicky-cabbage-and-fish-sauce",
+          "thai-fried-rice",
+          "gobi-manchurian",
+          "pad-thai",
+          "vietnamese-pork-chops",
+          "chile-colorado"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1
+      },
+      {
+        "id": "r23",
+        "ranked": [
+          "sichuan-dry-fried-green-beans",
+          "thai-fried-rice",
+          "masala-green-beans",
+          "phat-phrik-khing",
+          "hummus",
+          "sesame-tofu",
+          "sichuan-three-pepper-tofu",
+          "pad-thai",
+          "lubia-polo",
+          "gobi-manchurian"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1
+      },
+      {
+        "id": "r24",
+        "ranked": [
+          "lubia-polo",
+          "thai-fried-rice",
+          "egg-biryani",
+          "masala-green-beans",
+          "sichuan-dry-fried-green-beans",
+          "spanish-rice",
+          "vietnamese-pork-chops",
+          "vegetarian-pho",
+          "halal-cart-chicken",
+          "larb-gai"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1
+      },
+      {
+        "id": "r25",
+        "ranked": [
+          "smoky-jalepeno-and-lime-cranberry-sauce",
+          "jalepeño-hot-sauce",
+          "queso-dip",
+          "vietnamese-pork-chops",
+          "halal-cart-red-sauce",
+          "garlicky-cabbage-and-fish-sauce",
+          "lubia-polo",
+          "carnitas-with-salsa-verde",
+          "chile-colorado",
+          "toasted-guajillo-salsa"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 0
+      },
+      {
+        "id": "r26",
+        "ranked": [
+          "harissa-hot-sauce",
+          "halal-cart-red-sauce",
+          "portuguese-hot-sauce",
+          "yemeni-hot-sauce",
+          "jalepeño-hot-sauce",
+          "burning-bike-hot-sauce",
+          "smoky-three-chile-salsa",
+          "phat-phrik-khing",
+          "toasted-guajillo-salsa",
+          "enchilada-sauce"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1
+      },
+      {
+        "id": "r27",
+        "ranked": [
+          "yemeni-hot-sauce",
+          "biryani-shorba",
+          "halal-cart-red-sauce",
+          "lubia-polo",
+          "harissa-hot-sauce",
+          "tarka-dal",
+          "toasted-guajillo-salsa",
+          "salsa-amarilla",
+          "enchilada-sauce",
+          "carnitas-with-salsa-verde"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1
+      },
+      {
+        "id": "r28",
+        "ranked": [
+          "raspberry-and-elderflower-gin-and-tonic",
+          "smoky-jalepeno-and-lime-cranberry-sauce",
+          "austro-hungarian-cream-of-horseradish-soup",
+          "memphis-style-ribs",
+          "smoky-three-chile-salsa",
+          "larb-gai",
+          "thai-pomelo-salad",
+          "halal-cart-chicken",
+          "harissa-hot-sauce",
+          "cucumber-raita"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1
+      },
+      {
+        "id": "r29",
+        "ranked": [
+          "austro-hungarian-cream-of-horseradish-soup",
+          "yemeni-hot-sauce",
+          "queso-dip",
+          "vegetarian-chicken-salad",
+          "burning-bike-hot-sauce",
+          "cucumber-raita",
+          "vegetarian-pho",
+          "smoky-jalepeno-and-lime-cranberry-sauce",
+          "halal-cart-red-sauce",
+          "spicy-whole-grain-pub-mustard"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1
+      },
+      {
+        "id": "r30",
+        "ranked": [
+          "aloo-matar",
+          "lubia-polo",
+          "massaman-curry",
+          "samosa-pie",
+          "channa-masala",
+          "tarka-dal",
+          "black-pepper-rice",
+          "egg-biryani",
+          "biryani-shorba",
+          "austro-hungarian-cream-of-horseradish-soup"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 0
+      },
+      {
+        "id": "m01",
+        "ranked": [
+          "garlicky-cabbage-and-fish-sauce",
+          "stir-fried-morning-glory",
+          "thai-fried-rice",
+          "pad-thai",
+          "stir-fried-pork-with-hot-basil",
+          "pad-see-ew",
+          "larb-gai",
+          "phat-phrik-khing",
+          "vegetarian-pho",
+          "massaman-curry"
+        ],
+        "p": 0.25,
+        "r": 0.5,
+        "rr": 0.25,
+        "hit1": 0,
+        "ms": 1
+      },
+      {
+        "id": "m02",
+        "ranked": [
+          "massaman-curry",
+          "phat-phrik-khing",
+          "biryani-shorba",
+          "thai-fried-rice",
+          "garlicky-cabbage-and-fish-sauce",
+          "stir-fried-pork-with-hot-basil",
+          "pad-thai",
+          "stir-fried-morning-glory",
+          "larb-gai",
+          "black-pepper-rice"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1
+      },
+      {
+        "id": "m03",
+        "ranked": [
+          "tomatillo-salsa",
+          "carnitas-with-salsa-verde",
+          "toasted-guajillo-salsa",
+          "smoky-three-chile-salsa",
+          "salsa-amarilla",
+          "queso-dip",
+          "beef-tacos",
+          "enchilada-sauce",
+          "creamy-chicken-enchiladas",
+          "black-bean-enchiladas"
+        ],
+        "p": 0.75,
+        "r": 0.75,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1
+      },
+      {
+        "id": "m04",
+        "ranked": [
+          "portuguese-hot-sauce",
+          "halal-cart-red-sauce",
+          "harissa-hot-sauce",
+          "jalepeño-hot-sauce",
+          "burning-bike-hot-sauce",
+          "smoky-three-chile-salsa",
+          "yemeni-hot-sauce",
+          "toasted-guajillo-salsa",
+          "enchilada-sauce",
+          "tomatillo-salsa"
+        ],
+        "p": 0.75,
+        "r": 0.6,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1
+      },
+      {
+        "id": "m05",
+        "ranked": [
+          "memphis-style-ribs",
+          "smoked-pork-shoulder",
+          "smoked-whole-turkey",
+          "kofte-kebabs",
+          "carne-asada",
+          "barbeque-sauce",
+          "carnitas-with-salsa-verde",
+          "pad-see-ew",
+          "mac-and-cheese",
+          "halal-cart-chicken"
+        ],
+        "p": 0.75,
+        "r": 0.75,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 0
+      },
+      {
+        "id": "m06",
+        "ranked": [
+          "lubia-polo",
+          "egg-biryani",
+          "black-pepper-rice",
+          "thai-fried-rice",
+          "biryani-shorba",
+          "spanish-rice",
+          "cucumber-raita",
+          "halal-cart-chicken",
+          "larb-gai",
+          "vegetarian-pho"
+        ],
+        "p": 0.5,
+        "r": 1,
+        "rr": 0.5,
+        "hit1": 0,
+        "ms": 1
+      },
+      {
+        "id": "m07",
+        "ranked": [
+          "sesame-tofu",
+          "sichuan-three-pepper-tofu",
+          "phat-phrik-khing",
+          "vegetarian-pho",
+          "vegetarian-chicken-salad",
+          "stir-fried-morning-glory",
+          "pad-thai",
+          "pad-see-ew",
+          "gobi-manchurian",
+          "tarka-dal"
+        ],
+        "p": 0.75,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1
+      },
+      {
+        "id": "m08",
+        "ranked": [
+          "pizza-dough",
+          "pita-bread",
+          "no-knead-pan-pizza",
+          "thin-crust-pizza",
+          "roti",
+          "flour-tortillas",
+          "homemade-pasta",
+          "soft-pretzels-2",
+          "garlic-bread",
+          "soft-pretzels-1"
+        ],
+        "p": 0.25,
+        "r": 0.3333333333333333,
+        "rr": 0.5,
+        "hit1": 0,
+        "ms": 1
+      },
+      {
+        "id": "m09",
+        "ranked": [
+          "black-bean-enchiladas",
+          "creamy-chicken-enchiladas",
+          "enchilada-sauce",
+          "chile-colorado",
+          "toasted-guajillo-salsa",
+          "oaxacan-black-beans",
+          "queso-dip",
+          "carnitas-with-salsa-verde",
+          "potato-and-green-chili-hash",
+          "tomatillo-salsa"
+        ],
+        "p": 0.75,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 0
+      },
+      {
+        "id": "m10",
+        "ranked": [
+          "salami-chips-with-white-bean-dip",
+          "hummus",
+          "baba-ganoush",
+          "kofte-kebabs",
+          "yemeni-hot-sauce",
+          "halal-cart-chicken",
+          "vegetarian-chicken-salad",
+          "lubia-polo",
+          "queso-dip",
+          "austro-hungarian-cream-of-horseradish-soup"
+        ],
+        "p": 0.5,
+        "r": 1,
+        "rr": 0.5,
+        "hit1": 0,
+        "ms": 1
+      },
+      {
+        "id": "h01",
+        "ranked": [
+          "portuguese-hot-sauce",
+          "biryani-shorba",
+          "chile-colorado",
+          "massaman-curry",
+          "lubia-polo",
+          "memphis-style-ribs",
+          "egg-biryani",
+          "potato-and-green-chili-hash",
+          "aloo-matar",
+          "cucumber-raita"
+        ],
+        "p": 0,
+        "r": 0,
+        "rr": 0,
+        "hit1": 0,
+        "ms": 1
+      },
+      {
+        "id": "h02",
+        "ranked": [
+          "potato-and-green-chili-hash",
+          "egg-biryani",
+          "austro-hungarian-cream-of-horseradish-soup",
+          "diner-style-pancakes",
+          "bagels",
+          "guasacaca",
+          "spanish-rice",
+          "pita-bread",
+          "no-knead-pan-pizza",
+          "larb-gai"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 0.25,
+        "hit1": 0,
+        "ms": 0
+      },
+      {
+        "id": "h03",
+        "ranked": [
+          "austro-hungarian-cream-of-horseradish-soup",
+          "smoky-jalepeno-and-lime-cranberry-sauce",
+          "memphis-style-ribs",
+          "chile-colorado",
+          "garlicky-cabbage-and-fish-sauce",
+          "cucumber-raita",
+          "salsa-amarilla",
+          "halal-cart-red-sauce",
+          "queso-dip",
+          "spicy-whole-grain-pub-mustard"
+        ],
+        "p": 0,
+        "r": 0,
+        "rr": 0,
+        "hit1": 0,
+        "ms": 1
+      },
+      {
+        "id": "h04",
+        "ranked": [
+          "austro-hungarian-cream-of-horseradish-soup",
+          "flour-tortillas",
+          "salsa-amarilla",
+          "chile-colorado",
+          "tarka-dal",
+          "creamy-chicken-enchiladas",
+          "smoky-jalepeno-and-lime-cranberry-sauce",
+          "dad's-spaghetti-sauce",
+          "smoky-three-chile-salsa",
+          "massaman-curry"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1
+      },
+      {
+        "id": "h05",
+        "ranked": [
+          "pizza-dough",
+          "no-knead-pan-pizza",
+          "thin-crust-pizza",
+          "pita-bread",
+          "bagels",
+          "soft-pretzels-2",
+          "soft-pretzels-1",
+          "flour-tortillas",
+          "hummus",
+          "samosa-pie"
+        ],
+        "p": 0.75,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1
+      },
+      {
+        "id": "h06",
+        "ranked": [
+          "austro-hungarian-cream-of-horseradish-soup",
+          "chicken-schnitzel",
+          "portuguese-hot-sauce",
+          "potato-and-green-chili-hash",
+          "dad's-spaghetti-sauce",
+          "mac-and-cheese",
+          "queso-dip",
+          "smoky-jalepeno-and-lime-cranberry-sauce",
+          "halal-cart-chicken",
+          "chile-colorado"
+        ],
+        "p": 0,
+        "r": 0,
+        "rr": 0,
+        "hit1": 0,
+        "ms": 0
+      }
+    ],
+    "section-small": [
+      {
+        "id": "r01",
+        "ranked": [
+          "channa-masala",
+          "masala-green-beans",
+          "aloo-matar",
+          "tarka-dal",
+          "massaman-curry",
+          "vada",
+          "bhindi-fry",
+          "vegetarian-chicken-salad",
+          "biryani-shorba",
+          "cucumber-raita"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1
+      },
+      {
+        "id": "r02",
+        "ranked": [
+          "hummus",
+          "lemon-tahini-dressing",
+          "baba-ganoush",
+          "sesame-tofu",
+          "harissa-hot-sauce",
+          "salami-chips-with-white-bean-dip",
+          "hasselback-butternut-squash",
+          "halal-cart-red-sauce",
+          "spicy-whole-grain-pub-mustard",
+          "kofte-kebabs"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1
+      },
+      {
+        "id": "r03",
+        "ranked": [
+          "baba-ganoush",
+          "egg-biryani",
+          "smoky-three-chile-salsa",
+          "salami-chips-with-white-bean-dip",
+          "smoky-jalepeno-and-lime-cranberry-sauce",
+          "queso-dip",
+          "guasacaca",
+          "creamy-chicken-enchiladas",
+          "potato-and-green-chili-hash",
+          "smoked-pork-shoulder"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 2
+      },
+      {
+        "id": "r04",
+        "ranked": [
+          "lemon-tahini-dressing",
+          "hummus",
+          "vegetarian-chicken-salad",
+          "thai-pomelo-salad",
+          "halal-cart-chicken",
+          "sesame-tofu",
+          "baba-ganoush",
+          "halal-cart-red-sauce",
+          "cucumber-raita",
+          "larb-gai"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1
+      },
+      {
+        "id": "r05",
+        "ranked": [
+          "pad-thai",
+          "phat-phrik-khing",
+          "thai-fried-rice",
+          "sichuan-three-pepper-tofu",
+          "sesame-tofu",
+          "stir-fried-pork-with-hot-basil",
+          "pad-see-ew",
+          "larb-gai",
+          "vegetarian-pho",
+          "stir-fried-morning-glory"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1
+      },
+      {
+        "id": "r06",
+        "ranked": [
+          "diner-style-pancakes",
+          "vada",
+          "flour-tortillas",
+          "bagels",
+          "soft-pretzels-1",
+          "creamy-chicken-enchiladas",
+          "chicken-schnitzel",
+          "stir-fried-morning-glory",
+          "pad-thai",
+          "roti"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 2
+      },
+      {
+        "id": "r07",
+        "ranked": [
+          "chicken-schnitzel",
+          "chicken-nuggets",
+          "teriyaki-chicken",
+          "creamy-chicken-enchiladas",
+          "halal-cart-chicken",
+          "diner-style-pancakes",
+          "vegetarian-chicken-salad",
+          "no-knead-pan-pizza",
+          "larb-gai",
+          "bonchon-style-sauce"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1
+      },
+      {
+        "id": "r08",
+        "ranked": [
+          "larb-gai",
+          "vegetarian-chicken-salad",
+          "halal-cart-chicken",
+          "pad-thai",
+          "teriyaki-chicken",
+          "thai-fried-rice",
+          "stir-fried-pork-with-hot-basil",
+          "thai-pomelo-salad",
+          "phat-phrik-khing",
+          "chicken-schnitzel"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1
+      },
+      {
+        "id": "r09",
+        "ranked": [
+          "smoked-pork-shoulder",
+          "memphis-style-ribs",
+          "smoked-whole-turkey",
+          "carnitas-with-salsa-verde",
+          "mac-and-cheese",
+          "vietnamese-pork-chops",
+          "carne-asada",
+          "chile-colorado",
+          "smoky-jalepeno-and-lime-cranberry-sauce",
+          "portuguese-hot-sauce"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 2
+      },
+      {
+        "id": "r10",
+        "ranked": [
+          "smoked-whole-turkey",
+          "smoked-pork-shoulder",
+          "smoky-jalepeno-and-lime-cranberry-sauce",
+          "memphis-style-ribs",
+          "salami-chips-with-white-bean-dip",
+          "hasselback-butternut-squash",
+          "spicy-whole-grain-pub-mustard",
+          "teriyaki-chicken",
+          "roasted-parsnips-and-carrots",
+          "gobi-manchurian"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1
+      },
+      {
+        "id": "r11",
+        "ranked": [
+          "tomatillo-salsa",
+          "smoky-three-chile-salsa",
+          "toasted-guajillo-salsa",
+          "black-bean-enchiladas",
+          "carnitas-with-salsa-verde",
+          "salsa-amarilla",
+          "smoky-jalepeno-and-lime-cranberry-sauce",
+          "creamy-chicken-enchiladas",
+          "jalepeño-hot-sauce",
+          "enchilada-sauce"
+        ],
+        "p": 0.25,
+        "r": 0.5,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 2
+      },
+      {
+        "id": "r12",
+        "ranked": [
+          "bhindi-fry",
+          "vada",
+          "gobi-manchurian",
+          "egg-biryani",
+          "cucumber-raita",
+          "channa-masala",
+          "roti",
+          "phat-phrik-khing",
+          "kofte-kebabs",
+          "baba-ganoush"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1
+      },
+      {
+        "id": "r13",
+        "ranked": [
+          "gobi-manchurian",
+          "sesame-tofu",
+          "sichuan-three-pepper-tofu",
+          "phat-phrik-khing",
+          "garlicky-cabbage-and-fish-sauce",
+          "bhindi-fry",
+          "bonchon-style-sauce",
+          "channa-masala",
+          "thai-fried-rice",
+          "masala-green-beans"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1
+      },
+      {
+        "id": "r14",
+        "ranked": [
+          "tarka-dal",
+          "vada",
+          "masala-green-beans",
+          "channa-masala",
+          "black-pepper-rice",
+          "aloo-matar",
+          "lubia-polo",
+          "bhindi-fry",
+          "kofte-kebabs",
+          "larb-gai"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 2
+      },
+      {
+        "id": "r15",
+        "ranked": [
+          "thai-pomelo-salad",
+          "lemon-tahini-dressing",
+          "pad-thai",
+          "larb-gai",
+          "tomatillo-salsa",
+          "stir-fried-morning-glory",
+          "vegetarian-chicken-salad",
+          "stir-fried-pork-with-hot-basil",
+          "sesame-tofu",
+          "phat-phrik-khing"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1
+      },
+      {
+        "id": "r16",
+        "ranked": [
+          "stir-fried-morning-glory",
+          "garlicky-cabbage-and-fish-sauce",
+          "thai-fried-rice",
+          "sichuan-three-pepper-tofu",
+          "stir-fried-pork-with-hot-basil",
+          "sichuan-dry-fried-green-beans",
+          "phat-phrik-khing",
+          "larb-gai",
+          "gobi-manchurian",
+          "sesame-tofu"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 2
+      },
+      {
+        "id": "r17",
+        "ranked": [
+          "pizza-dough",
+          "no-knead-pan-pizza",
+          "thin-crust-pizza",
+          "homemade-pasta",
+          "pita-bread",
+          "bagels",
+          "flour-tortillas",
+          "garlic-bread",
+          "soft-pretzels-2",
+          "roti"
+        ],
+        "p": 0.75,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1
+      },
+      {
+        "id": "r18",
+        "ranked": [
+          "bagels",
+          "soft-pretzels-1",
+          "soft-pretzels-2",
+          "vada",
+          "salami-chips-with-white-bean-dip",
+          "pita-bread",
+          "potato-and-green-chili-hash",
+          "yemeni-hot-sauce",
+          "stir-fried-morning-glory",
+          "spicy-whole-grain-pub-mustard"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1
+      },
+      {
+        "id": "r19",
+        "ranked": [
+          "soft-pretzels-2",
+          "soft-pretzels-1",
+          "bagels",
+          "spicy-whole-grain-pub-mustard",
+          "hummus",
+          "chicken-schnitzel",
+          "vada",
+          "salami-chips-with-white-bean-dip",
+          "diner-style-pancakes",
+          "garlic-bread"
+        ],
+        "p": 0.5,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1
+      },
+      {
+        "id": "r20",
+        "ranked": [
+          "roti",
+          "vada",
+          "pita-bread",
+          "egg-biryani",
+          "bhindi-fry",
+          "flour-tortillas",
+          "cucumber-raita",
+          "no-knead-pan-pizza",
+          "diner-style-pancakes",
+          "tarka-dal"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 2
+      },
+      {
+        "id": "r21",
+        "ranked": [
+          "pita-bread",
+          "garlic-bread",
+          "no-knead-pan-pizza",
+          "bagels",
+          "thin-crust-pizza",
+          "soft-pretzels-1",
+          "roti",
+          "mac-and-cheese",
+          "pizza-dough",
+          "samosa-pie"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1
+      },
+      {
+        "id": "r22",
+        "ranked": [
+          "sichuan-three-pepper-tofu",
+          "sesame-tofu",
+          "sichuan-dry-fried-green-beans",
+          "phat-phrik-khing",
+          "gobi-manchurian",
+          "garlicky-cabbage-and-fish-sauce",
+          "chile-colorado",
+          "stir-fried-morning-glory",
+          "chicken-schnitzel",
+          "yemeni-hot-sauce"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1
+      },
+      {
+        "id": "r23",
+        "ranked": [
+          "sichuan-dry-fried-green-beans",
+          "masala-green-beans",
+          "thai-fried-rice",
+          "bhindi-fry",
+          "black-bean-enchiladas",
+          "oaxacan-black-beans",
+          "roasted-parsnips-and-carrots",
+          "sesame-tofu",
+          "sichuan-three-pepper-tofu",
+          "gobi-manchurian"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 2
+      },
+      {
+        "id": "r24",
+        "ranked": [
+          "lubia-polo",
+          "egg-biryani",
+          "thai-fried-rice",
+          "spanish-rice",
+          "masala-green-beans",
+          "sichuan-dry-fried-green-beans",
+          "potato-and-green-chili-hash",
+          "biryani-shorba",
+          "roasted-parsnips-and-carrots",
+          "black-pepper-rice"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1
+      },
+      {
+        "id": "r25",
+        "ranked": [
+          "smoky-jalepeno-and-lime-cranberry-sauce",
+          "jalepeño-hot-sauce",
+          "halal-cart-red-sauce",
+          "toasted-guajillo-salsa",
+          "queso-dip",
+          "smoked-whole-turkey",
+          "barbeque-sauce",
+          "carnitas-with-salsa-verde",
+          "tomatillo-salsa",
+          "smoky-three-chile-salsa"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1
+      },
+      {
+        "id": "r26",
+        "ranked": [
+          "harissa-hot-sauce",
+          "jalepeño-hot-sauce",
+          "portuguese-hot-sauce",
+          "halal-cart-red-sauce",
+          "yemeni-hot-sauce",
+          "burning-bike-hot-sauce",
+          "smoky-three-chile-salsa",
+          "enchilada-sauce",
+          "bonchon-style-sauce",
+          "toasted-guajillo-salsa"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 2
+      },
+      {
+        "id": "r27",
+        "ranked": [
+          "yemeni-hot-sauce",
+          "halal-cart-red-sauce",
+          "enchilada-sauce",
+          "carnitas-with-salsa-verde",
+          "smoky-jalepeno-and-lime-cranberry-sauce",
+          "salsa-amarilla",
+          "smoky-three-chile-salsa",
+          "potato-and-green-chili-hash",
+          "chile-colorado",
+          "harissa-hot-sauce"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1
+      },
+      {
+        "id": "r28",
+        "ranked": [
+          "raspberry-and-elderflower-gin-and-tonic",
+          "smoky-jalepeno-and-lime-cranberry-sauce",
+          "cucumber-raita",
+          "lemon-tahini-dressing",
+          "toasted-guajillo-salsa",
+          "austro-hungarian-cream-of-horseradish-soup",
+          "carnitas-with-salsa-verde",
+          "smoky-three-chile-salsa",
+          "portuguese-hot-sauce",
+          "tomatillo-salsa"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 2
+      },
+      {
+        "id": "r29",
+        "ranked": [
+          "austro-hungarian-cream-of-horseradish-soup",
+          "hasselback-butternut-squash",
+          "creamy-chicken-enchiladas",
+          "cucumber-raita",
+          "roasted-parsnips-and-carrots",
+          "spicy-whole-grain-pub-mustard",
+          "smoky-jalepeno-and-lime-cranberry-sauce",
+          "bonchon-style-sauce",
+          "potato-and-green-chili-hash",
+          "mac-and-cheese"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1
+      },
+      {
+        "id": "r30",
+        "ranked": [
+          "aloo-matar",
+          "potato-and-green-chili-hash",
+          "massaman-curry",
+          "masala-green-beans",
+          "channa-masala",
+          "roasted-parsnips-and-carrots",
+          "samosa-pie",
+          "lubia-polo",
+          "tarka-dal",
+          "black-pepper-rice"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1
+      },
+      {
+        "id": "m01",
+        "ranked": [
+          "thai-fried-rice",
+          "pad-thai",
+          "phat-phrik-khing",
+          "pad-see-ew",
+          "stir-fried-pork-with-hot-basil",
+          "larb-gai",
+          "stir-fried-morning-glory",
+          "spanish-rice",
+          "vegetarian-pho",
+          "massaman-curry"
+        ],
+        "p": 0.5,
+        "r": 1,
+        "rr": 0.5,
+        "hit1": 0,
+        "ms": 2
+      },
+      {
+        "id": "m02",
+        "ranked": [
+          "massaman-curry",
+          "phat-phrik-khing",
+          "pad-thai",
+          "thai-fried-rice",
+          "stir-fried-pork-with-hot-basil",
+          "stir-fried-morning-glory",
+          "larb-gai",
+          "vegetarian-pho",
+          "black-pepper-rice",
+          "garlicky-cabbage-and-fish-sauce"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1
+      },
+      {
+        "id": "m03",
+        "ranked": [
+          "tomatillo-salsa",
+          "smoky-three-chile-salsa",
+          "carnitas-with-salsa-verde",
+          "toasted-guajillo-salsa",
+          "beef-tacos",
+          "enchilada-sauce",
+          "salsa-amarilla",
+          "black-bean-enchiladas",
+          "jalepeño-hot-sauce",
+          "queso-dip"
+        ],
+        "p": 0.75,
+        "r": 0.75,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1
+      },
+      {
+        "id": "m04",
+        "ranked": [
+          "harissa-hot-sauce",
+          "burning-bike-hot-sauce",
+          "jalepeño-hot-sauce",
+          "halal-cart-red-sauce",
+          "portuguese-hot-sauce",
+          "homemade-pasta",
+          "enchilada-sauce",
+          "barbeque-sauce",
+          "dad's-spaghetti-sauce",
+          "toasted-guajillo-salsa"
+        ],
+        "p": 0.75,
+        "r": 0.6,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 2
+      },
+      {
+        "id": "m05",
+        "ranked": [
+          "smoked-pork-shoulder",
+          "memphis-style-ribs",
+          "smoked-whole-turkey",
+          "carne-asada",
+          "mac-and-cheese",
+          "kofte-kebabs",
+          "barbeque-sauce",
+          "smoky-jalepeno-and-lime-cranberry-sauce",
+          "carnitas-with-salsa-verde",
+          "beef-tacos"
+        ],
+        "p": 1,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1
+      },
+      {
+        "id": "m06",
+        "ranked": [
+          "spanish-rice",
+          "egg-biryani",
+          "black-pepper-rice",
+          "lubia-polo",
+          "biryani-shorba",
+          "cucumber-raita",
+          "thai-fried-rice",
+          "masala-green-beans",
+          "larb-gai",
+          "pad-thai"
+        ],
+        "p": 0.5,
+        "r": 1,
+        "rr": 0.5,
+        "hit1": 0,
+        "ms": 1
+      },
+      {
+        "id": "m07",
+        "ranked": [
+          "sesame-tofu",
+          "sichuan-three-pepper-tofu",
+          "vegetarian-pho",
+          "phat-phrik-khing",
+          "vegetarian-chicken-salad",
+          "masala-green-beans",
+          "pad-thai",
+          "massaman-curry",
+          "stir-fried-morning-glory",
+          "tarka-dal"
+        ],
+        "p": 0.75,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1
+      },
+      {
+        "id": "m08",
+        "ranked": [
+          "pita-bread",
+          "thin-crust-pizza",
+          "pizza-dough",
+          "roti",
+          "flour-tortillas",
+          "no-knead-pan-pizza",
+          "homemade-pasta",
+          "garlic-bread",
+          "bagels",
+          "soft-pretzels-2"
+        ],
+        "p": 0.5,
+        "r": 0.6666666666666666,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 2
+      },
+      {
+        "id": "m09",
+        "ranked": [
+          "enchilada-sauce",
+          "black-bean-enchiladas",
+          "creamy-chicken-enchiladas",
+          "carnitas-with-salsa-verde",
+          "toasted-guajillo-salsa",
+          "oaxacan-black-beans",
+          "queso-dip",
+          "flour-tortillas",
+          "chile-colorado",
+          "tomatillo-salsa"
+        ],
+        "p": 0.75,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1
+      },
+      {
+        "id": "m10",
+        "ranked": [
+          "hummus",
+          "queso-dip",
+          "salami-chips-with-white-bean-dip",
+          "baba-ganoush",
+          "egg-biryani",
+          "kofte-kebabs",
+          "lemon-tahini-dressing",
+          "lubia-polo",
+          "spicy-whole-grain-pub-mustard",
+          "harissa-hot-sauce"
+        ],
+        "p": 0.5,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1
+      },
+      {
+        "id": "h01",
+        "ranked": [
+          "massaman-curry",
+          "spanish-rice",
+          "cucumber-raita",
+          "portuguese-hot-sauce",
+          "bhindi-fry",
+          "biryani-shorba",
+          "carnitas-with-salsa-verde",
+          "lubia-polo",
+          "spicy-whole-grain-pub-mustard",
+          "salsa-amarilla"
+        ],
+        "p": 0,
+        "r": 0,
+        "rr": 0,
+        "hit1": 0,
+        "ms": 2
+      },
+      {
+        "id": "h02",
+        "ranked": [
+          "diner-style-pancakes",
+          "lubia-polo",
+          "vada",
+          "bagels",
+          "guasacaca",
+          "potato-and-green-chili-hash",
+          "austro-hungarian-cream-of-horseradish-soup",
+          "stir-fried-morning-glory",
+          "spanish-rice",
+          "pad-see-ew"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1
+      },
+      {
+        "id": "h03",
+        "ranked": [
+          "cucumber-raita",
+          "smoky-jalepeno-and-lime-cranberry-sauce",
+          "austro-hungarian-cream-of-horseradish-soup",
+          "hasselback-butternut-squash",
+          "carnitas-with-salsa-verde",
+          "chicken-schnitzel",
+          "spicy-whole-grain-pub-mustard",
+          "burning-bike-hot-sauce",
+          "samosa-pie",
+          "toasted-guajillo-salsa"
+        ],
+        "p": 0,
+        "r": 0,
+        "rr": 0.16666666666666666,
+        "hit1": 0,
+        "ms": 1
+      },
+      {
+        "id": "h04",
+        "ranked": [
+          "tarka-dal",
+          "flour-tortillas",
+          "beef-tacos",
+          "tomatillo-salsa",
+          "salsa-amarilla",
+          "sesame-tofu",
+          "spanish-rice",
+          "black-pepper-rice",
+          "hummus",
+          "kofte-kebabs"
+        ],
+        "p": 0,
+        "r": 0,
+        "rr": 0,
+        "hit1": 0,
+        "ms": 1
+      },
+      {
+        "id": "h05",
+        "ranked": [
+          "pizza-dough",
+          "thin-crust-pizza",
+          "pita-bread",
+          "no-knead-pan-pizza",
+          "samosa-pie",
+          "portuguese-hot-sauce",
+          "homemade-pasta",
+          "hummus",
+          "baba-ganoush",
+          "garlic-bread"
+        ],
+        "p": 0.75,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 2
+      },
+      {
+        "id": "h06",
+        "ranked": [
+          "austro-hungarian-cream-of-horseradish-soup",
+          "creamy-chicken-enchiladas",
+          "chicken-schnitzel",
+          "smoky-jalepeno-and-lime-cranberry-sauce",
+          "portuguese-hot-sauce",
+          "pad-see-ew",
+          "spicy-whole-grain-pub-mustard",
+          "bonchon-style-sauce",
+          "samosa-pie",
+          "pad-thai"
+        ],
+        "p": 0,
+        "r": 0,
+        "rr": 0,
+        "hit1": 0,
+        "ms": 1
+      }
+    ],
+    "recipe-large": [
+      {
+        "id": "r01",
+        "ranked": [
+          "channa-masala",
+          "aloo-matar",
+          "tarka-dal",
+          "massaman-curry",
+          "masala-green-beans",
+          "hummus",
+          "biryani-shorba",
+          "vegetarian-chicken-salad",
+          "bhindi-fry",
+          "black-pepper-rice"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1
+      },
+      {
+        "id": "r02",
+        "ranked": [
+          "hummus",
+          "lemon-tahini-dressing",
+          "baba-ganoush",
+          "halal-cart-red-sauce",
+          "harissa-hot-sauce",
+          "yemeni-hot-sauce",
+          "channa-masala",
+          "salami-chips-with-white-bean-dip",
+          "guasacaca",
+          "vegetarian-chicken-salad"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 0
+      },
+      {
+        "id": "r03",
+        "ranked": [
+          "baba-ganoush",
+          "salami-chips-with-white-bean-dip",
+          "egg-biryani",
+          "hummus",
+          "smoky-three-chile-salsa",
+          "austro-hungarian-cream-of-horseradish-soup",
+          "vegetarian-chicken-salad",
+          "guasacaca",
+          "kofte-kebabs",
+          "smoky-jalepeno-and-lime-cranberry-sauce"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1
+      },
+      {
+        "id": "r04",
+        "ranked": [
+          "lemon-tahini-dressing",
+          "hummus",
+          "vegetarian-chicken-salad",
+          "yemeni-hot-sauce",
+          "sesame-tofu",
+          "baba-ganoush",
+          "thai-pomelo-salad",
+          "cucumber-raita",
+          "harissa-hot-sauce",
+          "halal-cart-red-sauce"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 0
+      },
+      {
+        "id": "r05",
+        "ranked": [
+          "pad-thai",
+          "phat-phrik-khing",
+          "sichuan-three-pepper-tofu",
+          "pad-see-ew",
+          "thai-fried-rice",
+          "sesame-tofu",
+          "vegetarian-pho",
+          "stir-fried-morning-glory",
+          "thai-pomelo-salad",
+          "stir-fried-pork-with-hot-basil"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1
+      },
+      {
+        "id": "r06",
+        "ranked": [
+          "diner-style-pancakes",
+          "vada",
+          "flour-tortillas",
+          "roti",
+          "homemade-pasta",
+          "potato-and-green-chili-hash",
+          "soft-pretzels-2",
+          "chicken-schnitzel",
+          "soft-pretzels-1",
+          "bagels"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 0
+      },
+      {
+        "id": "r07",
+        "ranked": [
+          "chicken-schnitzel",
+          "chicken-nuggets",
+          "halal-cart-chicken",
+          "vegetarian-chicken-salad",
+          "teriyaki-chicken",
+          "vietnamese-pork-chops",
+          "creamy-chicken-enchiladas",
+          "salami-chips-with-white-bean-dip",
+          "larb-gai",
+          "homemade-pasta"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 0
+      },
+      {
+        "id": "r08",
+        "ranked": [
+          "larb-gai",
+          "thai-fried-rice",
+          "thai-pomelo-salad",
+          "vegetarian-chicken-salad",
+          "pad-thai",
+          "garlicky-cabbage-and-fish-sauce",
+          "stir-fried-pork-with-hot-basil",
+          "phat-phrik-khing",
+          "vietnamese-pork-chops",
+          "pad-see-ew"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1
+      },
+      {
+        "id": "r09",
+        "ranked": [
+          "smoked-pork-shoulder",
+          "smoked-whole-turkey",
+          "memphis-style-ribs",
+          "carnitas-with-salsa-verde",
+          "chile-colorado",
+          "vietnamese-pork-chops",
+          "barbeque-sauce",
+          "mac-and-cheese",
+          "carne-asada",
+          "smoky-three-chile-salsa"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 0
+      },
+      {
+        "id": "r10",
+        "ranked": [
+          "smoked-whole-turkey",
+          "smoked-pork-shoulder",
+          "smoky-jalepeno-and-lime-cranberry-sauce",
+          "memphis-style-ribs",
+          "chicken-schnitzel",
+          "halal-cart-chicken",
+          "carnitas-with-salsa-verde",
+          "smoky-three-chile-salsa",
+          "hasselback-butternut-squash",
+          "baba-ganoush"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1
+      },
+      {
+        "id": "r11",
+        "ranked": [
+          "tomatillo-salsa",
+          "smoky-three-chile-salsa",
+          "toasted-guajillo-salsa",
+          "salsa-amarilla",
+          "carnitas-with-salsa-verde",
+          "jalepeño-hot-sauce",
+          "creamy-chicken-enchiladas",
+          "black-bean-enchiladas",
+          "guasacaca",
+          "enchilada-sauce"
+        ],
+        "p": 0.25,
+        "r": 0.5,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 0
+      },
+      {
+        "id": "r12",
+        "ranked": [
+          "bhindi-fry",
+          "vada",
+          "gobi-manchurian",
+          "masala-green-beans",
+          "black-pepper-rice",
+          "biryani-shorba",
+          "channa-masala",
+          "tarka-dal",
+          "aloo-matar",
+          "cucumber-raita"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1
+      },
+      {
+        "id": "r13",
+        "ranked": [
+          "gobi-manchurian",
+          "sichuan-three-pepper-tofu",
+          "garlicky-cabbage-and-fish-sauce",
+          "bhindi-fry",
+          "bonchon-style-sauce",
+          "sesame-tofu",
+          "stir-fried-morning-glory",
+          "sichuan-dry-fried-green-beans",
+          "pad-see-ew",
+          "vada"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 0
+      },
+      {
+        "id": "r14",
+        "ranked": [
+          "tarka-dal",
+          "masala-green-beans",
+          "vada",
+          "black-pepper-rice",
+          "lubia-polo",
+          "channa-masala",
+          "aloo-matar",
+          "bhindi-fry",
+          "biryani-shorba",
+          "cucumber-raita"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1
+      },
+      {
+        "id": "r15",
+        "ranked": [
+          "thai-pomelo-salad",
+          "larb-gai",
+          "pad-thai",
+          "thai-fried-rice",
+          "garlicky-cabbage-and-fish-sauce",
+          "stir-fried-morning-glory",
+          "stir-fried-pork-with-hot-basil",
+          "vietnamese-pork-chops",
+          "phat-phrik-khing",
+          "vegetarian-chicken-salad"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 0
+      },
+      {
+        "id": "r16",
+        "ranked": [
+          "stir-fried-morning-glory",
+          "garlicky-cabbage-and-fish-sauce",
+          "stir-fried-pork-with-hot-basil",
+          "thai-fried-rice",
+          "pad-see-ew",
+          "phat-phrik-khing",
+          "sichuan-dry-fried-green-beans",
+          "larb-gai",
+          "pad-thai",
+          "vegetarian-pho"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1
+      },
+      {
+        "id": "r17",
+        "ranked": [
+          "pizza-dough",
+          "no-knead-pan-pizza",
+          "thin-crust-pizza",
+          "homemade-pasta",
+          "pita-bread",
+          "roti",
+          "soft-pretzels-2",
+          "soft-pretzels-1",
+          "flour-tortillas",
+          "garlic-bread"
+        ],
+        "p": 0.75,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 0
+      },
+      {
+        "id": "r18",
+        "ranked": [
+          "bagels",
+          "soft-pretzels-1",
+          "soft-pretzels-2",
+          "homemade-pasta",
+          "vada",
+          "hummus",
+          "pita-bread",
+          "salami-chips-with-white-bean-dip",
+          "pizza-dough",
+          "no-knead-pan-pizza"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1
+      },
+      {
+        "id": "r19",
+        "ranked": [
+          "soft-pretzels-1",
+          "soft-pretzels-2",
+          "bagels",
+          "pita-bread",
+          "no-knead-pan-pizza",
+          "spicy-whole-grain-pub-mustard",
+          "vada",
+          "chicken-schnitzel",
+          "pizza-dough",
+          "diner-style-pancakes"
+        ],
+        "p": 0.5,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 0
+      },
+      {
+        "id": "r20",
+        "ranked": [
+          "roti",
+          "vada",
+          "flour-tortillas",
+          "aloo-matar",
+          "black-pepper-rice",
+          "pita-bread",
+          "tarka-dal",
+          "channa-masala",
+          "cucumber-raita",
+          "bhindi-fry"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1
+      },
+      {
+        "id": "r21",
+        "ranked": [
+          "pita-bread",
+          "roti",
+          "no-knead-pan-pizza",
+          "thin-crust-pizza",
+          "garlic-bread",
+          "pizza-dough",
+          "flour-tortillas",
+          "soft-pretzels-1",
+          "vada",
+          "bagels"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 0
+      },
+      {
+        "id": "r22",
+        "ranked": [
+          "sichuan-three-pepper-tofu",
+          "sesame-tofu",
+          "sichuan-dry-fried-green-beans",
+          "phat-phrik-khing",
+          "vegetarian-pho",
+          "pad-thai",
+          "gobi-manchurian",
+          "stir-fried-pork-with-hot-basil",
+          "pad-see-ew",
+          "oaxacan-black-beans"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 0
+      },
+      {
+        "id": "r23",
+        "ranked": [
+          "sichuan-dry-fried-green-beans",
+          "masala-green-beans",
+          "thai-fried-rice",
+          "phat-phrik-khing",
+          "oaxacan-black-beans",
+          "sichuan-three-pepper-tofu",
+          "gobi-manchurian",
+          "bhindi-fry",
+          "sesame-tofu",
+          "stir-fried-morning-glory"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1
+      },
+      {
+        "id": "r24",
+        "ranked": [
+          "lubia-polo",
+          "thai-fried-rice",
+          "egg-biryani",
+          "masala-green-beans",
+          "sichuan-dry-fried-green-beans",
+          "black-pepper-rice",
+          "biryani-shorba",
+          "kofte-kebabs",
+          "spanish-rice",
+          "aloo-matar"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 0
+      },
+      {
+        "id": "r25",
+        "ranked": [
+          "smoky-jalepeno-and-lime-cranberry-sauce",
+          "jalepeño-hot-sauce",
+          "tomatillo-salsa",
+          "smoky-three-chile-salsa",
+          "smoked-whole-turkey",
+          "burning-bike-hot-sauce",
+          "portuguese-hot-sauce",
+          "carnitas-with-salsa-verde",
+          "toasted-guajillo-salsa",
+          "halal-cart-red-sauce"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1
+      },
+      {
+        "id": "r26",
+        "ranked": [
+          "harissa-hot-sauce",
+          "halal-cart-red-sauce",
+          "yemeni-hot-sauce",
+          "portuguese-hot-sauce",
+          "jalepeño-hot-sauce",
+          "burning-bike-hot-sauce",
+          "smoky-three-chile-salsa",
+          "toasted-guajillo-salsa",
+          "enchilada-sauce",
+          "channa-masala"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 0
+      },
+      {
+        "id": "r27",
+        "ranked": [
+          "yemeni-hot-sauce",
+          "halal-cart-red-sauce",
+          "salsa-amarilla",
+          "harissa-hot-sauce",
+          "guasacaca",
+          "jalepeño-hot-sauce",
+          "portuguese-hot-sauce",
+          "biryani-shorba",
+          "cucumber-raita",
+          "tomatillo-salsa"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1
+      },
+      {
+        "id": "r28",
+        "ranked": [
+          "raspberry-and-elderflower-gin-and-tonic",
+          "smoky-jalepeno-and-lime-cranberry-sauce",
+          "cucumber-raita",
+          "thai-pomelo-salad",
+          "austro-hungarian-cream-of-horseradish-soup",
+          "larb-gai",
+          "biryani-shorba",
+          "phat-phrik-khing",
+          "burning-bike-hot-sauce",
+          "barbeque-sauce"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 0
+      },
+      {
+        "id": "r29",
+        "ranked": [
+          "austro-hungarian-cream-of-horseradish-soup",
+          "biryani-shorba",
+          "creamy-chicken-enchiladas",
+          "vegetarian-pho",
+          "spicy-whole-grain-pub-mustard",
+          "guasacaca",
+          "roasted-parsnips-and-carrots",
+          "vegetarian-chicken-salad",
+          "halal-cart-red-sauce",
+          "burning-bike-hot-sauce"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1
+      },
+      {
+        "id": "r30",
+        "ranked": [
+          "aloo-matar",
+          "massaman-curry",
+          "samosa-pie",
+          "vada",
+          "tarka-dal",
+          "channa-masala",
+          "black-pepper-rice",
+          "masala-green-beans",
+          "biryani-shorba",
+          "potato-and-green-chili-hash"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 0
+      },
+      {
+        "id": "m01",
+        "ranked": [
+          "pad-thai",
+          "thai-fried-rice",
+          "pad-see-ew",
+          "phat-phrik-khing",
+          "larb-gai",
+          "stir-fried-morning-glory",
+          "stir-fried-pork-with-hot-basil",
+          "garlicky-cabbage-and-fish-sauce",
+          "vegetarian-pho",
+          "thai-pomelo-salad"
+        ],
+        "p": 0.5,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 0
+      },
+      {
+        "id": "m02",
+        "ranked": [
+          "massaman-curry",
+          "phat-phrik-khing",
+          "biryani-shorba",
+          "thai-fried-rice",
+          "larb-gai",
+          "pad-thai",
+          "aloo-matar",
+          "channa-masala",
+          "thai-pomelo-salad",
+          "stir-fried-pork-with-hot-basil"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1
+      },
+      {
+        "id": "m03",
+        "ranked": [
+          "smoky-three-chile-salsa",
+          "tomatillo-salsa",
+          "toasted-guajillo-salsa",
+          "salsa-amarilla",
+          "enchilada-sauce",
+          "jalepeño-hot-sauce",
+          "black-bean-enchiladas",
+          "carnitas-with-salsa-verde",
+          "beef-tacos",
+          "oaxacan-black-beans"
+        ],
+        "p": 1,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 0
+      },
+      {
+        "id": "m04",
+        "ranked": [
+          "jalepeño-hot-sauce",
+          "burning-bike-hot-sauce",
+          "portuguese-hot-sauce",
+          "harissa-hot-sauce",
+          "halal-cart-red-sauce",
+          "yemeni-hot-sauce",
+          "bonchon-style-sauce",
+          "enchilada-sauce",
+          "smoky-three-chile-salsa",
+          "smoky-jalepeno-and-lime-cranberry-sauce"
+        ],
+        "p": 1,
+        "r": 0.8,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1
+      },
+      {
+        "id": "m05",
+        "ranked": [
+          "smoked-pork-shoulder",
+          "memphis-style-ribs",
+          "smoked-whole-turkey",
+          "barbeque-sauce",
+          "kofte-kebabs",
+          "vietnamese-pork-chops",
+          "carne-asada",
+          "chile-colorado",
+          "smoky-jalepeno-and-lime-cranberry-sauce",
+          "baba-ganoush"
+        ],
+        "p": 0.75,
+        "r": 0.75,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 0
+      },
+      {
+        "id": "m06",
+        "ranked": [
+          "black-pepper-rice",
+          "lubia-polo",
+          "biryani-shorba",
+          "spanish-rice",
+          "egg-biryani",
+          "thai-fried-rice",
+          "aloo-matar",
+          "masala-green-beans",
+          "cucumber-raita",
+          "tarka-dal"
+        ],
+        "p": 0.25,
+        "r": 0.5,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1
+      },
+      {
+        "id": "m07",
+        "ranked": [
+          "sesame-tofu",
+          "sichuan-three-pepper-tofu",
+          "vegetarian-pho",
+          "phat-phrik-khing",
+          "vegetarian-chicken-salad",
+          "gobi-manchurian",
+          "lubia-polo",
+          "pad-thai",
+          "sichuan-dry-fried-green-beans",
+          "thai-fried-rice"
+        ],
+        "p": 0.75,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 0
+      },
+      {
+        "id": "m08",
+        "ranked": [
+          "roti",
+          "pita-bread",
+          "thin-crust-pizza",
+          "no-knead-pan-pizza",
+          "pizza-dough",
+          "homemade-pasta",
+          "flour-tortillas",
+          "garlic-bread",
+          "bagels",
+          "soft-pretzels-2"
+        ],
+        "p": 0.5,
+        "r": 0.6666666666666666,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 0
+      },
+      {
+        "id": "m09",
+        "ranked": [
+          "black-bean-enchiladas",
+          "creamy-chicken-enchiladas",
+          "enchilada-sauce",
+          "chile-colorado",
+          "smoky-three-chile-salsa",
+          "oaxacan-black-beans",
+          "toasted-guajillo-salsa",
+          "tomatillo-salsa",
+          "queso-dip",
+          "salsa-amarilla"
+        ],
+        "p": 0.75,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1
+      },
+      {
+        "id": "m10",
+        "ranked": [
+          "hummus",
+          "baba-ganoush",
+          "yemeni-hot-sauce",
+          "salami-chips-with-white-bean-dip",
+          "lemon-tahini-dressing",
+          "harissa-hot-sauce",
+          "halal-cart-red-sauce",
+          "kofte-kebabs",
+          "guasacaca",
+          "cucumber-raita"
+        ],
+        "p": 0.5,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 0
+      },
+      {
+        "id": "h01",
+        "ranked": [
+          "massaman-curry",
+          "biryani-shorba",
+          "channa-masala",
+          "tarka-dal",
+          "gobi-manchurian",
+          "black-pepper-rice",
+          "phat-phrik-khing",
+          "masala-green-beans",
+          "aloo-matar",
+          "lubia-polo"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 0.3333333333333333,
+        "hit1": 0,
+        "ms": 1
+      },
+      {
+        "id": "h02",
+        "ranked": [
+          "diner-style-pancakes",
+          "roti",
+          "vada",
+          "potato-and-green-chili-hash",
+          "flour-tortillas",
+          "austro-hungarian-cream-of-horseradish-soup",
+          "egg-biryani",
+          "pita-bread",
+          "cucumber-raita",
+          "samosa-pie"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 0
+      },
+      {
+        "id": "h03",
+        "ranked": [
+          "chicken-schnitzel",
+          "chicken-nuggets",
+          "vegetarian-chicken-salad",
+          "halal-cart-chicken",
+          "teriyaki-chicken",
+          "creamy-chicken-enchiladas",
+          "bonchon-style-sauce",
+          "larb-gai",
+          "gobi-manchurian",
+          "vietnamese-pork-chops"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1
+      },
+      {
+        "id": "h04",
+        "ranked": [
+          "tarka-dal",
+          "austro-hungarian-cream-of-horseradish-soup",
+          "homemade-pasta",
+          "soft-pretzels-1",
+          "flour-tortillas",
+          "roti",
+          "kofte-kebabs",
+          "soft-pretzels-2",
+          "aloo-matar",
+          "sichuan-three-pepper-tofu"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 0.5,
+        "hit1": 0,
+        "ms": 0
+      },
+      {
+        "id": "h05",
+        "ranked": [
+          "thin-crust-pizza",
+          "pizza-dough",
+          "homemade-pasta",
+          "no-knead-pan-pizza",
+          "pita-bread",
+          "flour-tortillas",
+          "roti",
+          "soft-pretzels-2",
+          "dad's-spaghetti-sauce",
+          "soft-pretzels-1"
+        ],
+        "p": 0.75,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 0
+      },
+      {
+        "id": "h06",
+        "ranked": [
+          "austro-hungarian-cream-of-horseradish-soup",
+          "baba-ganoush",
+          "creamy-chicken-enchiladas",
+          "guasacaca",
+          "aloo-matar",
+          "black-bean-enchiladas",
+          "salami-chips-with-white-bean-dip",
+          "queso-dip",
+          "dad's-spaghetti-sauce",
+          "vegetarian-chicken-salad"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 0.5,
+        "hit1": 0,
+        "ms": 1
+      }
+    ],
+    "recipe-small-rerank-fp32": [
+      {
+        "id": "r01",
+        "ranked": [
+          "channa-masala",
+          "aloo-matar",
+          "tarka-dal",
+          "egg-biryani",
+          "vegetarian-chicken-salad",
+          "biryani-shorba",
+          "masala-green-beans",
+          "massaman-curry",
+          "lubia-polo",
+          "phat-phrik-khing"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1624
+      },
+      {
+        "id": "r02",
+        "ranked": [
+          "hummus",
+          "baba-ganoush",
+          "lemon-tahini-dressing",
+          "sesame-tofu",
+          "pita-bread",
+          "queso-dip",
+          "halal-cart-chicken",
+          "smoky-three-chile-salsa",
+          "salami-chips-with-white-bean-dip",
+          "sichuan-three-pepper-tofu"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1430
+      },
+      {
+        "id": "r03",
+        "ranked": [
+          "baba-ganoush",
+          "smoky-jalepeno-and-lime-cranberry-sauce",
+          "egg-biryani",
+          "smoky-three-chile-salsa",
+          "memphis-style-ribs",
+          "queso-dip",
+          "potato-and-green-chili-hash",
+          "salami-chips-with-white-bean-dip",
+          "mac-and-cheese",
+          "hummus"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1192
+      },
+      {
+        "id": "r04",
+        "ranked": [
+          "lemon-tahini-dressing",
+          "hummus",
+          "baba-ganoush",
+          "thai-pomelo-salad",
+          "larb-gai",
+          "vegetarian-chicken-salad",
+          "harissa-hot-sauce",
+          "halal-cart-chicken",
+          "cucumber-raita",
+          "salami-chips-with-white-bean-dip"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1209
+      },
+      {
+        "id": "r05",
+        "ranked": [
+          "pad-thai",
+          "pad-see-ew",
+          "thai-fried-rice",
+          "sesame-tofu",
+          "phat-phrik-khing",
+          "sichuan-three-pepper-tofu",
+          "vegetarian-pho",
+          "massaman-curry",
+          "thai-pomelo-salad",
+          "gobi-manchurian"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1225
+      },
+      {
+        "id": "r06",
+        "ranked": [
+          "diner-style-pancakes",
+          "vada",
+          "soft-pretzels-1",
+          "soft-pretzels-2",
+          "chicken-schnitzel",
+          "chicken-nuggets",
+          "hasselback-butternut-squash",
+          "pad-thai",
+          "egg-biryani",
+          "potato-and-green-chili-hash"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1211
+      },
+      {
+        "id": "r07",
+        "ranked": [
+          "chicken-schnitzel",
+          "chicken-nuggets",
+          "halal-cart-chicken",
+          "roti",
+          "gobi-manchurian",
+          "creamy-chicken-enchiladas",
+          "no-knead-pan-pizza",
+          "soft-pretzels-1",
+          "bhindi-fry",
+          "pita-bread"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1215
+      },
+      {
+        "id": "r08",
+        "ranked": [
+          "larb-gai",
+          "thai-fried-rice",
+          "thai-pomelo-salad",
+          "vegetarian-chicken-salad",
+          "pad-thai",
+          "pad-see-ew",
+          "massaman-curry",
+          "halal-cart-chicken",
+          "sesame-tofu",
+          "phat-phrik-khing"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1221
+      },
+      {
+        "id": "r09",
+        "ranked": [
+          "smoked-pork-shoulder",
+          "carnitas-with-salsa-verde",
+          "memphis-style-ribs",
+          "vietnamese-pork-chops",
+          "mac-and-cheese",
+          "chile-colorado",
+          "smoked-whole-turkey",
+          "lubia-polo",
+          "stir-fried-pork-with-hot-basil",
+          "sichuan-dry-fried-green-beans"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1205
+      },
+      {
+        "id": "r10",
+        "ranked": [
+          "smoked-whole-turkey",
+          "smoked-pork-shoulder",
+          "memphis-style-ribs",
+          "gobi-manchurian",
+          "hummus",
+          "halal-cart-chicken",
+          "carnitas-with-salsa-verde",
+          "smoky-jalepeno-and-lime-cranberry-sauce",
+          "soft-pretzels-1",
+          "soft-pretzels-2"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1155
+      },
+      {
+        "id": "r11",
+        "ranked": [
+          "tomatillo-salsa",
+          "smoky-three-chile-salsa",
+          "carnitas-with-salsa-verde",
+          "black-bean-enchiladas",
+          "creamy-chicken-enchiladas",
+          "potato-and-green-chili-hash",
+          "salsa-amarilla",
+          "toasted-guajillo-salsa",
+          "thai-pomelo-salad",
+          "guasacaca"
+        ],
+        "p": 0.5,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1261
+      },
+      {
+        "id": "r12",
+        "ranked": [
+          "bhindi-fry",
+          "vada",
+          "gobi-manchurian",
+          "egg-biryani",
+          "sesame-tofu",
+          "thai-fried-rice",
+          "phat-phrik-khing",
+          "aloo-matar",
+          "masala-green-beans",
+          "baba-ganoush"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1238
+      },
+      {
+        "id": "r13",
+        "ranked": [
+          "gobi-manchurian",
+          "pad-see-ew",
+          "sichuan-three-pepper-tofu",
+          "bonchon-style-sauce",
+          "sichuan-dry-fried-green-beans",
+          "thai-fried-rice",
+          "stir-fried-morning-glory",
+          "halal-cart-red-sauce",
+          "sesame-tofu",
+          "larb-gai"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1151
+      },
+      {
+        "id": "r14",
+        "ranked": [
+          "tarka-dal",
+          "vada",
+          "channa-masala",
+          "masala-green-beans",
+          "aloo-matar",
+          "gobi-manchurian",
+          "black-pepper-rice",
+          "larb-gai",
+          "egg-biryani",
+          "pad-thai"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1243
+      },
+      {
+        "id": "r15",
+        "ranked": [
+          "thai-pomelo-salad",
+          "larb-gai",
+          "pad-thai",
+          "thai-fried-rice",
+          "stir-fried-pork-with-hot-basil",
+          "pad-see-ew",
+          "phat-phrik-khing",
+          "stir-fried-morning-glory",
+          "garlicky-cabbage-and-fish-sauce",
+          "vegetarian-chicken-salad"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1266
+      },
+      {
+        "id": "r16",
+        "ranked": [
+          "stir-fried-morning-glory",
+          "gobi-manchurian",
+          "thai-fried-rice",
+          "sichuan-dry-fried-green-beans",
+          "channa-masala",
+          "pad-see-ew",
+          "pad-thai",
+          "phat-phrik-khing",
+          "garlicky-cabbage-and-fish-sauce",
+          "stir-fried-pork-with-hot-basil"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1212
+      },
+      {
+        "id": "r17",
+        "ranked": [
+          "pizza-dough",
+          "no-knead-pan-pizza",
+          "thin-crust-pizza",
+          "bagels",
+          "homemade-pasta",
+          "soft-pretzels-2",
+          "soft-pretzels-1",
+          "samosa-pie",
+          "roti",
+          "baba-ganoush"
+        ],
+        "p": 0.75,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1202
+      },
+      {
+        "id": "r18",
+        "ranked": [
+          "bagels",
+          "soft-pretzels-1",
+          "hummus",
+          "chicken-nuggets",
+          "mac-and-cheese",
+          "potato-and-green-chili-hash",
+          "soft-pretzels-2",
+          "pad-see-ew",
+          "queso-dip",
+          "vada"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1226
+      },
+      {
+        "id": "r19",
+        "ranked": [
+          "soft-pretzels-2",
+          "soft-pretzels-1",
+          "hummus",
+          "bagels",
+          "chicken-nuggets",
+          "hasselback-butternut-squash",
+          "spicy-whole-grain-pub-mustard",
+          "chicken-schnitzel",
+          "salami-chips-with-white-bean-dip",
+          "queso-dip"
+        ],
+        "p": 0.5,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1197
+      },
+      {
+        "id": "r20",
+        "ranked": [
+          "roti",
+          "egg-biryani",
+          "vada",
+          "samosa-pie",
+          "gobi-manchurian",
+          "aloo-matar",
+          "flour-tortillas",
+          "no-knead-pan-pizza",
+          "pizza-dough",
+          "tarka-dal"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1208
+      },
+      {
+        "id": "r21",
+        "ranked": [
+          "garlic-bread",
+          "soft-pretzels-2",
+          "mac-and-cheese",
+          "bagels",
+          "soft-pretzels-1",
+          "samosa-pie",
+          "no-knead-pan-pizza",
+          "pizza-dough",
+          "pita-bread",
+          "hasselback-butternut-squash"
+        ],
+        "p": 0,
+        "r": 0,
+        "rr": 0.1111111111111111,
+        "hit1": 0,
+        "ms": 1228
+      },
+      {
+        "id": "r22",
+        "ranked": [
+          "sichuan-three-pepper-tofu",
+          "sichuan-dry-fried-green-beans",
+          "phat-phrik-khing",
+          "pad-thai",
+          "gobi-manchurian",
+          "sesame-tofu",
+          "channa-masala",
+          "yemeni-hot-sauce",
+          "halal-cart-red-sauce",
+          "thai-fried-rice"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1223
+      },
+      {
+        "id": "r23",
+        "ranked": [
+          "sichuan-dry-fried-green-beans",
+          "phat-phrik-khing",
+          "thai-fried-rice",
+          "masala-green-beans",
+          "gobi-manchurian",
+          "lubia-polo",
+          "sichuan-three-pepper-tofu",
+          "stir-fried-pork-with-hot-basil",
+          "bhindi-fry",
+          "vada"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1215
+      },
+      {
+        "id": "r24",
+        "ranked": [
+          "lubia-polo",
+          "thai-fried-rice",
+          "egg-biryani",
+          "masala-green-beans",
+          "sichuan-dry-fried-green-beans",
+          "vegetarian-pho",
+          "potato-and-green-chili-hash",
+          "phat-phrik-khing",
+          "larb-gai",
+          "gobi-manchurian"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1227
+      },
+      {
+        "id": "r25",
+        "ranked": [
+          "smoky-jalepeno-and-lime-cranberry-sauce",
+          "jalepeño-hot-sauce",
+          "queso-dip",
+          "guasacaca",
+          "thai-pomelo-salad",
+          "carnitas-with-salsa-verde",
+          "larb-gai",
+          "bonchon-style-sauce",
+          "harissa-hot-sauce",
+          "yemeni-hot-sauce"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1232
+      },
+      {
+        "id": "r26",
+        "ranked": [
+          "yemeni-hot-sauce",
+          "harissa-hot-sauce",
+          "sichuan-three-pepper-tofu",
+          "jalepeño-hot-sauce",
+          "portuguese-hot-sauce",
+          "halal-cart-red-sauce",
+          "burning-bike-hot-sauce",
+          "bonchon-style-sauce",
+          "enchilada-sauce",
+          "channa-masala"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 0.5,
+        "hit1": 0,
+        "ms": 1144
+      },
+      {
+        "id": "r27",
+        "ranked": [
+          "yemeni-hot-sauce",
+          "cucumber-raita",
+          "channa-masala",
+          "guasacaca",
+          "portuguese-hot-sauce",
+          "chile-colorado",
+          "salsa-amarilla",
+          "tomatillo-salsa",
+          "sichuan-three-pepper-tofu",
+          "halal-cart-red-sauce"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1257
+      },
+      {
+        "id": "r28",
+        "ranked": [
+          "raspberry-and-elderflower-gin-and-tonic",
+          "smoky-jalepeno-and-lime-cranberry-sauce",
+          "baba-ganoush",
+          "thai-pomelo-salad",
+          "carnitas-with-salsa-verde",
+          "memphis-style-ribs",
+          "larb-gai",
+          "biryani-shorba",
+          "cucumber-raita",
+          "smoky-three-chile-salsa"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1298
+      },
+      {
+        "id": "r29",
+        "ranked": [
+          "austro-hungarian-cream-of-horseradish-soup",
+          "creamy-chicken-enchiladas",
+          "vegetarian-pho",
+          "potato-and-green-chili-hash",
+          "mac-and-cheese",
+          "halal-cart-chicken",
+          "smoky-jalepeno-and-lime-cranberry-sauce",
+          "biryani-shorba",
+          "queso-dip",
+          "harissa-hot-sauce"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1163
+      },
+      {
+        "id": "r30",
+        "ranked": [
+          "aloo-matar",
+          "massaman-curry",
+          "potato-and-green-chili-hash",
+          "lubia-polo",
+          "samosa-pie",
+          "phat-phrik-khing",
+          "channa-masala",
+          "biryani-shorba",
+          "vada",
+          "bhindi-fry"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1268
+      },
+      {
+        "id": "m01",
+        "ranked": [
+          "pad-see-ew",
+          "thai-fried-rice",
+          "pad-thai",
+          "phat-phrik-khing",
+          "stir-fried-morning-glory",
+          "larb-gai",
+          "thai-pomelo-salad",
+          "stir-fried-pork-with-hot-basil",
+          "gobi-manchurian",
+          "massaman-curry"
+        ],
+        "p": 0.5,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1232
+      },
+      {
+        "id": "m02",
+        "ranked": [
+          "massaman-curry",
+          "phat-phrik-khing",
+          "thai-pomelo-salad",
+          "thai-fried-rice",
+          "biryani-shorba",
+          "pad-thai",
+          "pad-see-ew",
+          "larb-gai",
+          "aloo-matar",
+          "stir-fried-morning-glory"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1179
+      },
+      {
+        "id": "m03",
+        "ranked": [
+          "smoky-three-chile-salsa",
+          "toasted-guajillo-salsa",
+          "salsa-amarilla",
+          "carnitas-with-salsa-verde",
+          "beef-tacos",
+          "tomatillo-salsa",
+          "black-bean-enchiladas",
+          "oaxacan-black-beans",
+          "chile-colorado",
+          "enchilada-sauce"
+        ],
+        "p": 0.75,
+        "r": 0.75,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1326
+      },
+      {
+        "id": "m04",
+        "ranked": [
+          "portuguese-hot-sauce",
+          "jalepeño-hot-sauce",
+          "harissa-hot-sauce",
+          "yemeni-hot-sauce",
+          "burning-bike-hot-sauce",
+          "enchilada-sauce",
+          "barbeque-sauce",
+          "bonchon-style-sauce",
+          "halal-cart-red-sauce",
+          "smoky-jalepeno-and-lime-cranberry-sauce"
+        ],
+        "p": 1,
+        "r": 0.8,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1235
+      },
+      {
+        "id": "m05",
+        "ranked": [
+          "memphis-style-ribs",
+          "smoked-pork-shoulder",
+          "smoked-whole-turkey",
+          "vietnamese-pork-chops",
+          "barbeque-sauce",
+          "mac-and-cheese",
+          "kofte-kebabs",
+          "carnitas-with-salsa-verde",
+          "beef-tacos",
+          "halal-cart-chicken"
+        ],
+        "p": 0.75,
+        "r": 0.75,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1197
+      },
+      {
+        "id": "m06",
+        "ranked": [
+          "black-pepper-rice",
+          "egg-biryani",
+          "lubia-polo",
+          "halal-cart-chicken",
+          "thai-fried-rice",
+          "larb-gai",
+          "spanish-rice",
+          "pad-see-ew",
+          "pad-thai",
+          "gobi-manchurian"
+        ],
+        "p": 0.5,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1276
+      },
+      {
+        "id": "m07",
+        "ranked": [
+          "sesame-tofu",
+          "vegetarian-pho",
+          "phat-phrik-khing",
+          "sichuan-three-pepper-tofu",
+          "pad-thai",
+          "vegetarian-chicken-salad",
+          "pad-see-ew",
+          "aloo-matar",
+          "gobi-manchurian",
+          "massaman-curry"
+        ],
+        "p": 0.75,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1262
+      },
+      {
+        "id": "m08",
+        "ranked": [
+          "soft-pretzels-2",
+          "bagels",
+          "soft-pretzels-1",
+          "roti",
+          "samosa-pie",
+          "no-knead-pan-pizza",
+          "pita-bread",
+          "flour-tortillas",
+          "homemade-pasta",
+          "hummus"
+        ],
+        "p": 0.25,
+        "r": 0.3333333333333333,
+        "rr": 0.25,
+        "hit1": 0,
+        "ms": 1189
+      },
+      {
+        "id": "m09",
+        "ranked": [
+          "enchilada-sauce",
+          "black-bean-enchiladas",
+          "creamy-chicken-enchiladas",
+          "carnitas-with-salsa-verde",
+          "potato-and-green-chili-hash",
+          "flour-tortillas",
+          "channa-masala",
+          "queso-dip",
+          "smoky-three-chile-salsa",
+          "salsa-amarilla"
+        ],
+        "p": 0.75,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1280
+      },
+      {
+        "id": "m10",
+        "ranked": [
+          "queso-dip",
+          "egg-biryani",
+          "salami-chips-with-white-bean-dip",
+          "lubia-polo",
+          "baba-ganoush",
+          "hummus",
+          "halal-cart-chicken",
+          "thai-pomelo-salad",
+          "austro-hungarian-cream-of-horseradish-soup",
+          "spicy-whole-grain-pub-mustard"
+        ],
+        "p": 0,
+        "r": 0,
+        "rr": 0.2,
+        "hit1": 0,
+        "ms": 1259
+      },
+      {
+        "id": "h01",
+        "ranked": [
+          "massaman-curry",
+          "carnitas-with-salsa-verde",
+          "phat-phrik-khing",
+          "lubia-polo",
+          "biryani-shorba",
+          "potato-and-green-chili-hash",
+          "channa-masala",
+          "egg-biryani",
+          "halal-cart-chicken",
+          "black-pepper-rice"
+        ],
+        "p": 0,
+        "r": 0,
+        "rr": 0.14285714285714285,
+        "hit1": 0,
+        "ms": 1275
+      },
+      {
+        "id": "h02",
+        "ranked": [
+          "carnitas-with-salsa-verde",
+          "baba-ganoush",
+          "potato-and-green-chili-hash",
+          "samosa-pie",
+          "lubia-polo",
+          "larb-gai",
+          "egg-biryani",
+          "smoky-jalepeno-and-lime-cranberry-sauce",
+          "no-knead-pan-pizza",
+          "guasacaca"
+        ],
+        "p": 0,
+        "r": 0,
+        "rr": 0,
+        "hit1": 0,
+        "ms": 1277
+      },
+      {
+        "id": "h03",
+        "ranked": [
+          "carnitas-with-salsa-verde",
+          "mac-and-cheese",
+          "potato-and-green-chili-hash",
+          "halal-cart-chicken",
+          "austro-hungarian-cream-of-horseradish-soup",
+          "hasselback-butternut-squash",
+          "spicy-whole-grain-pub-mustard",
+          "tarka-dal",
+          "smoky-three-chile-salsa",
+          "smoky-jalepeno-and-lime-cranberry-sauce"
+        ],
+        "p": 0,
+        "r": 0,
+        "rr": 0,
+        "hit1": 0,
+        "ms": 1214
+      },
+      {
+        "id": "h04",
+        "ranked": [
+          "carnitas-with-salsa-verde",
+          "creamy-chicken-enchiladas",
+          "flour-tortillas",
+          "hummus",
+          "aloo-matar",
+          "chile-colorado",
+          "thai-pomelo-salad",
+          "oaxacan-black-beans",
+          "austro-hungarian-cream-of-horseradish-soup",
+          "tarka-dal"
+        ],
+        "p": 0,
+        "r": 0,
+        "rr": 0.1111111111111111,
+        "hit1": 0,
+        "ms": 1229
+      },
+      {
+        "id": "h05",
+        "ranked": [
+          "no-knead-pan-pizza",
+          "pizza-dough",
+          "baba-ganoush",
+          "bagels",
+          "samosa-pie",
+          "potato-and-green-chili-hash",
+          "hummus",
+          "thin-crust-pizza",
+          "soft-pretzels-1",
+          "soft-pretzels-2"
+        ],
+        "p": 0.5,
+        "r": 0.6666666666666666,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 1275
+      },
+      {
+        "id": "h06",
+        "ranked": [
+          "pad-thai",
+          "pad-see-ew",
+          "carnitas-with-salsa-verde",
+          "creamy-chicken-enchiladas",
+          "mac-and-cheese",
+          "samosa-pie",
+          "potato-and-green-chili-hash",
+          "chicken-schnitzel",
+          "queso-dip",
+          "soft-pretzels-2"
+        ],
+        "p": 0,
+        "r": 0,
+        "rr": 0,
+        "hit1": 0,
+        "ms": 1198
+      }
+    ],
+    "recipe-small-rerank-q8": [
+      {
+        "id": "r01",
+        "ranked": [
+          "channa-masala",
+          "tarka-dal",
+          "biryani-shorba",
+          "vegetarian-chicken-salad",
+          "masala-green-beans",
+          "massaman-curry",
+          "aloo-matar",
+          "phat-phrik-khing",
+          "lubia-polo",
+          "larb-gai"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 424
+      },
+      {
+        "id": "r02",
+        "ranked": [
+          "hummus",
+          "baba-ganoush",
+          "lemon-tahini-dressing",
+          "pita-bread",
+          "smoky-three-chile-salsa",
+          "sesame-tofu",
+          "sichuan-three-pepper-tofu",
+          "cucumber-raita",
+          "salami-chips-with-white-bean-dip",
+          "hasselback-butternut-squash"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 346
+      },
+      {
+        "id": "r03",
+        "ranked": [
+          "baba-ganoush",
+          "smoky-jalepeno-and-lime-cranberry-sauce",
+          "smoky-three-chile-salsa",
+          "egg-biryani",
+          "queso-dip",
+          "salami-chips-with-white-bean-dip",
+          "potato-and-green-chili-hash",
+          "austro-hungarian-cream-of-horseradish-soup",
+          "hummus",
+          "hasselback-butternut-squash"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 288
+      },
+      {
+        "id": "r04",
+        "ranked": [
+          "lemon-tahini-dressing",
+          "hummus",
+          "thai-pomelo-salad",
+          "baba-ganoush",
+          "larb-gai",
+          "vegetarian-chicken-salad",
+          "cucumber-raita",
+          "harissa-hot-sauce",
+          "salami-chips-with-white-bean-dip",
+          "guasacaca"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 279
+      },
+      {
+        "id": "r05",
+        "ranked": [
+          "pad-thai",
+          "phat-phrik-khing",
+          "thai-fried-rice",
+          "sesame-tofu",
+          "vegetarian-pho",
+          "pad-see-ew",
+          "sichuan-three-pepper-tofu",
+          "massaman-curry",
+          "thai-pomelo-salad",
+          "stir-fried-morning-glory"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 324
+      },
+      {
+        "id": "r06",
+        "ranked": [
+          "diner-style-pancakes",
+          "vada",
+          "soft-pretzels-1",
+          "hasselback-butternut-squash",
+          "roti",
+          "soft-pretzels-2",
+          "flour-tortillas",
+          "no-knead-pan-pizza",
+          "homemade-pasta",
+          "pita-bread"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 305
+      },
+      {
+        "id": "r07",
+        "ranked": [
+          "chicken-nuggets",
+          "chicken-schnitzel",
+          "roti",
+          "no-knead-pan-pizza",
+          "bhindi-fry",
+          "creamy-chicken-enchiladas",
+          "vegetarian-chicken-salad",
+          "pita-bread",
+          "teriyaki-chicken",
+          "halal-cart-chicken"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 0.5,
+        "hit1": 0,
+        "ms": 304
+      },
+      {
+        "id": "r08",
+        "ranked": [
+          "larb-gai",
+          "thai-fried-rice",
+          "vegetarian-chicken-salad",
+          "thai-pomelo-salad",
+          "pad-see-ew",
+          "phat-phrik-khing",
+          "pad-thai",
+          "stir-fried-morning-glory",
+          "sesame-tofu",
+          "stir-fried-pork-with-hot-basil"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 278
+      },
+      {
+        "id": "r09",
+        "ranked": [
+          "smoked-pork-shoulder",
+          "chile-colorado",
+          "carnitas-with-salsa-verde",
+          "smoked-whole-turkey",
+          "vietnamese-pork-chops",
+          "stir-fried-pork-with-hot-basil",
+          "sichuan-dry-fried-green-beans",
+          "carne-asada",
+          "smoky-jalepeno-and-lime-cranberry-sauce",
+          "sichuan-three-pepper-tofu"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 267
+      },
+      {
+        "id": "r10",
+        "ranked": [
+          "smoked-whole-turkey",
+          "smoked-pork-shoulder",
+          "sichuan-dry-fried-green-beans",
+          "memphis-style-ribs",
+          "spicy-whole-grain-pub-mustard",
+          "gobi-manchurian",
+          "smoky-jalepeno-and-lime-cranberry-sauce",
+          "hummus",
+          "soft-pretzels-1",
+          "hasselback-butternut-squash"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 277
+      },
+      {
+        "id": "r11",
+        "ranked": [
+          "tomatillo-salsa",
+          "smoky-three-chile-salsa",
+          "carnitas-with-salsa-verde",
+          "black-bean-enchiladas",
+          "creamy-chicken-enchiladas",
+          "potato-and-green-chili-hash",
+          "salsa-amarilla",
+          "toasted-guajillo-salsa",
+          "thai-pomelo-salad",
+          "guasacaca"
+        ],
+        "p": 0.5,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 256
+      },
+      {
+        "id": "r12",
+        "ranked": [
+          "vada",
+          "bhindi-fry",
+          "egg-biryani",
+          "thai-fried-rice",
+          "masala-green-beans",
+          "black-pepper-rice",
+          "stir-fried-morning-glory",
+          "tarka-dal",
+          "aloo-matar",
+          "roti"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 0.5,
+        "hit1": 0,
+        "ms": 233
+      },
+      {
+        "id": "r13",
+        "ranked": [
+          "gobi-manchurian",
+          "sichuan-three-pepper-tofu",
+          "sichuan-dry-fried-green-beans",
+          "bonchon-style-sauce",
+          "pad-see-ew",
+          "stir-fried-morning-glory",
+          "thai-fried-rice",
+          "stir-fried-pork-with-hot-basil",
+          "garlicky-cabbage-and-fish-sauce",
+          "phat-phrik-khing"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 259
+      },
+      {
+        "id": "r14",
+        "ranked": [
+          "tarka-dal",
+          "vada",
+          "channa-masala",
+          "masala-green-beans",
+          "black-pepper-rice",
+          "thai-fried-rice",
+          "larb-gai",
+          "cucumber-raita",
+          "gobi-manchurian",
+          "aloo-matar"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 313
+      },
+      {
+        "id": "r15",
+        "ranked": [
+          "thai-pomelo-salad",
+          "larb-gai",
+          "thai-fried-rice",
+          "stir-fried-pork-with-hot-basil",
+          "phat-phrik-khing",
+          "stir-fried-morning-glory",
+          "garlicky-cabbage-and-fish-sauce",
+          "pad-thai",
+          "vegetarian-chicken-salad",
+          "pad-see-ew"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 286
+      },
+      {
+        "id": "r16",
+        "ranked": [
+          "stir-fried-morning-glory",
+          "sichuan-dry-fried-green-beans",
+          "thai-fried-rice",
+          "phat-phrik-khing",
+          "garlicky-cabbage-and-fish-sauce",
+          "channa-masala",
+          "stir-fried-pork-with-hot-basil",
+          "bonchon-style-sauce",
+          "pad-see-ew",
+          "gobi-manchurian"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 264
+      },
+      {
+        "id": "r17",
+        "ranked": [
+          "no-knead-pan-pizza",
+          "pizza-dough",
+          "thin-crust-pizza",
+          "homemade-pasta",
+          "soft-pretzels-2",
+          "flour-tortillas",
+          "pita-bread",
+          "roti",
+          "soft-pretzels-1",
+          "bagels"
+        ],
+        "p": 0.75,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 279
+      },
+      {
+        "id": "r18",
+        "ranked": [
+          "bagels",
+          "vada",
+          "soft-pretzels-1",
+          "hummus",
+          "sichuan-dry-fried-green-beans",
+          "stir-fried-morning-glory",
+          "mac-and-cheese",
+          "salami-chips-with-white-bean-dip",
+          "yemeni-hot-sauce",
+          "oaxacan-black-beans"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 275
+      },
+      {
+        "id": "r19",
+        "ranked": [
+          "soft-pretzels-1",
+          "soft-pretzels-2",
+          "hummus",
+          "hasselback-butternut-squash",
+          "bagels",
+          "salami-chips-with-white-bean-dip",
+          "diner-style-pancakes",
+          "flour-tortillas",
+          "sichuan-dry-fried-green-beans",
+          "no-knead-pan-pizza"
+        ],
+        "p": 0.5,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 283
+      },
+      {
+        "id": "r20",
+        "ranked": [
+          "roti",
+          "vada",
+          "pita-bread",
+          "flour-tortillas",
+          "egg-biryani",
+          "pizza-dough",
+          "black-pepper-rice",
+          "diner-style-pancakes",
+          "garlic-bread",
+          "tarka-dal"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 277
+      },
+      {
+        "id": "r21",
+        "ranked": [
+          "garlic-bread",
+          "pita-bread",
+          "mac-and-cheese",
+          "hasselback-butternut-squash",
+          "soft-pretzels-1",
+          "roti",
+          "soft-pretzels-2",
+          "thin-crust-pizza",
+          "pizza-dough",
+          "no-knead-pan-pizza"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 0.5,
+        "hit1": 0,
+        "ms": 278
+      },
+      {
+        "id": "r22",
+        "ranked": [
+          "sichuan-three-pepper-tofu",
+          "sichuan-dry-fried-green-beans",
+          "phat-phrik-khing",
+          "sesame-tofu",
+          "pad-thai",
+          "yemeni-hot-sauce",
+          "gobi-manchurian",
+          "channa-masala",
+          "halal-cart-red-sauce",
+          "vegetarian-pho"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 270
+      },
+      {
+        "id": "r23",
+        "ranked": [
+          "sichuan-dry-fried-green-beans",
+          "masala-green-beans",
+          "thai-fried-rice",
+          "phat-phrik-khing",
+          "bhindi-fry",
+          "lubia-polo",
+          "gobi-manchurian",
+          "vada",
+          "oaxacan-black-beans",
+          "stir-fried-pork-with-hot-basil"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 269
+      },
+      {
+        "id": "r24",
+        "ranked": [
+          "lubia-polo",
+          "thai-fried-rice",
+          "egg-biryani",
+          "masala-green-beans",
+          "sichuan-dry-fried-green-beans",
+          "phat-phrik-khing",
+          "vegetarian-pho",
+          "larb-gai",
+          "spanish-rice",
+          "potato-and-green-chili-hash"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 244
+      },
+      {
+        "id": "r25",
+        "ranked": [
+          "smoky-jalepeno-and-lime-cranberry-sauce",
+          "jalepeño-hot-sauce",
+          "guasacaca",
+          "thai-pomelo-salad",
+          "queso-dip",
+          "carnitas-with-salsa-verde",
+          "bonchon-style-sauce",
+          "larb-gai",
+          "harissa-hot-sauce",
+          "yemeni-hot-sauce"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 231
+      },
+      {
+        "id": "r26",
+        "ranked": [
+          "yemeni-hot-sauce",
+          "jalepeño-hot-sauce",
+          "harissa-hot-sauce",
+          "sichuan-three-pepper-tofu",
+          "portuguese-hot-sauce",
+          "halal-cart-red-sauce",
+          "burning-bike-hot-sauce",
+          "bonchon-style-sauce",
+          "enchilada-sauce",
+          "smoky-three-chile-salsa"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 0.3333333333333333,
+        "hit1": 0,
+        "ms": 271
+      },
+      {
+        "id": "r27",
+        "ranked": [
+          "yemeni-hot-sauce",
+          "cucumber-raita",
+          "guasacaca",
+          "channa-masala",
+          "portuguese-hot-sauce",
+          "salsa-amarilla",
+          "sichuan-three-pepper-tofu",
+          "tomatillo-salsa",
+          "halal-cart-red-sauce",
+          "chile-colorado"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 290
+      },
+      {
+        "id": "r28",
+        "ranked": [
+          "raspberry-and-elderflower-gin-and-tonic",
+          "smoky-jalepeno-and-lime-cranberry-sauce",
+          "baba-ganoush",
+          "thai-pomelo-salad",
+          "smoky-three-chile-salsa",
+          "cucumber-raita",
+          "jalepeño-hot-sauce",
+          "toasted-guajillo-salsa",
+          "biryani-shorba",
+          "memphis-style-ribs"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 277
+      },
+      {
+        "id": "r29",
+        "ranked": [
+          "austro-hungarian-cream-of-horseradish-soup",
+          "creamy-chicken-enchiladas",
+          "smoky-jalepeno-and-lime-cranberry-sauce",
+          "yemeni-hot-sauce",
+          "harissa-hot-sauce",
+          "jalepeño-hot-sauce",
+          "vegetarian-pho",
+          "biryani-shorba",
+          "cucumber-raita",
+          "portuguese-hot-sauce"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 271
+      },
+      {
+        "id": "r30",
+        "ranked": [
+          "massaman-curry",
+          "potato-and-green-chili-hash",
+          "phat-phrik-khing",
+          "samosa-pie",
+          "lubia-polo",
+          "vada",
+          "bhindi-fry",
+          "biryani-shorba",
+          "black-pepper-rice",
+          "aloo-matar"
+        ],
+        "p": 0,
+        "r": 0,
+        "rr": 0.1,
+        "hit1": 0,
+        "ms": 250
+      },
+      {
+        "id": "m01",
+        "ranked": [
+          "thai-fried-rice",
+          "phat-phrik-khing",
+          "stir-fried-morning-glory",
+          "pad-thai",
+          "pad-see-ew",
+          "stir-fried-pork-with-hot-basil",
+          "larb-gai",
+          "thai-pomelo-salad",
+          "garlicky-cabbage-and-fish-sauce",
+          "spanish-rice"
+        ],
+        "p": 0.25,
+        "r": 0.5,
+        "rr": 0.25,
+        "hit1": 0,
+        "ms": 234
+      },
+      {
+        "id": "m02",
+        "ranked": [
+          "massaman-curry",
+          "phat-phrik-khing",
+          "thai-pomelo-salad",
+          "thai-fried-rice",
+          "biryani-shorba",
+          "stir-fried-morning-glory",
+          "stir-fried-pork-with-hot-basil",
+          "larb-gai",
+          "pad-thai",
+          "pad-see-ew"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 254
+      },
+      {
+        "id": "m03",
+        "ranked": [
+          "toasted-guajillo-salsa",
+          "smoky-three-chile-salsa",
+          "salsa-amarilla",
+          "tomatillo-salsa",
+          "beef-tacos",
+          "black-bean-enchiladas",
+          "carnitas-with-salsa-verde",
+          "oaxacan-black-beans",
+          "guasacaca",
+          "chile-colorado"
+        ],
+        "p": 1,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 254
+      },
+      {
+        "id": "m04",
+        "ranked": [
+          "jalepeño-hot-sauce",
+          "portuguese-hot-sauce",
+          "harissa-hot-sauce",
+          "yemeni-hot-sauce",
+          "burning-bike-hot-sauce",
+          "enchilada-sauce",
+          "barbeque-sauce",
+          "halal-cart-red-sauce",
+          "bonchon-style-sauce",
+          "smoky-jalepeno-and-lime-cranberry-sauce"
+        ],
+        "p": 1,
+        "r": 0.8,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 265
+      },
+      {
+        "id": "m05",
+        "ranked": [
+          "smoked-pork-shoulder",
+          "barbeque-sauce",
+          "smoked-whole-turkey",
+          "beef-tacos",
+          "kofte-kebabs",
+          "portuguese-hot-sauce",
+          "carne-asada",
+          "memphis-style-ribs",
+          "smoky-three-chile-salsa",
+          "smoky-jalepeno-and-lime-cranberry-sauce"
+        ],
+        "p": 0.5,
+        "r": 0.5,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 266
+      },
+      {
+        "id": "m06",
+        "ranked": [
+          "black-pepper-rice",
+          "egg-biryani",
+          "lubia-polo",
+          "halal-cart-chicken",
+          "thai-fried-rice",
+          "spanish-rice",
+          "larb-gai",
+          "pad-see-ew",
+          "pad-thai",
+          "masala-green-beans"
+        ],
+        "p": 0.5,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 277
+      },
+      {
+        "id": "m07",
+        "ranked": [
+          "vegetarian-pho",
+          "phat-phrik-khing",
+          "sesame-tofu",
+          "sichuan-three-pepper-tofu",
+          "vegetarian-chicken-salad",
+          "pad-thai",
+          "masala-green-beans",
+          "tarka-dal",
+          "aloo-matar",
+          "pad-see-ew"
+        ],
+        "p": 0.75,
+        "r": 1,
+        "rr": 0.5,
+        "hit1": 0,
+        "ms": 269
+      },
+      {
+        "id": "m08",
+        "ranked": [
+          "soft-pretzels-2",
+          "roti",
+          "flour-tortillas",
+          "pita-bread",
+          "bagels",
+          "garlic-bread",
+          "homemade-pasta",
+          "no-knead-pan-pizza",
+          "pizza-dough",
+          "soft-pretzels-1"
+        ],
+        "p": 0.75,
+        "r": 1,
+        "rr": 0.5,
+        "hit1": 0,
+        "ms": 256
+      },
+      {
+        "id": "m09",
+        "ranked": [
+          "creamy-chicken-enchiladas",
+          "black-bean-enchiladas",
+          "enchilada-sauce",
+          "flour-tortillas",
+          "smoky-three-chile-salsa",
+          "carnitas-with-salsa-verde",
+          "salsa-amarilla",
+          "tomatillo-salsa",
+          "oaxacan-black-beans",
+          "toasted-guajillo-salsa"
+        ],
+        "p": 0.75,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 226
+      },
+      {
+        "id": "m10",
+        "ranked": [
+          "queso-dip",
+          "salami-chips-with-white-bean-dip",
+          "egg-biryani",
+          "baba-ganoush",
+          "austro-hungarian-cream-of-horseradish-soup",
+          "pita-bread",
+          "hummus",
+          "cucumber-raita",
+          "thai-pomelo-salad",
+          "lubia-polo"
+        ],
+        "p": 0.25,
+        "r": 0.5,
+        "rr": 0.25,
+        "hit1": 0,
+        "ms": 290
+      },
+      {
+        "id": "h01",
+        "ranked": [
+          "massaman-curry",
+          "phat-phrik-khing",
+          "biryani-shorba",
+          "lubia-polo",
+          "black-pepper-rice",
+          "carnitas-with-salsa-verde",
+          "smoky-jalepeno-and-lime-cranberry-sauce",
+          "austro-hungarian-cream-of-horseradish-soup",
+          "chile-colorado",
+          "spanish-rice"
+        ],
+        "p": 0,
+        "r": 0,
+        "rr": 0,
+        "hit1": 0,
+        "ms": 276
+      },
+      {
+        "id": "h02",
+        "ranked": [
+          "smoky-jalepeno-and-lime-cranberry-sauce",
+          "baba-ganoush",
+          "guasacaca",
+          "flour-tortillas",
+          "carnitas-with-salsa-verde",
+          "pita-bread",
+          "no-knead-pan-pizza",
+          "salami-chips-with-white-bean-dip",
+          "spanish-rice",
+          "smoked-pork-shoulder"
+        ],
+        "p": 0,
+        "r": 0,
+        "rr": 0,
+        "hit1": 0,
+        "ms": 282
+      },
+      {
+        "id": "h03",
+        "ranked": [
+          "smoky-jalepeno-and-lime-cranberry-sauce",
+          "smoky-three-chile-salsa",
+          "austro-hungarian-cream-of-horseradish-soup",
+          "hasselback-butternut-squash",
+          "tarka-dal",
+          "carnitas-with-salsa-verde",
+          "jalepeño-hot-sauce",
+          "cucumber-raita",
+          "toasted-guajillo-salsa",
+          "spicy-whole-grain-pub-mustard"
+        ],
+        "p": 0,
+        "r": 0,
+        "rr": 0,
+        "hit1": 0,
+        "ms": 286
+      },
+      {
+        "id": "h04",
+        "ranked": [
+          "flour-tortillas",
+          "carnitas-with-salsa-verde",
+          "oaxacan-black-beans",
+          "creamy-chicken-enchiladas",
+          "smoky-jalepeno-and-lime-cranberry-sauce",
+          "smoky-three-chile-salsa",
+          "tarka-dal",
+          "hummus",
+          "austro-hungarian-cream-of-horseradish-soup",
+          "toasted-guajillo-salsa"
+        ],
+        "p": 0,
+        "r": 0,
+        "rr": 0.1111111111111111,
+        "hit1": 0,
+        "ms": 267
+      },
+      {
+        "id": "h05",
+        "ranked": [
+          "pizza-dough",
+          "no-knead-pan-pizza",
+          "thin-crust-pizza",
+          "baba-ganoush",
+          "samosa-pie",
+          "flour-tortillas",
+          "garlic-bread",
+          "salami-chips-with-white-bean-dip",
+          "hasselback-butternut-squash",
+          "soft-pretzels-1"
+        ],
+        "p": 0.75,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 278
+      },
+      {
+        "id": "h06",
+        "ranked": [
+          "pad-thai",
+          "pad-see-ew",
+          "smoky-jalepeno-and-lime-cranberry-sauce",
+          "austro-hungarian-cream-of-horseradish-soup",
+          "jalepeño-hot-sauce",
+          "carnitas-with-salsa-verde",
+          "hasselback-butternut-squash",
+          "salami-chips-with-white-bean-dip",
+          "homemade-pasta",
+          "creamy-chicken-enchiladas"
+        ],
+        "p": 0,
+        "r": 0,
+        "rr": 0,
+        "hit1": 0,
+        "ms": 272
+      }
+    ],
+    "live": [
+      {
+        "id": "r01",
+        "ranked": [
+          "channa-masala",
+          "tarka-dal",
+          "biryani-shorba",
+          "vegetarian-chicken-salad",
+          "masala-green-beans",
+          "aloo-matar",
+          "massaman-curry",
+          "phat-phrik-khing",
+          "black-pepper-rice",
+          "bhindi-fry"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 592
+      },
+      {
+        "id": "r02",
+        "ranked": [
+          "hummus",
+          "baba-ganoush",
+          "lemon-tahini-dressing",
+          "yemeni-hot-sauce",
+          "harissa-hot-sauce",
+          "halal-cart-red-sauce",
+          "sesame-tofu",
+          "salami-chips-with-white-bean-dip",
+          "guasacaca",
+          "kofte-kebabs"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 412
+      },
+      {
+        "id": "r03",
+        "ranked": [
+          "baba-ganoush",
+          "smoky-jalepeno-and-lime-cranberry-sauce",
+          "smoky-three-chile-salsa",
+          "egg-biryani",
+          "salami-chips-with-white-bean-dip",
+          "queso-dip",
+          "guasacaca",
+          "toasted-guajillo-salsa",
+          "hummus",
+          "potato-and-green-chili-hash"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 449
+      },
+      {
+        "id": "r04",
+        "ranked": [
+          "lemon-tahini-dressing",
+          "hummus",
+          "thai-pomelo-salad",
+          "baba-ganoush",
+          "larb-gai",
+          "vegetarian-chicken-salad",
+          "cucumber-raita",
+          "halal-cart-chicken",
+          "sesame-tofu",
+          "halal-cart-red-sauce"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 430
+      },
+      {
+        "id": "r05",
+        "ranked": [
+          "pad-thai",
+          "phat-phrik-khing",
+          "thai-fried-rice",
+          "sesame-tofu",
+          "vegetarian-pho",
+          "pad-see-ew",
+          "sichuan-three-pepper-tofu",
+          "massaman-curry",
+          "stir-fried-pork-with-hot-basil",
+          "stir-fried-morning-glory"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 487
+      },
+      {
+        "id": "r06",
+        "ranked": [
+          "diner-style-pancakes",
+          "vada",
+          "flour-tortillas",
+          "roti",
+          "chicken-schnitzel",
+          "bagels",
+          "soft-pretzels-1"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 326
+      },
+      {
+        "id": "r07",
+        "ranked": [
+          "chicken-nuggets",
+          "chicken-schnitzel",
+          "roti",
+          "teriyaki-chicken",
+          "halal-cart-chicken",
+          "creamy-chicken-enchiladas",
+          "diner-style-pancakes",
+          "no-knead-pan-pizza",
+          "pita-bread",
+          "vegetarian-chicken-salad"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 0.5,
+        "hit1": 0,
+        "ms": 475
+      },
+      {
+        "id": "r08",
+        "ranked": [
+          "larb-gai",
+          "thai-fried-rice",
+          "vegetarian-chicken-salad",
+          "thai-pomelo-salad",
+          "pad-see-ew",
+          "pad-thai",
+          "phat-phrik-khing",
+          "sesame-tofu",
+          "stir-fried-morning-glory",
+          "stir-fried-pork-with-hot-basil"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 626
+      },
+      {
+        "id": "r09",
+        "ranked": [
+          "smoked-pork-shoulder",
+          "memphis-style-ribs",
+          "smoked-whole-turkey",
+          "carnitas-with-salsa-verde",
+          "vietnamese-pork-chops",
+          "chile-colorado",
+          "barbeque-sauce",
+          "portuguese-hot-sauce"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 518
+      },
+      {
+        "id": "r10",
+        "ranked": [
+          "smoked-whole-turkey",
+          "smoked-pork-shoulder",
+          "smoky-jalepeno-and-lime-cranberry-sauce",
+          "memphis-style-ribs",
+          "hasselback-butternut-squash",
+          "spicy-whole-grain-pub-mustard"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 279
+      },
+      {
+        "id": "r11",
+        "ranked": [
+          "tomatillo-salsa",
+          "smoky-three-chile-salsa",
+          "carnitas-with-salsa-verde",
+          "black-bean-enchiladas",
+          "creamy-chicken-enchiladas",
+          "salsa-amarilla",
+          "potato-and-green-chili-hash",
+          "toasted-guajillo-salsa",
+          "enchilada-sauce",
+          "smoky-jalepeno-and-lime-cranberry-sauce"
+        ],
+        "p": 0.5,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 422
+      },
+      {
+        "id": "r12",
+        "ranked": [
+          "vada",
+          "bhindi-fry",
+          "egg-biryani",
+          "thai-fried-rice",
+          "masala-green-beans",
+          "gobi-manchurian",
+          "cucumber-raita",
+          "channa-masala",
+          "phat-phrik-khing",
+          "roti"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 0.5,
+        "hit1": 0,
+        "ms": 452
+      },
+      {
+        "id": "r13",
+        "ranked": [
+          "gobi-manchurian",
+          "sichuan-three-pepper-tofu",
+          "sichuan-dry-fried-green-beans",
+          "thai-fried-rice",
+          "bonchon-style-sauce",
+          "stir-fried-morning-glory",
+          "pad-see-ew",
+          "sesame-tofu",
+          "garlicky-cabbage-and-fish-sauce",
+          "phat-phrik-khing"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 462
+      },
+      {
+        "id": "r14",
+        "ranked": [
+          "tarka-dal",
+          "vada",
+          "channa-masala",
+          "masala-green-beans",
+          "lubia-polo",
+          "black-pepper-rice",
+          "aloo-matar",
+          "bhindi-fry",
+          "larb-gai",
+          "gobi-manchurian"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 545
+      },
+      {
+        "id": "r15",
+        "ranked": [
+          "thai-pomelo-salad",
+          "larb-gai",
+          "thai-fried-rice",
+          "stir-fried-pork-with-hot-basil",
+          "phat-phrik-khing",
+          "stir-fried-morning-glory",
+          "pad-thai",
+          "lemon-tahini-dressing",
+          "vietnamese-pork-chops",
+          "vegetarian-chicken-salad"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 420
+      },
+      {
+        "id": "r16",
+        "ranked": [
+          "stir-fried-morning-glory",
+          "sichuan-dry-fried-green-beans",
+          "thai-fried-rice",
+          "phat-phrik-khing",
+          "garlicky-cabbage-and-fish-sauce",
+          "channa-masala",
+          "stir-fried-pork-with-hot-basil",
+          "bonchon-style-sauce",
+          "sichuan-three-pepper-tofu",
+          "gobi-manchurian"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 459
+      },
+      {
+        "id": "r17",
+        "ranked": [
+          "pizza-dough",
+          "no-knead-pan-pizza",
+          "thin-crust-pizza",
+          "homemade-pasta",
+          "soft-pretzels-2",
+          "pita-bread",
+          "flour-tortillas",
+          "roti",
+          "soft-pretzels-1",
+          "garlic-bread"
+        ],
+        "p": 0.75,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 663
+      },
+      {
+        "id": "r18",
+        "ranked": [
+          "bagels",
+          "soft-pretzels-2",
+          "soft-pretzels-1",
+          "salami-chips-with-white-bean-dip",
+          "yemeni-hot-sauce",
+          "spicy-whole-grain-pub-mustard",
+          "stir-fried-morning-glory",
+          "sichuan-dry-fried-green-beans"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 326
+      },
+      {
+        "id": "r19",
+        "ranked": [
+          "soft-pretzels-1",
+          "soft-pretzels-2",
+          "bagels",
+          "chicken-schnitzel",
+          "spicy-whole-grain-pub-mustard",
+          "salami-chips-with-white-bean-dip",
+          "hummus",
+          "flour-tortillas",
+          "pita-bread",
+          "hasselback-butternut-squash"
+        ],
+        "p": 0.5,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 400
+      },
+      {
+        "id": "r20",
+        "ranked": [
+          "roti",
+          "vada",
+          "bhindi-fry",
+          "pita-bread",
+          "flour-tortillas",
+          "egg-biryani",
+          "cucumber-raita",
+          "gobi-manchurian",
+          "no-knead-pan-pizza",
+          "black-pepper-rice"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 542
+      },
+      {
+        "id": "r21",
+        "ranked": [
+          "garlic-bread",
+          "pita-bread",
+          "no-knead-pan-pizza",
+          "roti",
+          "thin-crust-pizza",
+          "soft-pretzels-1",
+          "pizza-dough",
+          "bagels",
+          "soft-pretzels-2",
+          "samosa-pie"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 0.5,
+        "hit1": 0,
+        "ms": 332
+      },
+      {
+        "id": "r22",
+        "ranked": [
+          "sichuan-three-pepper-tofu",
+          "sichuan-dry-fried-green-beans",
+          "phat-phrik-khing",
+          "sesame-tofu",
+          "pad-thai",
+          "yemeni-hot-sauce",
+          "gobi-manchurian",
+          "channa-masala",
+          "pad-see-ew",
+          "vegetarian-pho"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 480
+      },
+      {
+        "id": "r23",
+        "ranked": [
+          "sichuan-dry-fried-green-beans",
+          "masala-green-beans",
+          "thai-fried-rice",
+          "phat-phrik-khing",
+          "bhindi-fry",
+          "gobi-manchurian",
+          "vada",
+          "lubia-polo",
+          "oaxacan-black-beans",
+          "stir-fried-pork-with-hot-basil"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 474
+      },
+      {
+        "id": "r24",
+        "ranked": [
+          "lubia-polo",
+          "thai-fried-rice",
+          "egg-biryani",
+          "masala-green-beans",
+          "sichuan-dry-fried-green-beans",
+          "spanish-rice",
+          "biryani-shorba",
+          "black-pepper-rice",
+          "phat-phrik-khing",
+          "vegetarian-pho"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 589
+      },
+      {
+        "id": "r25",
+        "ranked": [
+          "smoky-jalepeno-and-lime-cranberry-sauce",
+          "jalepeño-hot-sauce",
+          "guasacaca",
+          "carnitas-with-salsa-verde",
+          "queso-dip",
+          "thai-pomelo-salad",
+          "halal-cart-red-sauce",
+          "chile-colorado",
+          "portuguese-hot-sauce",
+          "toasted-guajillo-salsa"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 523
+      },
+      {
+        "id": "r26",
+        "ranked": [
+          "yemeni-hot-sauce",
+          "jalepeño-hot-sauce",
+          "harissa-hot-sauce",
+          "sichuan-three-pepper-tofu",
+          "portuguese-hot-sauce",
+          "halal-cart-red-sauce",
+          "burning-bike-hot-sauce",
+          "chile-colorado",
+          "smoky-three-chile-salsa",
+          "enchilada-sauce"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 0.3333333333333333,
+        "hit1": 0,
+        "ms": 460
+      },
+      {
+        "id": "r27",
+        "ranked": [
+          "yemeni-hot-sauce",
+          "cucumber-raita",
+          "guasacaca",
+          "channa-masala",
+          "portuguese-hot-sauce",
+          "salsa-amarilla",
+          "halal-cart-red-sauce",
+          "tomatillo-salsa",
+          "sichuan-three-pepper-tofu",
+          "enchilada-sauce"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 460
+      },
+      {
+        "id": "r28",
+        "ranked": [
+          "raspberry-and-elderflower-gin-and-tonic",
+          "smoky-jalepeno-and-lime-cranberry-sauce"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 394
+      },
+      {
+        "id": "r29",
+        "ranked": [
+          "austro-hungarian-cream-of-horseradish-soup",
+          "spicy-whole-grain-pub-mustard",
+          "smoky-jalepeno-and-lime-cranberry-sauce",
+          "roasted-parsnips-and-carrots",
+          "mac-and-cheese",
+          "potato-and-green-chili-hash",
+          "burning-bike-hot-sauce",
+          "hasselback-butternut-squash",
+          "queso-dip",
+          "jalepeño-hot-sauce"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 443
+      },
+      {
+        "id": "r30",
+        "ranked": [
+          "massaman-curry",
+          "potato-and-green-chili-hash",
+          "aloo-matar",
+          "channa-masala",
+          "black-pepper-rice",
+          "lubia-polo",
+          "masala-green-beans",
+          "tarka-dal",
+          "phat-phrik-khing",
+          "samosa-pie"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 0.3333333333333333,
+        "hit1": 0,
+        "ms": 861
+      },
+      {
+        "id": "m01",
+        "ranked": [
+          "thai-fried-rice",
+          "phat-phrik-khing",
+          "stir-fried-morning-glory",
+          "pad-thai",
+          "pad-see-ew",
+          "stir-fried-pork-with-hot-basil",
+          "larb-gai",
+          "thai-pomelo-salad",
+          "garlicky-cabbage-and-fish-sauce",
+          "spanish-rice"
+        ],
+        "p": 0.25,
+        "r": 0.5,
+        "rr": 0.25,
+        "hit1": 0,
+        "ms": 451
+      },
+      {
+        "id": "m02",
+        "ranked": [
+          "massaman-curry",
+          "phat-phrik-khing",
+          "thai-pomelo-salad",
+          "thai-fried-rice",
+          "biryani-shorba",
+          "stir-fried-pork-with-hot-basil",
+          "pad-thai",
+          "larb-gai",
+          "stir-fried-morning-glory",
+          "channa-masala"
+        ],
+        "p": 0.25,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 457
+      },
+      {
+        "id": "m03",
+        "ranked": [
+          "toasted-guajillo-salsa",
+          "smoky-three-chile-salsa",
+          "salsa-amarilla",
+          "tomatillo-salsa",
+          "carnitas-with-salsa-verde",
+          "beef-tacos",
+          "black-bean-enchiladas",
+          "oaxacan-black-beans",
+          "enchilada-sauce",
+          "queso-dip"
+        ],
+        "p": 1,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 453
+      },
+      {
+        "id": "m04",
+        "ranked": [
+          "jalepeño-hot-sauce",
+          "portuguese-hot-sauce",
+          "harissa-hot-sauce",
+          "yemeni-hot-sauce",
+          "burning-bike-hot-sauce",
+          "enchilada-sauce",
+          "barbeque-sauce",
+          "halal-cart-red-sauce",
+          "bonchon-style-sauce",
+          "smoky-jalepeno-and-lime-cranberry-sauce"
+        ],
+        "p": 1,
+        "r": 0.8,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 474
+      },
+      {
+        "id": "m05",
+        "ranked": [
+          "smoked-pork-shoulder",
+          "barbeque-sauce",
+          "memphis-style-ribs",
+          "smoked-whole-turkey",
+          "carne-asada",
+          "kofte-kebabs",
+          "smoky-jalepeno-and-lime-cranberry-sauce",
+          "carnitas-with-salsa-verde",
+          "beef-tacos"
+        ],
+        "p": 0.75,
+        "r": 0.75,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 329
+      },
+      {
+        "id": "m06",
+        "ranked": [
+          "black-pepper-rice",
+          "egg-biryani",
+          "lubia-polo",
+          "halal-cart-chicken",
+          "spanish-rice",
+          "thai-fried-rice",
+          "biryani-shorba",
+          "cucumber-raita",
+          "aloo-matar",
+          "masala-green-beans"
+        ],
+        "p": 0.5,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 485
+      },
+      {
+        "id": "m07",
+        "ranked": [
+          "vegetarian-pho",
+          "phat-phrik-khing",
+          "sesame-tofu",
+          "sichuan-three-pepper-tofu",
+          "vegetarian-chicken-salad",
+          "pad-thai",
+          "gobi-manchurian",
+          "thai-fried-rice",
+          "masala-green-beans",
+          "kofte-kebabs"
+        ],
+        "p": 0.75,
+        "r": 1,
+        "rr": 0.5,
+        "hit1": 0,
+        "ms": 448
+      },
+      {
+        "id": "m08",
+        "ranked": [
+          "soft-pretzels-2",
+          "no-knead-pan-pizza",
+          "pita-bread",
+          "pizza-dough",
+          "thin-crust-pizza",
+          "roti",
+          "flour-tortillas",
+          "homemade-pasta",
+          "garlic-bread",
+          "soft-pretzels-1"
+        ],
+        "p": 0.25,
+        "r": 0.3333333333333333,
+        "rr": 0.3333333333333333,
+        "hit1": 0,
+        "ms": 444
+      },
+      {
+        "id": "m09",
+        "ranked": [
+          "creamy-chicken-enchiladas",
+          "black-bean-enchiladas",
+          "enchilada-sauce",
+          "queso-dip",
+          "chile-colorado",
+          "oaxacan-black-beans",
+          "toasted-guajillo-salsa",
+          "tomatillo-salsa",
+          "flour-tortillas",
+          "smoky-three-chile-salsa"
+        ],
+        "p": 0.75,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 397
+      },
+      {
+        "id": "m10",
+        "ranked": [
+          "hummus",
+          "baba-ganoush",
+          "yemeni-hot-sauce",
+          "kofte-kebabs",
+          "salami-chips-with-white-bean-dip",
+          "lemon-tahini-dressing",
+          "halal-cart-red-sauce",
+          "harissa-hot-sauce",
+          "queso-dip",
+          "halal-cart-chicken"
+        ],
+        "p": 0.5,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 340
+      },
+      {
+        "id": "h01",
+        "ranked": [
+          "massaman-curry",
+          "biryani-shorba",
+          "portuguese-hot-sauce"
+        ],
+        "p": 0,
+        "r": 0,
+        "rr": 0,
+        "hit1": 0,
+        "ms": 222
+      },
+      {
+        "id": "h02",
+        "ranked": [],
+        "p": 0,
+        "r": 0,
+        "rr": 0,
+        "hit1": 0,
+        "ms": 194
+      },
+      {
+        "id": "h03",
+        "ranked": [],
+        "p": 0,
+        "r": 0,
+        "rr": 0,
+        "hit1": 0,
+        "ms": 194
+      },
+      {
+        "id": "h04",
+        "ranked": [],
+        "p": 0,
+        "r": 0,
+        "rr": 0,
+        "hit1": 0,
+        "ms": 185
+      },
+      {
+        "id": "h05",
+        "ranked": [
+          "pizza-dough",
+          "thin-crust-pizza",
+          "no-knead-pan-pizza",
+          "pita-bread",
+          "samosa-pie",
+          "soft-pretzels-2",
+          "hummus",
+          "portuguese-hot-sauce",
+          "soft-pretzels-1"
+        ],
+        "p": 0.75,
+        "r": 1,
+        "rr": 1,
+        "hit1": 1,
+        "ms": 668
+      },
+      {
+        "id": "h06",
+        "ranked": [
+          "austro-hungarian-cream-of-horseradish-soup"
+        ],
+        "p": 0,
+        "r": 0,
+        "rr": 0,
+        "hit1": 0,
+        "ms": 414
+      }
+    ]
+  }
+}
