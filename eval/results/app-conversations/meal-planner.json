@@ -1,0 +1,94 @@
+{
+  "scenario": {
+    "id": "meal-planner",
+    "title": "Heti menü tervezése",
+    "persona": "An organised person planning the week ahead for a family of four. Friendly, writes structured messages, likes variety.",
+    "goal": "Plan three different dinners for the week from the collection: one Indian, one Mexican and one Thai dish, each realistic on a weeknight.",
+    "successCriteria": [
+      "The assistant proposes three dinners from its collection covering Indian, Mexican and Thai cuisine",
+      "It says roughly how long each takes or how difficult it is",
+      "It does not invent recipes that are not in the collection"
+    ],
+    "patience": [
+      3,
+      5
+    ],
+    "expertise": [
+      0.3,
+      0.6
+    ],
+    "verbosity": [
+      0.5,
+      0.8
+    ],
+    "frustrationTolerance": [
+      0.5,
+      0.8
+    ]
+  },
+  "user": {
+    "patience": 4,
+    "expertise": 0.49,
+    "verbosity": 0.52,
+    "frustrationTolerance": 0.56
+  },
+  "maxTurns": 4,
+  "messages": [
+    {
+      "role": "user",
+      "content": "Hi! I'm planning dinners for the week for my family of four and would love some variety. Could you please suggest three different weeknight dinner recipes—one Indian, one Mexican, and one Thai? It would be great if you could also mention roughly how long each takes to prepare or how difficult each one is. Thank you!"
+    },
+    {
+      "role": "assistant",
+      "content": "Planning dinners for a family of four—here are three varied, weeknight-friendly picks from my recipe collection:\n\n- Indian: Aloo Matar (potato and pea curry)\n  - Recipe: Aloo Matar | About 45 minutes | difficulty: medium\n  - Cozy, tomato-forward curry with peas; great over rice. The recipe notes 4 servings as part of a meal.\n\n- Mexican: Beef Tacos\n  - Recipe: Beef Tacos | About 15 minutes | difficulty: easy\n  - Classic seasoned ground beef—fast and kid-friendly. Serves 2 as written; double for four.\n\n- Thai: Phat Phrik Khing (Thai dry-curry stir-fry with tofu and long beans/green beans)\n  - Recipe: Phat Phrik Khing | difficulty: medium\n  - A vibrant, saucy stir-fry with red curry paste, tofu, and blistered beans; stir-fries are typically quick for weeknights (general cooking practice). Serve with jasmine rice.\n\nWant any of these as full recipes with ingredients and step-by-step? I can drop them in."
+    }
+  ],
+  "replies": [
+    {
+      "model": "gpt-5",
+      "firstTokenMs": 27507,
+      "totalMs": 30300,
+      "searchMs": 9327,
+      "rerankMs": 8172,
+      "inputTokens": 19398,
+      "outputTokens": 2278,
+      "embeddingTokens": 34
+    }
+  ],
+  "retrieved": [
+    [
+      "Channa Masala",
+      "Aloo Matar",
+      "Tarka Dal",
+      "Massaman Curry",
+      "Beef Tacos",
+      "Black Bean Enchiladas",
+      "Creamy Chicken Enchiladas",
+      "Frijoles Picosos",
+      "Phat Phrik Khing",
+      "Pad Thai",
+      "Kai Kaphrao Khai Dao"
+    ]
+  ],
+  "userTurns": [
+    {
+      "satisfaction": 4,
+      "goalAchieved": true,
+      "continue": false,
+      "message": "Thanks for the variety and details! I have what I need to plan my week's dinners now. Appreciate your help!",
+      "reason": "The assistant provided three diverse, realistic weeknight recipes with prep times and difficulty, fulfilling my request."
+    }
+  ],
+  "verdict": {
+    "helpfulness": 3,
+    "groundedness": 3,
+    "tone": 3,
+    "goalAchieved": true,
+    "criteriaMet": [
+      true,
+      true,
+      true
+    ],
+    "reasoning": "The assistant proposes three dinners, each from a different cuisine (Aloo Matar for Indian, Beef Tacos for Mexican, Phat Phrik Khing for Thai), all from the retrieved collection. It provides rough preparation times or difficulty for each (Aloo Matar: 45 min/medium, Beef Tacos: 15 min/easy, Phat Phrik Khing: medium/quick as a stir-fry). No recipes are invented, and the tone is friendly, structured, and matches the user's organized style. All success criteria are met."
+  }
+}

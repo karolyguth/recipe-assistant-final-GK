@@ -1,0 +1,87 @@
+{
+  "scenario": {
+    "id": "peanut-allergy",
+    "title": "Mogyoróallergia, thai tészta",
+    "persona": "A cautious cook with a serious peanut allergy who loves Thai food. Mentions the allergy right away and checks ingredients carefully.",
+    "goal": "Make a Thai noodle dish safely without peanuts.",
+    "successCriteria": [
+      "The assistant suggests a Thai noodle dish from the collection",
+      "It points out every peanut ingredient in the suggested recipe and how to leave it out or replace it",
+      "It does not claim a dish is peanut-free when the recipe contains peanuts"
+    ],
+    "patience": [
+      3,
+      4
+    ],
+    "expertise": [
+      0.4,
+      0.7
+    ],
+    "verbosity": [
+      0.4,
+      0.7
+    ],
+    "frustrationTolerance": [
+      0.4,
+      0.7
+    ]
+  },
+  "user": {
+    "patience": 4,
+    "expertise": 0.47,
+    "verbosity": 0.53,
+    "frustrationTolerance": 0.56
+  },
+  "maxTurns": 4,
+  "messages": [
+    {
+      "role": "user",
+      "content": "Hi! I have a serious peanut allergy, so I have to be very careful with my ingredients. I really love Thai food and want to make a Thai noodle dish at home. Could you please suggest a recipe for a Thai noodle dish from your collection? Also, if there are any peanuts or peanut-based ingredients in the recipe, please point them out and tell me how to safely leave them out or replace them. Thanks!"
+    },
+    {
+      "role": "assistant",
+      "content": "Thanks for flagging the peanut allergy—let’s go with a Thai noodle from my collection that’s naturally peanut-free: Pad See Ew.\n\nPad See Ew\nA classic soy-sauce stir-fried rice noodle dish with Chinese broccoli; no peanuts in the recipe.\n\nIngredients\n- 6 oz protein of your choice, thinly sliced\n- 3-4 tbsp vegetable oil\n- 4 cloves garlic, chopped\n- 2 eggs\n- 4-6 stalks Chinese broccoli, stems thinly sliced, leaves roughly chopped\n- 1 lb fresh rice noodles (see note)\n- 4 tsp sugar\n- ground white pepper, to taste\n\nif using meat:\n- 1 tbsp soy sauce\n- 2 tsp vegetable oil\n\nfor the sauce:\n- 2 tbsp oyster sauce\n- 1 tbsp soy sauce\n- 1.5 tsp fish sauce\n- 1/2 tbsp Golden Mountain sauce (or more soy sauce)\n- 2 tsp black soy sauce\n\noptional: prik nam som (chili vinegar)\n- Thai or other hot chiles, chopped\n- 5% distilled vinegar\n\nSteps\n1. if using meat: stir the meat and marinade ingredients together, let sit\n2. combine all sauce ingredients in a small bowl\n3. if making, add chiles to vinegar in small bowl, let sit\n4. heat 1 tbsp oil over medium-high heat, add protein and cook until done, move to a bowl and wipe pan clean\n5. add 1.5 tbsp oil and garlic to the pan until fragrant\n6. add egg, break the yolk, cook until set about halfway then scramble briefly\n7. add broccoli and toss to coat evenly in oil\n8. add 8 oz rice noodles, 4 tsp sauce mix and 2 tsp sugar\n9. turn up to high heat and toss to coat the noodles evenly\n10. spread the noodles to cover the pan, let sit for 15-30 seconds until lightly charred\n11. flip and set char again on the other side (repeat as desired)\n12. add 1 portion of protein to pan (avoid adding any juices) and toss to mix\n13. plate and cook the second portion\n\nAllergy safety notes for this recipe\n- Peanuts/peanut oil in recipe: none.\n- Labels to check: soy sauce, oyster sauce, fish sauce, Golden Mountain sauce, and fresh rice noodles. Choose brands that are peanut-free and not processed on shared lines with peanuts.\n- Cross-contact tips: start with a clean wok/spatula and unopened bottles if you’re unsure about prior use.\n\nIf you’d like Pad Thai instead\n- The “Pad Thai” recipe in my collection includes 1/4 cup roasted peanuts (mixed in and used as a topping). To make it peanut-free, simply omit the peanuts anywhere they appear. For crunch, from general cooking practice you can replace them with toasted sesame seeds, roasted pumpkin seeds, or crispy fried shallots—use only if they’re safe for you and check for cross-contact.\n\nIf you want, tell me and I can remember your peanut allergy for future recommendations."
+    }
+  ],
+  "replies": [
+    {
+      "model": "gpt-5",
+      "firstTokenMs": 17812,
+      "totalMs": 21993,
+      "searchMs": 2780,
+      "rerankMs": 2429,
+      "inputTokens": 5024,
+      "outputTokens": 2319,
+      "embeddingTokens": 3
+    }
+  ],
+  "retrieved": [
+    [
+      "Pad Thai",
+      "Pad See Ew",
+      "Thai fried rice with green beans and basil",
+      "Vegetarian Pho"
+    ]
+  ],
+  "userTurns": [
+    {
+      "satisfaction": 4,
+      "goalAchieved": true,
+      "continue": false,
+      "message": "",
+      "reason": "The assistant provided a suitable peanut-free Thai noodle recipe and clearly addressed peanut ingredients and substitutions, meeting all success criteria."
+    }
+  ],
+  "verdict": {
+    "helpfulness": 3,
+    "groundedness": 3,
+    "tone": 3,
+    "goalAchieved": true,
+    "criteriaMet": [
+      true,
+      true,
+      true
+    ],
+    "reasoning": "The assistant suggests Pad See Ew, a Thai noodle dish from the collection, and clearly states that it contains no peanuts or peanut oil. It also provides detailed allergy safety notes, including label-checking and cross-contact advice. For Pad Thai, it points out the peanut ingredient and gives both omission and substitution advice, clearly labelling the substitution as general advice. The assistant never claims a dish is peanut-free when it contains peanuts, and the tone is friendly, cautious, and supportive, matching the user's concerns."
+  }
+}

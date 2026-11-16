@@ -1,0 +1,87 @@
+{
+  "scenario": {
+    "id": "impatient-parent",
+    "title": "Siető szülő, gyors vegetáriánus vacsora",
+    "persona": "A busy, tired parent typing on a phone between tasks. Blunt, no greetings; irritated by long answers or extra questions.",
+    "goal": "Get one concrete vegetarian dinner idea that takes at most 30 minutes, with the key steps.",
+    "successCriteria": [
+      "The assistant gives at least one concrete vegetarian dinner from its collection",
+      "The suggested dish takes at most about 30 minutes",
+      "The key steps are given without the user having to ask again"
+    ],
+    "patience": [
+      1,
+      2
+    ],
+    "expertise": [
+      0.3,
+      0.6
+    ],
+    "verbosity": [
+      0,
+      0.2
+    ],
+    "frustrationTolerance": [
+      0.1,
+      0.4
+    ]
+  },
+  "user": {
+    "patience": 1,
+    "expertise": 0.33,
+    "verbosity": 0.1,
+    "frustrationTolerance": 0.28
+  },
+  "maxTurns": 2,
+  "messages": [
+    {
+      "role": "user",
+      "content": "Need a quick vegetarian dinner idea under 30 mins with key steps. No fluff."
+    },
+    {
+      "role": "assistant",
+      "content": "Quick one for a busy night:\n\nBlack Bean Enchiladas — about 15 minutes\n\nYou’ll need:\n- 14 oz can black beans (with liquid)\n- Tortillas\n- Tomatillo salsa\n- Queso fresco, crumbled\n- Cilantro, finely chopped\n- Sliced onion (pickled is great)\n\nKey steps:\n1) Blend beans with their liquid to a creamy-soup thickness (add a little water if needed). Heat in a pan and salt to taste.\n2) Spoon some hot bean sauce onto each plate.\n3) Dip a tortilla in the beans, fold into quarters, and set on the plate.\n4) Spoon more bean sauce over the tortilla.\n5) Top with salsa, queso fresco, cilantro, and onion. Serve immediately.\n\nRecipe used: Black Bean Enchiladas."
+    }
+  ],
+  "replies": [
+    {
+      "model": "gpt-5",
+      "firstTokenMs": 16413,
+      "totalMs": 18665,
+      "searchMs": 3258,
+      "rerankMs": 2832,
+      "inputTokens": 4359,
+      "outputTokens": 1169,
+      "embeddingTokens": 7
+    }
+  ],
+  "retrieved": [
+    [
+      "Vegetarian Chicken Salad",
+      "Black Bean Enchiladas",
+      "Channa Masala",
+      "Aloo Matar"
+    ]
+  ],
+  "userTurns": [
+    {
+      "satisfaction": 4,
+      "goalAchieved": true,
+      "continue": false,
+      "message": "",
+      "reason": "Got a clear vegetarian dinner idea under 30 minutes with key steps as requested."
+    }
+  ],
+  "verdict": {
+    "helpfulness": 3,
+    "groundedness": 3,
+    "tone": 3,
+    "goalAchieved": true,
+    "criteriaMet": [
+      true,
+      true,
+      true
+    ],
+    "reasoning": "The assistant provided a concrete vegetarian dinner idea (Black Bean Enchiladas) directly from the retrieved collection, meeting criterion 1. The recipe is stated to take about 15 minutes, satisfying criterion 2. The assistant also listed the key steps clearly and concisely, without requiring further user prompts, fulfilling criterion 3. The tone is brief and direct, matching the user's blunt, no-fluff style. All criteria are met, so the goal is achieved."
+  }
+}

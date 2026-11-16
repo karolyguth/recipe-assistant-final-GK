@@ -1,0 +1,415 @@
+{
+  "summary": {
+    "conversations": 12,
+    "turns": 18,
+    "goal": 1,
+    "criteria": 1,
+    "helpfulness": 3,
+    "groundedness": 3,
+    "tone": 3,
+    "satisfaction": 4.42,
+    "firstTokenP50": 26898,
+    "firstTokenP95": 43093,
+    "totalP50": 30300,
+    "totalP95": 47754,
+    "costTokens": 293548
+  },
+  "cases": [
+    {
+      "id": "nervous-beginner",
+      "verdict": {
+        "helpfulness": 3,
+        "groundedness": 3,
+        "tone": 3,
+        "goalAchieved": true,
+        "criteriaMet": [
+          true,
+          true,
+          true
+        ],
+        "reasoning": "The assistant recommended a concrete recipe from its collection (Teriyaki Chicken) and clearly explained how to adapt it for chicken breasts, meeting criterion 1. The steps were broken down simply, with extra reassurance and detailed explanations on how to tell when the chicken is done, including visual and touch cues, which addresses criterion 2. The assistant answered all user questions about marinade scaling, doneness cues, and provided further offers for tailored help, fulfilling criterion 3. The tone was friendly, encouraging, and adapted to the user's nervousness throughout."
+      },
+      "satisfaction": 5,
+      "replies": [
+        {
+          "model": "gpt-5",
+          "firstTokenMs": 32711,
+          "totalMs": 38125,
+          "searchMs": 7965,
+          "rerankMs": 6777,
+          "inputTokens": 21772,
+          "outputTokens": 2625,
+          "embeddingTokens": 17
+        },
+        {
+          "model": "gpt-5",
+          "firstTokenMs": 39421,
+          "totalMs": 45661,
+          "searchMs": 2946,
+          "rerankMs": 2603,
+          "inputTokens": 6298,
+          "outputTokens": 2934,
+          "embeddingTokens": 10
+        }
+      ]
+    },
+    {
+      "id": "impatient-parent",
+      "verdict": {
+        "helpfulness": 3,
+        "groundedness": 3,
+        "tone": 3,
+        "goalAchieved": true,
+        "criteriaMet": [
+          true,
+          true,
+          true
+        ],
+        "reasoning": "The assistant provided a concrete vegetarian dinner idea (Black Bean Enchiladas) directly from the retrieved collection, meeting criterion 1. The recipe is stated to take about 15 minutes, satisfying criterion 2. The assistant also listed the key steps clearly and concisely, without requiring further user prompts, fulfilling criterion 3. The tone is brief and direct, matching the user's blunt, no-fluff style. All criteria are met, so the goal is achieved."
+      },
+      "satisfaction": 4,
+      "replies": [
+        {
+          "model": "gpt-5",
+          "firstTokenMs": 16413,
+          "totalMs": 18665,
+          "searchMs": 3258,
+          "rerankMs": 2832,
+          "inputTokens": 4359,
+          "outputTokens": 1169,
+          "embeddingTokens": 7
+        }
+      ]
+    },
+    {
+      "id": "disappointed-expert",
+      "verdict": {
+        "helpfulness": 3,
+        "groundedness": 3,
+        "tone": 3,
+        "goalAchieved": true,
+        "criteriaMet": [
+          true,
+          true,
+          true
+        ],
+        "reasoning": "The assistant clearly stated that carbonara is not in the collection in both the first and second turns, directly addressing the user's request (criterion 1). It offered Dad's Spaghetti Sauce as an initial alternative and then, after user feedback, suggested Homemade Pasta and explained how it could be adapted to Roman classics, fulfilling criterion 2. All follow-up questions were answered thoroughly, including detailed technique and timing for carbonara, and the assistant clarified that using dried spaghetti is authentic, meeting criterion 3. The tone was respectful, detailed, and adapted to the user's expertise and preferences throughout."
+      },
+      "satisfaction": 4,
+      "replies": [
+        {
+          "model": "gpt-5",
+          "firstTokenMs": 29476,
+          "totalMs": 32502,
+          "searchMs": 9055,
+          "rerankMs": 8128,
+          "inputTokens": 18331,
+          "outputTokens": 2443,
+          "embeddingTokens": 42
+        },
+        {
+          "model": "gpt-5",
+          "firstTokenMs": 43093,
+          "totalMs": 47754,
+          "searchMs": 9637,
+          "rerankMs": 8076,
+          "inputTokens": 30866,
+          "outputTokens": 4047,
+          "embeddingTokens": 89
+        },
+        {
+          "model": "gpt-5",
+          "firstTokenMs": 28188,
+          "totalMs": 34704,
+          "searchMs": 7515,
+          "rerankMs": 6533,
+          "inputTokens": 26755,
+          "outputTokens": 2898,
+          "embeddingTokens": 47
+        }
+      ]
+    },
+    {
+      "id": "meal-planner",
+      "verdict": {
+        "helpfulness": 3,
+        "groundedness": 3,
+        "tone": 3,
+        "goalAchieved": true,
+        "criteriaMet": [
+          true,
+          true,
+          true
+        ],
+        "reasoning": "The assistant proposes three dinners, each from a different cuisine (Aloo Matar for Indian, Beef Tacos for Mexican, Phat Phrik Khing for Thai), all from the retrieved collection. It provides rough preparation times or difficulty for each (Aloo Matar: 45 min/medium, Beef Tacos: 15 min/easy, Phat Phrik Khing: medium/quick as a stir-fry). No recipes are invented, and the tone is friendly, structured, and matches the user's organized style. All success criteria are met."
+      },
+      "satisfaction": 4,
+      "replies": [
+        {
+          "model": "gpt-5",
+          "firstTokenMs": 27507,
+          "totalMs": 30300,
+          "searchMs": 9327,
+          "rerankMs": 8172,
+          "inputTokens": 19398,
+          "outputTokens": 2278,
+          "embeddingTokens": 34
+        }
+      ]
+    },
+    {
+      "id": "peanut-allergy",
+      "verdict": {
+        "helpfulness": 3,
+        "groundedness": 3,
+        "tone": 3,
+        "goalAchieved": true,
+        "criteriaMet": [
+          true,
+          true,
+          true
+        ],
+        "reasoning": "The assistant suggests Pad See Ew, a Thai noodle dish from the collection, and clearly states that it contains no peanuts or peanut oil. It also provides detailed allergy safety notes, including label-checking and cross-contact advice. For Pad Thai, it points out the peanut ingredient and gives both omission and substitution advice, clearly labelling the substitution as general advice. The assistant never claims a dish is peanut-free when it contains peanuts, and the tone is friendly, cautious, and supportive, matching the user's concerns."
+      },
+      "satisfaction": 4,
+      "replies": [
+        {
+          "model": "gpt-5",
+          "firstTokenMs": 17812,
+          "totalMs": 21993,
+          "searchMs": 2780,
+          "rerankMs": 2429,
+          "inputTokens": 5024,
+          "outputTokens": 2319,
+          "embeddingTokens": 3
+        }
+      ]
+    },
+    {
+      "id": "remember-vegetarian",
+      "verdict": {
+        "helpfulness": 3,
+        "groundedness": 3,
+        "tone": 3,
+        "goalAchieved": true,
+        "criteriaMet": [
+          true,
+          true,
+          true
+        ],
+        "reasoning": "The assistant confirms saving the vegetarian preference in the first response, fulfilling criterion 1. In the dinner suggestion, all recipes offered are vegetarian and come from the retrieved collection, meeting criterion 2. The user does not have to repeat their dietary preference, satisfying criterion 3. The tone is friendly and casual, matching the user's style, and the suggestions are actionable and relevant."
+      },
+      "satisfaction": 5,
+      "replies": [
+        {
+          "model": "gpt-5",
+          "firstTokenMs": 5741,
+          "totalMs": 6936,
+          "searchMs": 0,
+          "rerankMs": 0,
+          "inputTokens": 2791,
+          "outputTokens": 680,
+          "embeddingTokens": 0
+        },
+        {
+          "model": "gpt-5",
+          "firstTokenMs": 39841,
+          "totalMs": 41788,
+          "searchMs": 18458,
+          "rerankMs": 16444,
+          "inputTokens": 48392,
+          "outputTokens": 2165,
+          "embeddingTokens": 35
+        }
+      ]
+    },
+    {
+      "id": "uploaded-recipe",
+      "verdict": {
+        "helpfulness": 3,
+        "groundedness": 3,
+        "tone": 3,
+        "goalAchieved": true,
+        "criteriaMet": [
+          true,
+          true,
+          true
+        ],
+        "reasoning": "The assistant directly retrieved and presented the full list of ingredients, steps, and boiling time from the 'Grandma's Plum Dumplings' recipe, as requested. There is no evidence of mixing in details from other recipes, and the response is friendly and encouraging, matching the user's enthusiasm. All success criteria are clearly met, and the user is fully equipped to make the dish."
+      },
+      "satisfaction": 5,
+      "replies": [
+        {
+          "model": "gpt-5",
+          "firstTokenMs": 11655,
+          "totalMs": 13640,
+          "searchMs": 3258,
+          "rerankMs": 2748,
+          "inputTokens": 4314,
+          "outputTokens": 1177,
+          "embeddingTokens": 10
+        }
+      ]
+    },
+    {
+      "id": "missing-tahini",
+      "verdict": {
+        "helpfulness": 3,
+        "groundedness": 3,
+        "tone": 3,
+        "goalAchieved": true,
+        "criteriaMet": [
+          true,
+          true,
+          true
+        ],
+        "reasoning": "The assistant directly references the Hummus recipe from the collection, clearly labels all substitution advice as general cooking practice, and explains in detail how each substitute will affect taste and texture. The tone is practical and supportive, matching the user's situation. All success criteria are fully met: the recipe is used, substitutions are clearly marked as general advice, and the differences in result are explained for each option."
+      },
+      "satisfaction": 4,
+      "replies": [
+        {
+          "model": "gpt-5",
+          "firstTokenMs": 21914,
+          "totalMs": 28253,
+          "searchMs": 2548,
+          "rerankMs": 2058,
+          "inputTokens": 4921,
+          "outputTokens": 2856,
+          "embeddingTokens": 5
+        }
+      ]
+    },
+    {
+      "id": "technique-troubleshoot",
+      "verdict": {
+        "helpfulness": 3,
+        "groundedness": 3,
+        "tone": 3,
+        "goalAchieved": true,
+        "criteriaMet": [
+          true,
+          true,
+          true
+        ],
+        "reasoning": "The assistant directly references the Chicken Schnitzel recipe from the collection, citing specific steps and details (e.g., oil temperature at 375°F from Step 6, brining and drying from Steps 2–5, dredging order from Step 7, and resting on a rack from Step 8). It provides concrete causes for greasy schnitzel and breading issues, all grounded in the recipe, and offers actionable fixes. The assistant also answers the user's follow-up question about oil temperature and invites further details for more tailored help. The tone is empathetic and supportive, matching the user's frustration and intermediate skill level."
+      },
+      "satisfaction": 4,
+      "replies": [
+        {
+          "model": "gpt-5",
+          "firstTokenMs": 20773,
+          "totalMs": 26405,
+          "searchMs": 2412,
+          "rerankMs": 1942,
+          "inputTokens": 5001,
+          "outputTokens": 2646,
+          "embeddingTokens": 11
+        }
+      ]
+    },
+    {
+      "id": "party-scaling",
+      "verdict": {
+        "helpfulness": 3,
+        "groundedness": 3,
+        "tone": 3,
+        "goalAchieved": true,
+        "criteriaMet": [
+          true,
+          true,
+          true
+        ],
+        "reasoning": "The assistant explicitly states it used the Channa Masala recipe from the collection, meeting criterion 1. It clearly explains the scaling factor (2x) and how it was applied, fulfilling criterion 2. All ingredient quantities are doubled from the original, and step-specific adjustments are arithmetically consistent, satisfying criterion 3. The tone is friendly, organized, and reassuring, matching the user's persona and needs. All success criteria are met, so the goal is achieved."
+      },
+      "satisfaction": 5,
+      "replies": [
+        {
+          "model": "gpt-5",
+          "firstTokenMs": 26898,
+          "totalMs": 30819,
+          "searchMs": 3624,
+          "rerankMs": 3053,
+          "inputTokens": 4701,
+          "outputTokens": 3259,
+          "embeddingTokens": 12
+        }
+      ]
+    },
+    {
+      "id": "off-topic-drift",
+      "verdict": {
+        "helpfulness": 3,
+        "groundedness": 3,
+        "tone": 3,
+        "goalAchieved": true,
+        "criteriaMet": [
+          true,
+          true,
+          true
+        ],
+        "reasoning": "The assistant provided two quick dip ideas (Lemon Tahini Dressing and Cucumber Raita) with full ingredient lists and instructions, both directly from the retrieved recipes, fully meeting the first criterion. For the off-topic email request, it politely declined and redirected the user back to cooking, fulfilling the second criterion. The tone remained friendly, conversational, and engaging throughout, matching the user's chatty style and offering further help with snack ideas, thus meeting the third criterion. All success criteria were met, so the overall goal was achieved."
+      },
+      "satisfaction": 4,
+      "replies": [
+        {
+          "model": "gpt-5",
+          "firstTokenMs": 28719,
+          "totalMs": 31456,
+          "searchMs": 8341,
+          "rerankMs": 7222,
+          "inputTokens": 17147,
+          "outputTokens": 2552,
+          "embeddingTokens": 25
+        }
+      ]
+    },
+    {
+      "id": "vague-spicy",
+      "verdict": {
+        "helpfulness": 3,
+        "groundedness": 3,
+        "tone": 3,
+        "goalAchieved": true,
+        "criteriaMet": [
+          true,
+          true,
+          true
+        ],
+        "reasoning": "The assistant immediately offers three spicy dishes from the collection, all of which can be made in about an hour, directly addressing the user's initial request (criterion 1). The user narrows down to Sichuan Three-Pepper Tofu, and the assistant provides a detailed, grounded recipe with specific ingredient quantities and clear, actionable steps, all sourced from the collection (criterion 2). The assistant also confirms and details the total time required, showing it fits well within the user's one-hour window (criterion 3). The tone is friendly, encouraging, and responsive to the user's adventurous but cautious approach to spice. All criteria are fully met, and the user ends with a concrete, suitable dish."
+      },
+      "satisfaction": 5,
+      "replies": [
+        {
+          "model": "gpt-5",
+          "firstTokenMs": 30038,
+          "totalMs": 32403,
+          "searchMs": 9121,
+          "rerankMs": 7845,
+          "inputTokens": 19221,
+          "outputTokens": 2374,
+          "embeddingTokens": 39
+        },
+        {
+          "model": "gpt-5",
+          "firstTokenMs": 18761,
+          "totalMs": 22801,
+          "searchMs": 3252,
+          "rerankMs": 2950,
+          "inputTokens": 5320,
+          "outputTokens": 1894,
+          "embeddingTokens": 25
+        },
+        {
+          "model": "gpt-5",
+          "firstTokenMs": 18959,
+          "totalMs": 24916,
+          "searchMs": 2866,
+          "rerankMs": 2487,
+          "inputTokens": 6300,
+          "outputTokens": 2321,
+          "embeddingTokens": 14
+        }
+      ]
+    }
+  ]
+}

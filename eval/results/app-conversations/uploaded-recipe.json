@@ -1,0 +1,91 @@
+{
+  "scenario": {
+    "id": "uploaded-recipe",
+    "title": "Saját recept feltöltése és kérdezés róla",
+    "persona": "A home cook who has just uploaded their grandmother's recipe to the knowledge base and wants to cook it this weekend.",
+    "goal": "Get the ingredients, the steps and the cooking time of \"Grandma's Plum Dumplings\", the recipe they just uploaded.",
+    "successCriteria": [
+      "The assistant finds the uploaded Grandma's Plum Dumplings recipe",
+      "It gives the correct ingredients and steps from that recipe, including the boiling time",
+      "It does not mix in details from other recipes"
+    ],
+    "patience": [
+      3,
+      4
+    ],
+    "expertise": [
+      0.3,
+      0.6
+    ],
+    "verbosity": [
+      0.3,
+      0.6
+    ],
+    "frustrationTolerance": [
+      0.5,
+      0.8
+    ],
+    "upload": {
+      "fileName": "grandmas-plum-dumplings-eval.md",
+      "content": "# Grandma's Plum Dumplings\n\n## info\n* About 1.5 hours\n* 4 servings\n\n## ingredients\n* 1 kg floury potatoes\n* 250 g flour\n* 1 egg\n* 1 tbsp butter\n* 16 small plums, pitted\n* 16 sugar cubes\n* 100 g breadcrumbs, toasted in 50 g butter\n* 2 tbsp cinnamon sugar\n\n## steps\n1. Boil the potatoes in their skins until soft, peel and mash them while warm, then let them cool\n2. Knead the potatoes with the flour, egg, butter and a pinch of salt into a soft dough\n3. Put a sugar cube into each plum\n4. Wrap each plum in a palm-sized piece of dough and seal it well\n5. Cook the dumplings in gently boiling salted water for 8-10 minutes, until they float\n6. Roll them in the buttered breadcrumbs and sprinkle with cinnamon sugar\n"
+    }
+  },
+  "user": {
+    "patience": 4,
+    "expertise": 0.43,
+    "verbosity": 0.5,
+    "frustrationTolerance": 0.56
+  },
+  "maxTurns": 4,
+  "messages": [
+    {
+      "role": "user",
+      "content": "Hi! I just uploaded my grandmother's recipe for Grandma's Plum Dumplings to the system. Could you please help me by providing the full list of ingredients, the cooking steps, and how long they need to boil? I want to make them this weekend and want to make sure I've got everything right. Thanks!"
+    },
+    {
+      "role": "assistant",
+      "content": "So glad you uploaded your grandmother’s recipe—here are the exact ingredients and steps from “Grandma’s Plum Dumplings,” plus the boil time.\n\nIngredients\n- 1 kg floury potatoes\n- 250 g flour\n- 1 egg\n- 1 tbsp butter\n- 16 small plums, pitted\n- 16 sugar cubes\n- 100 g breadcrumbs, toasted in 50 g butter\n- 2 tbsp cinnamon sugar\n\nSteps\n1. Boil the potatoes in their skins until soft, peel and mash them while warm, then let them cool\n2. Knead the potatoes with the flour, egg, butter and a pinch of salt into a soft dough\n3. Put a sugar cube into each plum\n4. Wrap each plum in a palm-sized piece of dough and seal it well\n5. Cook the dumplings in gently boiling salted water for 8-10 minutes, until they float\n6. Roll them in the buttered breadcrumbs and sprinkle with cinnamon sugar\n\nBoil time: 8–10 minutes in gently boiling salted water, until they float. Enjoy making them this weekend!"
+    }
+  ],
+  "replies": [
+    {
+      "model": "gpt-5",
+      "firstTokenMs": 11655,
+      "totalMs": 13640,
+      "searchMs": 3258,
+      "rerankMs": 2748,
+      "inputTokens": 4314,
+      "outputTokens": 1177,
+      "embeddingTokens": 10
+    }
+  ],
+  "retrieved": [
+    [
+      "Grandma's Plum Dumplings",
+      "Dad's Spaghetti Sauce",
+      "Austro-Hungarian Cream of Horseradish Soup",
+      "Yum Som-O"
+    ]
+  ],
+  "userTurns": [
+    {
+      "satisfaction": 5,
+      "goalAchieved": true,
+      "continue": false,
+      "message": "",
+      "reason": "The assistant provided the full ingredients, steps, and boil time exactly as requested from the uploaded recipe."
+    }
+  ],
+  "verdict": {
+    "helpfulness": 3,
+    "groundedness": 3,
+    "tone": 3,
+    "goalAchieved": true,
+    "criteriaMet": [
+      true,
+      true,
+      true
+    ],
+    "reasoning": "The assistant directly retrieved and presented the full list of ingredients, steps, and boiling time from the 'Grandma's Plum Dumplings' recipe, as requested. There is no evidence of mixing in details from other recipes, and the response is friendly and encouraging, matching the user's enthusiasm. All success criteria are clearly met, and the user is fully equipped to make the dish."
+  }
+}

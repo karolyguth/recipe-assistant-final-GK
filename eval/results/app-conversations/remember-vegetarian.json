@@ -1,0 +1,124 @@
+{
+  "scenario": {
+    "id": "remember-vegetarian",
+    "title": "Mentett preferencia (memória)",
+    "persona": "A vegetarian who uses the assistant regularly and does not want to repeat themselves. Casual and friendly.",
+    "goal": "First ask the assistant to remember that they are vegetarian, then ask for dinner ideas for tonight without mentioning it again.",
+    "successCriteria": [
+      "The assistant confirms that it saved the preference",
+      "The later dinner ideas are all vegetarian recipes from the collection",
+      "The user does not have to repeat that they are vegetarian"
+    ],
+    "patience": [
+      3,
+      4
+    ],
+    "expertise": [
+      0.3,
+      0.6
+    ],
+    "verbosity": [
+      0.3,
+      0.6
+    ],
+    "frustrationTolerance": [
+      0.5,
+      0.8
+    ]
+  },
+  "user": {
+    "patience": 3,
+    "expertise": 0.46,
+    "verbosity": 0.56,
+    "frustrationTolerance": 0.71
+  },
+  "maxTurns": 3,
+  "messages": [
+    {
+      "role": "user",
+      "content": "Hey! Just a heads up, I'm vegetarian, so please keep that in mind when suggesting recipes. Thanks!"
+    },
+    {
+      "role": "assistant",
+      "content": "Thanks for the heads up—I’ll keep all suggestions vegetarian from now on.\n\nDo you eat dairy and eggs (lacto-ovo), or prefer vegan? Any ingredients you dislike or want to avoid? Tell me what you’re craving (quick weeknight, high-protein, comfort food, a specific cuisine), and I’ll pull some great options."
+    },
+    {
+      "role": "user",
+      "content": "I do eat dairy and eggs, so lacto-ovo is perfect. No dislikes or allergies. Tonight, I'm just looking for something quick and comforting. What do you suggest?"
+    },
+    {
+      "role": "assistant",
+      "content": "Lacto-ovo and craving quick comfort tonight? Here are two fast, cozy options from my recipe stash:\n\n- Black Bean Enchiladas — about 15 minutes. Silky blended black beans over dipped tortillas, topped with tomatillo salsa, queso fresco, cilantro, and sliced onion (pickled is extra nice).\n- Vegetarian Chicken Salad — 10 minutes. Chickpeas + finely chopped seitan with dill, celery, scallions, mayo, and lemon/vinegar. Great piled on rye or tucked in a wrap.\n\nWant me to drop the full recipe for one of these now? If you don’t have seitan on hand, you can double the chickpeas for the salad (general kitchen swap)."
+    }
+  ],
+  "replies": [
+    {
+      "model": "gpt-5",
+      "firstTokenMs": 5741,
+      "totalMs": 6936,
+      "searchMs": 0,
+      "rerankMs": 0,
+      "inputTokens": 2791,
+      "outputTokens": 680,
+      "embeddingTokens": 0
+    },
+    {
+      "model": "gpt-5",
+      "firstTokenMs": 39841,
+      "totalMs": 41788,
+      "searchMs": 18458,
+      "rerankMs": 16444,
+      "inputTokens": 48392,
+      "outputTokens": 2165,
+      "embeddingTokens": 35
+    }
+  ],
+  "retrieved": [
+    [],
+    [
+      "Vegetarian Chicken Salad",
+      "Black Bean Enchiladas",
+      "Sesame Tofu",
+      "Channa Masala",
+      "Vegetarian Pho",
+      "Egg Biryani",
+      "Potato and Green Chili Hash",
+      "Mac and Cheese",
+      "QUESO DIP",
+      "Garlic Bread",
+      "Phat Phrik Khing",
+      "Aloo Matar",
+      "Massaman Curry",
+      "Pad Thai",
+      "Pad See Ew"
+    ]
+  ],
+  "userTurns": [
+    {
+      "satisfaction": 4,
+      "goalAchieved": false,
+      "continue": true,
+      "message": "I do eat dairy and eggs, so lacto-ovo is perfect. No dislikes or allergies. Tonight, I'm just looking for something quick and comforting. What do you suggest?",
+      "reason": "I want to see what vegetarian options the assistant suggests for dinner tonight, given my preferences."
+    },
+    {
+      "satisfaction": 5,
+      "goalAchieved": true,
+      "continue": false,
+      "message": "Thanks, the options sound great! I’m good for now, appreciate you keeping it vegetarian and lacto-ovo friendly.",
+      "reason": "The assistant confirmed remembering my vegetarian preference and provided suitable dinner ideas without me repeating it."
+    }
+  ],
+  "verdict": {
+    "helpfulness": 3,
+    "groundedness": 3,
+    "tone": 3,
+    "goalAchieved": true,
+    "criteriaMet": [
+      true,
+      true,
+      true
+    ],
+    "reasoning": "The assistant confirms saving the vegetarian preference in the first response, fulfilling criterion 1. In the dinner suggestion, all recipes offered are vegetarian and come from the retrieved collection, meeting criterion 2. The user does not have to repeat their dietary preference, satisfying criterion 3. The tone is friendly and casual, matching the user's style, and the suggestions are actionable and relevant."
+  }
+}

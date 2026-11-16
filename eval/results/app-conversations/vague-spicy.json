@@ -1,0 +1,154 @@
+{
+  "scenario": {
+    "id": "vague-spicy",
+    "title": "Homályos kérés, szűkítés",
+    "persona": "An adventurous eater who only knows they want \"something spicy\" and refines their wish during the conversation.",
+    "goal": "Narrow \"something spicy\" down to one concrete spicy dish from the collection that they can make in about an hour.",
+    "successCriteria": [
+      "The assistant offers spicy dishes from the collection or asks a useful narrowing question",
+      "The conversation ends with one concrete dish from the collection",
+      "The dish fits the time the user mentions"
+    ],
+    "patience": [
+      3,
+      5
+    ],
+    "expertise": [
+      0.4,
+      0.8
+    ],
+    "verbosity": [
+      0.3,
+      0.6
+    ],
+    "frustrationTolerance": [
+      0.5,
+      0.8
+    ]
+  },
+  "user": {
+    "patience": 4,
+    "expertise": 0.45,
+    "verbosity": 0.46,
+    "frustrationTolerance": 0.68
+  },
+  "maxTurns": 4,
+  "messages": [
+    {
+      "role": "user",
+      "content": "Hey there! I'm in the mood for something spicy to cook, but I'm not sure what yet. Could you help me find a spicy dish I can make in about an hour?"
+    },
+    {
+      "role": "assistant",
+      "content": "Spicy and about an hour? Here are three solid options from my recipe box:\n\n- Sichuan Three-Pepper Tofu — super punchy heat with dried chilies and numbing Sichuan peppercorns; fast wok stir-fry, great over rice. Recipe: “Sichuan Three-Pepper Tofu.”\n- Phat Phrik Khing — Thai dry-curry stir-fry with red curry paste, tofu, and green beans; bright, spicy, and done well within an hour. Recipe: “Phat Phrik Khing.”\n- Gobi Manchurian (Dry) — crispy fried cauliflower tossed in a spicy Indo‑Chinese sauce; about 40 minutes. Recipe: “Gobi Manchurian (Dry).”\n\nHeat control tip from general cooking practice: add or reduce dried chilies/curry paste to dial it in; you can also swap tofu for chicken or shrimp in the stir-fries if you like.\n\nWhich one sounds good? I can drop the full recipe and walk you through it so it fits your hour."
+    },
+    {
+      "role": "user",
+      "content": "I like the sound of Sichuan Three-Pepper Tofu, but I'm curious—how spicy is it really? I don't want to be overwhelmed, but I do want a good kick. Also, is it easy enough for someone who's moderately experienced in cooking?"
+    },
+    {
+      "role": "assistant",
+      "content": "Sichuan Three-Pepper Tofu: the baseline heat is medium–hot with a clear numbing tingle. The recipe uses 4 long hot green peppers (de-seeded), 3–5 dried red chilies, 1 tbsp Sichuan peppercorns, and 1 tsp spicy bean paste, so you’ll feel both chili heat and that classic Sichuan ma.\n\nHow to dial it to “good kick, not overwhelming” (general cooking practice, not part of the written recipe):\n- Dried chilies: use 1–2 instead of 3–5; keep them whole and shake out seeds for milder heat.\n- Sichuan peppercorns: drop to 1–2 tsp (instead of 1 tbsp), or toast them, then scoop out half before you add the sauce.\n- Long hot green peppers: use 2–3 instead of 4, and remove seeds/membranes well; or swap some for a milder green pepper (Anaheim/poblano).\n- Spicy bean paste: 1 tsp is modest; for gentler heat use 1/2 tsp.\n\nIs it easy enough? The recipe is marked “medium,” and for a moderately experienced cook it’s very doable. The main moves:\n- Press and crisp tofu first so it holds up.\n- Blister the green peppers hot for 3–5 minutes so they stay a bit snappy.\n- Toast dried chilies, Sichuan peppercorns, and garlic gently on low about 2 minutes—fragrant, not browned.\n- Have the sauce pre-mixed so once everything goes back in, you can toss and serve fast.\n\nWant me to give you the full recipe tailored to, say, “medium heat with a good kick”?"
+    },
+    {
+      "role": "user",
+      "content": "Yeah, that sounds pretty doable and exactly the kind of spice level I'm after. Could you send the full recipe with those medium heat adjustments? Also, how long does it take from start to finish? I want to be sure it'll fit my one-hour window."
+    },
+    {
+      "role": "assistant",
+      "content": "Sichuan Three-Pepper Tofu — punchy and numbing without blowing your head off; follow the tweaks below for a solid medium heat and it fits easily inside an hour.\n\nIngredients (from the recipe “Sichuan Three-Pepper Tofu”)\n- Block of firm tofu, pressed and cut into small cubes\n- 2.5 tbsp oil\n- 4 long hot green peppers, de-seeded and cut into 1/2\" sections\n- 3–5 dried red chili peppers, whole or cut into thirds (if you like spicy)\n- 1 tbsp Sichuan peppercorns\n- 2 tbsp garlic, chopped\nFor the sauce:\n- 2 tsp soy sauce\n- 1/4 tsp ground white pepper\n- 1 tbsp Shaoxing wine\n- 1/2 tsp sesame oil\n- 1 tsp cornstarch\n- 1 tsp spicy bean paste (Chengdu Jiuanfei Pixain broad bean paste with chili oil, or Lee Kum Kee Chili Bean Sauce)\n\nSteps\n1) Combine sauce ingredients in a bowl; stir well to combine.\n2) Heat 1 tbsp oil in a wok and cook tofu until crisp on all sides; remove.\n3) Heat 1 tbsp oil in the wok over high heat; add long hot green peppers and cook 3–5 minutes, until blistered but still a little crisp.\n4) Add a pinch of salt and remove.\n5) Add remaining oil over low heat; add dried chilies, Sichuan peppercorns, and garlic.\n6) Cook, stirring constantly, for about 2 minutes until fragrant and toasted.\n7) Return heat to high and add tofu, peppers, and sauce.\n8) Cook until coated and hot; serve with rice.\n\nMedium heat adjustments (optional; general cooking practice, not part of the written recipe)\n- Dried chilies: use 1–2, keep them whole, and shake out seeds.\n- Sichuan peppercorns: use 1–2 tsp instead of 1 tbsp; toast whole, and if it still feels strong, scoop a few out before saucing.\n- Long hot green peppers: use 2–3 and deseed thoroughly; swap one for a milder green pepper (e.g., Anaheim) if you want a touch gentler.\n- Spicy bean paste: keep at 1 tsp for a good kick; for slightly milder, use 1/2 tsp.\n\nTotal time (so you can plan)\n- Press tofu: 15–20 minutes (do this first; you can mix the sauce and prep veg during this).\n- Prep and sauce mixing: 5–10 minutes.\n- Cook: tofu 6–8 minutes, peppers 3–5 minutes, aromatics 2 minutes, final toss 2–3 minutes.\nFrom first knife cut to plate: about 30–40 minutes; even counting a 15–20 minute press, you’re comfortably under 1 hour.\n\nWant me to scale this for 2 or 4 servings or suggest a veg side that matches the heat?"
+    }
+  ],
+  "replies": [
+    {
+      "model": "gpt-5",
+      "firstTokenMs": 30038,
+      "totalMs": 32403,
+      "searchMs": 9121,
+      "rerankMs": 7845,
+      "inputTokens": 19221,
+      "outputTokens": 2374,
+      "embeddingTokens": 39
+    },
+    {
+      "model": "gpt-5",
+      "firstTokenMs": 18761,
+      "totalMs": 22801,
+      "searchMs": 3252,
+      "rerankMs": 2950,
+      "inputTokens": 5320,
+      "outputTokens": 1894,
+      "embeddingTokens": 25
+    },
+    {
+      "model": "gpt-5",
+      "firstTokenMs": 18959,
+      "totalMs": 24916,
+      "searchMs": 2866,
+      "rerankMs": 2487,
+      "inputTokens": 6300,
+      "outputTokens": 2321,
+      "embeddingTokens": 14
+    }
+  ],
+  "retrieved": [
+    [
+      "Halal Cart Red Sauce",
+      "Sichuan Three-Pepper Tofu",
+      "Gobi Manchurian (Dry)",
+      "Aloo Matar",
+      "Massaman Curry",
+      "Phat Phrik Khing",
+      "Biryani Shorba",
+      "Harissa Hot Sauce",
+      "Zhug"
+    ],
+    [
+      "Sichuan Three-Pepper Tofu",
+      "Sichuan Dry-Fried Green Beans",
+      "Sesame Tofu",
+      "Phat Phrik Khing"
+    ],
+    [
+      "Sichuan Three-Pepper Tofu",
+      "Sesame Tofu",
+      "Sichuan Dry-Fried Green Beans",
+      "Phat Phrik Khing"
+    ]
+  ],
+  "userTurns": [
+    {
+      "satisfaction": 4,
+      "goalAchieved": false,
+      "continue": true,
+      "message": "I like the sound of Sichuan Three-Pepper Tofu, but I'm curious—how spicy is it really? I don't want to be overwhelmed, but I do want a good kick. Also, is it easy enough for someone who's moderately experienced in cooking?",
+      "reason": "I want to narrow down the dish by understanding the spice level and difficulty to make sure it fits my preferences and skills."
+    },
+    {
+      "satisfaction": 4,
+      "goalAchieved": false,
+      "continue": true,
+      "message": "Yeah, that sounds pretty doable and exactly the kind of spice level I'm after. Could you send the full recipe with those medium heat adjustments? Also, how long does it take from start to finish? I want to be sure it'll fit my one-hour window.",
+      "reason": "I want the full recipe with adjusted spice and to confirm the total cooking time fits my schedule."
+    },
+    {
+      "satisfaction": 5,
+      "goalAchieved": true,
+      "continue": false,
+      "message": "Thanks for the detailed recipe and time breakdown! This sounds perfect for my skill level and schedule. I’ll give the Sichuan Three-Pepper Tofu a try with the medium heat adjustments. Appreciate all your help!",
+      "reason": "I have a concrete spicy dish that fits my hour and skill level, so my goal is met and I'm satisfied."
+    }
+  ],
+  "verdict": {
+    "helpfulness": 3,
+    "groundedness": 3,
+    "tone": 3,
+    "goalAchieved": true,
+    "criteriaMet": [
+      true,
+      true,
+      true
+    ],
+    "reasoning": "The assistant immediately offers three spicy dishes from the collection, all of which can be made in about an hour, directly addressing the user's initial request (criterion 1). The user narrows down to Sichuan Three-Pepper Tofu, and the assistant provides a detailed, grounded recipe with specific ingredient quantities and clear, actionable steps, all sourced from the collection (criterion 2). The assistant also confirms and details the total time required, showing it fits well within the user's one-hour window (criterion 3). The tone is friendly, encouraging, and responsive to the user's adventurous but cautious approach to spice. All criteria are fully met, and the user ends with a concrete, suitable dish."
+  }
+}

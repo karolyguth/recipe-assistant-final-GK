@@ -1,0 +1,87 @@
+{
+  "scenario": {
+    "id": "missing-tahini",
+    "title": "Hiányzó hozzávaló, helyettesítés",
+    "persona": "A practical cook halfway through shopping who just realised they cannot buy tahini today.",
+    "goal": "Make hummus from the collection without tahini, or find out what to use instead.",
+    "successCriteria": [
+      "The assistant uses the Hummus recipe from the collection",
+      "It suggests a substitute for tahini and clearly labels it as general advice, not part of the recipe",
+      "It explains how the result will differ"
+    ],
+    "patience": [
+      2,
+      4
+    ],
+    "expertise": [
+      0.4,
+      0.7
+    ],
+    "verbosity": [
+      0.3,
+      0.6
+    ],
+    "frustrationTolerance": [
+      0.4,
+      0.7
+    ]
+  },
+  "user": {
+    "patience": 3,
+    "expertise": 0.64,
+    "verbosity": 0.52,
+    "frustrationTolerance": 0.62
+  },
+  "maxTurns": 3,
+  "messages": [
+    {
+      "role": "user",
+      "content": "Hey, I was looking at making hummus from the recipes you have, but I just realized I can't get tahini today. Can you help me figure out how to make hummus without tahini, or suggest a good substitute? I'd like to know how it might change the taste or texture too. Thanks!"
+    },
+    {
+      "role": "assistant",
+      "content": "Good call to check before you start. The Hummus recipe in our collection (“Hummus”) builds a lemon–garlic tahini sauce, then whisks about 1.5 cups of that into the puréed chickpeas. If you don’t have a jar of tahini today, here are solid options and how they’ll affect taste/texture. I’ll reference that recipe, and the substitution notes below come from general cooking practice.\n\nClosest match: make your own sesame paste\n- How: Lightly toast sesame seeds (hulled if possible) until pale gold, cool, then blend with a neutral oil into a smooth, pourable paste. Use this paste 1:1 in the “Make the tahini” step. Whisk in cold water until it reaches the loose, ribboning stage, then proceed and whisk about 1.5 cups of the sauce into the hummus as written.\n- Taste/texture change: Very close to the original. Slightly toastier; can be a touch more bitter or a bit grainier if the seeds are very dark or not fully blitzed.\n\nNut/seed butter substitutes (quick and reliable)\n- How: Use smooth almond butter or cashew butter 1:1 in the “Make the tahini” step. Thin with cold water until it loosens and ribbons, then continue as written. Sunflower seed butter also works if you’re nut‑free. Peanut butter works technically, but will taste peanutty.\n- Taste/texture change:\n  - Almond or cashew: milder, a little sweeter; very creamy; less roasty/sesame aroma.\n  - Sunflower: slightly earthier, faint bitterness; a squeeze more lemon balances it.\n  - Peanut: distinctly peanut; tasty, but it won’t read classic.\n\nNo‑tahini hummus (if you have none of the above)\n- How: Skip the “Make the tahini” section. When you purée the hot chickpeas with their cooking liquid (as in the recipe), stream in good olive oil, extra lemon juice, a pinch of cumin, and a little cold water (or cooking liquid/aquafaba) until it’s silky and spreadable. Season to taste. A few drops of toasted sesame oil, if you have it, add a nice sesame note.\n- Taste/texture change: Lighter and more chickpea‑forward, less rich and nutty. It can be very smooth if you whip in enough liquid, but won’t have the same plush, emulsified creaminess.\n\nSmall tuning tips\n- Garlic/lemon: Without tahini’s bitterness and depth, a little extra lemon and a pinch more garlic/cumin help the balance.\n- Salt: Re‑taste at room temp; substitutes (especially nut butters) can mute salt perception slightly—add a pinch if needed.\n- Serving: A generous olive‑oil drizzle and a sprinkle of paprika or za’atar go a long way to round out flavor, especially in no‑tahini versions.\n\nIf you tell me what you have on hand (sesame seeds? almond butter? sunflower butter? toasted sesame oil?), I’ll map the exact step changes to your pantry so you can get it on the table fast."
+    }
+  ],
+  "replies": [
+    {
+      "model": "gpt-5",
+      "firstTokenMs": 21914,
+      "totalMs": 28253,
+      "searchMs": 2548,
+      "rerankMs": 2058,
+      "inputTokens": 4921,
+      "outputTokens": 2856,
+      "embeddingTokens": 5
+    }
+  ],
+  "retrieved": [
+    [
+      "Hummus",
+      "Lemon Tahini Dressing",
+      "Baba Ganoush",
+      "Channa Masala"
+    ]
+  ],
+  "userTurns": [
+    {
+      "satisfaction": 4,
+      "goalAchieved": true,
+      "continue": false,
+      "message": "Thanks, this is exactly what I needed! I actually have some almond butter and olive oil at home, so I'll try using almond butter as a substitute in the tahini step, adjusting lemon and garlic as you suggested. Appreciate the detailed explanation on how it will change the flavor and texture. This helps me feel confident to proceed without tahini today.",
+      "reason": "The assistant met all my criteria with a clear substitute suggestion and detailed explanation, so I'm satisfied and done."
+    }
+  ],
+  "verdict": {
+    "helpfulness": 3,
+    "groundedness": 3,
+    "tone": 3,
+    "goalAchieved": true,
+    "criteriaMet": [
+      true,
+      true,
+      true
+    ],
+    "reasoning": "The assistant directly references the Hummus recipe from the collection, clearly labels all substitution advice as general cooking practice, and explains in detail how each substitute will affect taste and texture. The tone is practical and supportive, matching the user's situation. All success criteria are fully met: the recipe is used, substitutions are clearly marked as general advice, and the differences in result are explained for each option."
+  }
+}

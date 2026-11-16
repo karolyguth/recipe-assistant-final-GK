@@ -1,0 +1,87 @@
+{
+  "scenario": {
+    "id": "party-scaling",
+    "title": "Vendégség, mennyiségek felszorzása",
+    "persona": "A host preparing for a party of eight. Organised, wants exact quantities.",
+    "goal": "Get the Channa Masala recipe scaled up for eight people.",
+    "successCriteria": [
+      "The assistant uses the Channa Masala recipe from the collection",
+      "It explains the scaling factor it uses and gives scaled ingredient quantities",
+      "The scaled quantities are arithmetically consistent with the original recipe"
+    ],
+    "patience": [
+      3,
+      4
+    ],
+    "expertise": [
+      0.4,
+      0.7
+    ],
+    "verbosity": [
+      0.4,
+      0.7
+    ],
+    "frustrationTolerance": [
+      0.5,
+      0.8
+    ]
+  },
+  "user": {
+    "patience": 4,
+    "expertise": 0.5,
+    "verbosity": 0.4,
+    "frustrationTolerance": 0.79
+  },
+  "maxTurns": 4,
+  "messages": [
+    {
+      "role": "user",
+      "content": "Hi! I have a Channa Masala recipe that serves 4, but I need to prepare it for 8 people. Could you help me by scaling the ingredient quantities accordingly and explain how you calculated the amounts? I want to make sure I get everything right for my party. Thanks!"
+    },
+    {
+      "role": "assistant",
+      "content": "Perfect for a party—let’s double your Channa Masala. I used the recipe titled “Channa Masala” from my collection and scaled every ingredient from 4 to 8 servings by a factor of 2.\n\nScaled ingredients for 8 servings (2x):\n- 8 cloves garlic, roughly chopped\n- 2\" knob ginger, peeled and chopped\n- 8–12 green chilies, chopped\n- 4 tbsp lemon juice, divided\n- 4 tbsp grapeseed oil, vegetable oil, or ghee\n- 4 tsp black mustard seed\n- 2 tsp cumin seed\n- 2 large onions, finely diced\n- 1/2 tsp baking soda\n- 4 tsp ground coriander\n- 1 tsp ground black pepper\n- 1 tsp turmeric\n- 3 tsp garam masala, divided\n- 28 oz can whole peeled tomatoes\n- 56 oz chickpeas, drained and rinsed (two 28 oz cans)\n- 2 cups cilantro, roughly chopped\n\nHow I calculated it\n- Scaling factor = desired servings / original servings = 8 / 4 = 2.\n- Multiplied each quantity by 2.\n- For a range (4–6 chilies), I doubled both ends to 8–12.\n- For “divided” ingredients, I doubled the total, keeping the same split in the steps.\n\nSmall step adjustments to match the scale:\n- Step 1 paste: use 2 tbsp of the lemon juice (instead of 1 tbsp) and 1 tsp kosher salt (the recipe calls for 1/2 tsp here, so double it).\n- Step 6: add 2 tsp garam masala at this stage (instead of 1 tsp).\n- Step 8: add about 1 cup water (instead of 1/2 cup).\n- Step 10: finish with the remaining 1 tsp garam masala and 2 tbsp lemon juice.\n\nGeneral practice: chilies vary, so start on the lower end of the 8–12 range and adjust heat at the end; simmer until the sauce is thick and glossy, not by the clock, and salt to taste. Enjoy the party!"
+    }
+  ],
+  "replies": [
+    {
+      "model": "gpt-5",
+      "firstTokenMs": 26898,
+      "totalMs": 30819,
+      "searchMs": 3624,
+      "rerankMs": 3053,
+      "inputTokens": 4701,
+      "outputTokens": 3259,
+      "embeddingTokens": 12
+    }
+  ],
+  "retrieved": [
+    [
+      "Channa Masala",
+      "Tarka Dal",
+      "Aloo Matar",
+      "Vegetarian Chicken Salad"
+    ]
+  ],
+  "userTurns": [
+    {
+      "satisfaction": 5,
+      "goalAchieved": true,
+      "continue": false,
+      "message": "",
+      "reason": "The assistant provided a clear, accurate scaling of the recipe from 4 to 8 servings, explained the scaling factor, and gave precise ingredient amounts."
+    }
+  ],
+  "verdict": {
+    "helpfulness": 3,
+    "groundedness": 3,
+    "tone": 3,
+    "goalAchieved": true,
+    "criteriaMet": [
+      true,
+      true,
+      true
+    ],
+    "reasoning": "The assistant explicitly states it used the Channa Masala recipe from the collection, meeting criterion 1. It clearly explains the scaling factor (2x) and how it was applied, fulfilling criterion 2. All ingredient quantities are doubled from the original, and step-specific adjustments are arithmetically consistent, satisfying criterion 3. The tone is friendly, organized, and reassuring, matching the user's persona and needs. All success criteria are met, so the goal is achieved."
+  }
+}
