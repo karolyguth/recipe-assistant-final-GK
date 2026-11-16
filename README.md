@@ -1,4 +1,4 @@
-# Receptasszisztens
+# Receptasszisztens – záró projekt
 
 RAG alapú chat asszisztens Jeff Thompson 85 receptjéhez (Next.js 14, Vercel AI SDK, OpenAI, Postgres + pgvector, Drizzle ORM).
 
@@ -14,15 +14,16 @@ git clone --depth 1 https://github.com/jeffThompson/Recipes.git data/recipes
 | Változó          | Kötelező | Leírás                                                        |
 | ---------------- | -------- | ------------------------------------------------------------- |
 | `OPENAI_API_KEY` | igen     | chat modell és embedding (`text-embedding-3-small`)           |
-| `DATABASE_URL`   | igen     | `postgres://postgres:postgres@localhost:5432/rag_starter`     |
+| `DATABASE_URL`   | igen     | `postgres://postgres:postgres@localhost:5433/rag_starter`     |
 | `CHAT_MODEL`     | nem      | alapértelmezés `gpt-5`; a `gpt-4o-mini` gyorsabb és olcsóbb   |
 | `WEB_PORT`       | nem      | a webkonténer portja Docker Compose-ban (alapértelmezés 3000) |
+| `DB_PORT`        | nem      | a Postgres portja a hoston (alapértelmezés 5433)              |
 
 **Teljes stack Dockerrel** (Postgres + webapp, a migrációk induláskor lefutnak):
 
 ```bash
 docker compose up -d --build
-pnpm install && pnpm db:seed    # receptek betöltése (a hostról, localhost:5432-re)
+pnpm install && pnpm db:seed    # receptek betöltése (a hostról, localhost:5433-re)
 ```
 
 **Fejlesztői mód:**
