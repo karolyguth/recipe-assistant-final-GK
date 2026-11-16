@@ -25,17 +25,19 @@ export const createGetInformation = (stats: SearchStats) => tool({
   description: `get information from your knowledge base to answer questions.
     Returns the most relevant entries with their title, source ("upload" = a recipe document,
     "chat" = a note the user asked you to remember), a vector similarity score and a rerank score
-    (0-1, how well the entry answers the question; the results are ordered by it).`,
+    (0-1, how well the entry answers the question, judged by a reranker model; the results are ordered by it).`,
   inputSchema: z.object({
     question: z.string().describe('the users question'),
   }),
   execute: async ({ question }) =>
     findRelevantContent(question, {
-      onStats: ({ embeddingTokens, searchMs, rerankMs }) => {
+      onStats: ({ embeddingTokens, searchMs, rerankMs, rerankInputTokens, rerankOutputTokens }) => {
         stats.searches += 1;
         stats.embeddingTokens += embeddingTokens;
         stats.searchMs += searchMs;
         stats.rerankMs += rerankMs;
+        stats.rerankInputTokens += rerankInputTokens;
+        stats.rerankOutputTokens += rerankOutputTokens;
       },
     }),
 });

@@ -26,6 +26,8 @@ export const chatMetrics = pgTable(
     outputTokens: integer("output_tokens").notNull().default(0),
     reasoningTokens: integer("reasoning_tokens").notNull().default(0),
     embeddingTokens: integer("embedding_tokens").notNull().default(0),
+    // A reranker LLM tokenjei (input + output)
+    rerankTokens: integer("rerank_tokens").notNull().default(0),
     costUsd: doublePrecision("cost_usd").notNull().default(0),
     // Időzítések ezredmásodpercben
     firstTokenMs: integer("first_token_ms"),

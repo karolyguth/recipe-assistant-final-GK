@@ -43,6 +43,13 @@
       "when": 1794854711668,
       "tag": "0005_classy_king_cobra",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1794856441507,
+      "tag": "0006_lying_forge",
+      "breakpoints": true
     }
   ]
 }

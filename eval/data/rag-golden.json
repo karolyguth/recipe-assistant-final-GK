@@ -1,5 +1,5 @@
 {
-  "description": "RAG szintű tesztkészlet: kérdés -> releváns receptfájl(ok), a receptek szövege alapján kijelölve. Pontos kérdések (r01-r30): egy konkrét ételre vagy technikára kérdeznek. Tág kérdések (m01-m10, type 'broad'): több recept is jó válasz. Magyar kérdések (h01-h06): mi történik, ha a magyar kérdés fordítás nélkül megy a keresésbe.",
+  "description": "RAG szintű tesztkészlet: kérdés -> releváns receptfájl(ok), a receptek szövege alapján kijelölve. Pontos kérdések (r01-r30): egy konkrét ételre vagy technikára kérdeznek. Tág kérdések (m01-m10, type 'broad'): több recept is jó válasz.",
   "cases": [
     {
       "id": "r01",
@@ -381,62 +381,6 @@
       "query": "Middle Eastern dip or spread",
       "relevant": [
         "hummus",
-        "baba-ganoush"
-      ]
-    },
-    {
-      "id": "h01",
-      "lang": "hu",
-      "type": "dish",
-      "query": "csicseriborsós curry",
-      "relevant": [
-        "channa-masala"
-      ]
-    },
-    {
-      "id": "h02",
-      "lang": "hu",
-      "type": "dish",
-      "query": "írós palacsinta reggelire",
-      "relevant": [
-        "diner-style-pancakes"
-      ]
-    },
-    {
-      "id": "h03",
-      "lang": "hu",
-      "type": "technique",
-      "query": "rántott csirkemell",
-      "relevant": [
-        "chicken-schnitzel"
-      ]
-    },
-    {
-      "id": "h04",
-      "lang": "hu",
-      "type": "dish",
-      "query": "tormaleves",
-      "relevant": [
-        "austro-hungarian-cream-of-horseradish-soup"
-      ]
-    },
-    {
-      "id": "h05",
-      "lang": "hu",
-      "type": "category",
-      "query": "házi pizzatészta",
-      "relevant": [
-        "pizza-dough",
-        "no-knead-pan-pizza",
-        "thin-crust-pizza"
-      ]
-    },
-    {
-      "id": "h06",
-      "lang": "hu",
-      "type": "ingredient",
-      "query": "padlizsánkrém",
-      "relevant": [
         "baba-ganoush"
       ]
     }

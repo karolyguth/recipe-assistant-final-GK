@@ -57,7 +57,8 @@ export const embeddings = pgTable("embeddings", {
     .notNull()
     .references(() => resources.id, { onDelete: "cascade" }),
   content: text("content").notNull(),
-  embedding: vector("embedding", { dimensions: 1536 }).notNull(),
+  // text-embedding-3-large
+  embedding: vector("embedding", { dimensions: 3072 }).notNull(),
 });
 
 export const insertResourceSchema = createSelectSchema(resources).pick({

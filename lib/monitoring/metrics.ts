@@ -13,5 +13,19 @@ export async function recordChatMetric(metric: ChatMetric) {
 }
 
 // Egy kérés keresési statisztikái: a getInformation tool gyűjti hívásonként
-export type SearchStats = { searches: number; embeddingTokens: number; searchMs: number; rerankMs: number };
-export const emptySearchStats = (): SearchStats => ({ searches: 0, embeddingTokens: 0, searchMs: 0, rerankMs: 0 });
+export type SearchStats = {
+  searches: number;
+  embeddingTokens: number;
+  searchMs: number;
+  rerankMs: number;
+  rerankInputTokens: number;
+  rerankOutputTokens: number;
+};
+export const emptySearchStats = (): SearchStats => ({
+  searches: 0,
+  embeddingTokens: 0,
+  searchMs: 0,
+  rerankMs: 0,
+  rerankInputTokens: 0,
+  rerankOutputTokens: 0,
+});

@@ -11,7 +11,9 @@ import {
   formatRecipeHeader,
 } from "@/lib/ai/recipe-metadata";
 
-export const EMBEDDING_MODEL = "text-embedding-3-small";
+// A RAG szintű értékelésben a 3-large adta a legjobb találatokat
+export const EMBEDDING_MODEL = "text-embedding-3-large";
+export const EMBEDDING_DIMENSIONS = 3072;
 const embeddingModel = openai.embedding(EMBEDDING_MODEL);
 
 export const generateEmbeddings = async (
@@ -46,7 +48,7 @@ const embedQuery = async (value: string) => {
   });
   return { embedding, tokens: usage?.tokens ?? 0 };
 };
-// Két lépcsős keresés: a pgvector SEARCH_CANDIDATES jelöltet ad, a cross-encoder ezekből választja ki a legjobb SEARCH_TOP_K-t
+// Két lépcsős keresés: a pgvector SEARCH_CANDIDATES jelöltet ad, az LLM reranker ezekből választja ki a legjobb SEARCH_TOP_K-t
 export const SEARCH_CANDIDATES = 20;
 export const SEARCH_TOP_K = 4;
 export const SEARCH_MIN_SIMILARITY = 0.3;
@@ -61,7 +63,13 @@ export type SearchResult = {
 };
 
 // Egy keresés mérései a monitoringhoz
-export type SearchTiming = { embeddingTokens: number; searchMs: number; rerankMs: number };
+export type SearchTiming = {
+  embeddingTokens: number;
+  searchMs: number;
+  rerankMs: number;
+  rerankInputTokens: number;
+  rerankOutputTokens: number;
+};
 
 export type SearchOptions = {
   rerank?: boolean;
@@ -78,8 +86,11 @@ export const findRelevantContent = async (
 ) => {
   const started = Date.now();
   let rerankMs = 0;
+  let rerankInputTokens = 0;
+  let rerankOutputTokens = 0;
   const { embedding: userQueryEmbedded, tokens } = await embedQuery(userQuery);
-  const report = () => onStats?.({ embeddingTokens: tokens, searchMs: Date.now() - started, rerankMs });
+  const report = () =>
+    onStats?.({ embeddingTokens: tokens, searchMs: Date.now() - started, rerankMs, rerankInputTokens, rerankOutputTokens });
   const similarity = sql<number>`1 - (${cosineDistance(
     embeddings.embedding,
     userQueryEmbedded,
@@ -112,11 +123,14 @@ export const findRelevantContent = async (
     rerankScore: null,
   }));
 
-  // Reranking: a jelölteket a cross-encoder pontszáma szerint rendezzük újra
+  // Reranking: a jelölteket az LLM pontszáma szerint rendezzük újra; egyenlő pontnál a vektoros sorrend marad
   if (rerank) {
     const rerankStarted = Date.now();
-    const scores = await rerankScores(userQuery, results.map((r) => r.content));
+    const reranked = await rerankScores(userQuery, results.map((r) => r.content));
     rerankMs = Date.now() - rerankStarted;
+    rerankInputTokens = reranked.inputTokens;
+    rerankOutputTokens = reranked.outputTokens;
+    const scores = reranked.scores;
     results = results
       .map((r, i) => ({ ...r, rerankScore: round(scores[i]) }))
       .sort((a, b) => b.rerankScore! - a.rerankScore!)

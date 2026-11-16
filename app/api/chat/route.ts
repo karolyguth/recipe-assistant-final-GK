@@ -11,6 +11,7 @@ import { EMBEDDING_MODEL, type SearchResult } from '@/lib/ai/embedding';
 import { serverError } from '@/lib/api';
 import { addResource, createGetInformation } from '@/lib/ai/tools';
 import { emptySearchStats, recordChatMetric } from '@/lib/monitoring/metrics';
+import { RERANK_MODEL } from '@/lib/ai/rerank';
 import { chatCostUsd, embeddingCostUsd } from '@/lib/monitoring/pricing';
 import { env } from '@/lib/env.mjs';
 import { listUserNotes } from '@/lib/documents';
@@ -35,7 +36,7 @@ The collection is small: many well-known dishes are NOT in it.
 ## How to answer
 1. For every cooking question, call getInformation first. Never answer from memory alone.
 2. The recipes are in English, so ALWAYS write the search query in English, even if the user writes in another language: turn the question into short English keywords (dish name, main ingredients, traits such as "quick", "vegetarian", "dessert").
-3. If the results are weak (every rerank score below ~0.05, or not on topic), search once or twice more with different English keywords. Do not search more than 3 times for one question.
+3. If the results are weak (every rerank score below ~0.3, or not on topic), search once or twice more with different English keywords. Do not search more than 3 times for one question.
 4. Always respect the saved notes about the user (listed at the end of this prompt), e.g. never recommend meat to a vegetarian. You do not need to search for them.
 5. Only use recipes that the tool returned. Never invent a recipe, an ingredient or a quantity. Always name the recipe you used by its title.
 6. If the requested dish is not in the collection, say so honestly, then offer 1-3 of the closest recipes that were found, explaining briefly why they are similar. Do not write the missing recipe from general knowledge. Say that a dish is missing only once per conversation; do not repeat it in later replies.
@@ -100,7 +101,16 @@ export async function POST(req: Request) {
     searchMs: searchStats.searchMs,
     rerankMs: searchStats.rerankMs,
     embeddingTokens: searchStats.embeddingTokens,
+    rerankTokens: searchStats.rerankInputTokens + searchStats.rerankOutputTokens,
   });
+  // A keresés költsége: a kérdések embeddingje és a reranker LLM hívásai
+  const searchCost = () =>
+    embeddingCostUsd(EMBEDDING_MODEL, searchStats.embeddingTokens) +
+    chatCostUsd(RERANK_MODEL, {
+      inputTokens: searchStats.rerankInputTokens,
+      cachedInputTokens: 0,
+      outputTokens: searchStats.rerankOutputTokens,
+    });
 
   const result = streamText({
     model: openai(env.CHAT_MODEL),
@@ -130,7 +140,7 @@ export async function POST(req: Request) {
         outputTokens: totalUsage.outputTokens ?? 0,
       };
       const costUsd =
-        chatCostUsd(env.CHAT_MODEL, usage) + embeddingCostUsd(EMBEDDING_MODEL, searchStats.embeddingTokens);
+        chatCostUsd(env.CHAT_MODEL, usage) + searchCost();
       console.info(
         `[chat] model=${env.CHAT_MODEL} firstToken=${firstTokenMs ?? '-'}ms total=${Date.now() - startedAt}ms ` +
           `steps=${steps.length} tokens=${usage.inputTokens}in/${usage.outputTokens}out cost=$${costUsd.toFixed(4)} ` +
@@ -152,7 +162,7 @@ export async function POST(req: Request) {
         ...baseMetric(),
         status: 'error',
         error: error instanceof Error ? error.message : String(error),
-        costUsd: embeddingCostUsd(EMBEDDING_MODEL, searchStats.embeddingTokens),
+        costUsd: searchCost(),
       });
     },
     // A felhasználó leállította a választ (Stop gomb)
@@ -160,7 +170,7 @@ export async function POST(req: Request) {
       await recordChatMetric({
         ...baseMetric(),
         status: 'aborted',
-        costUsd: embeddingCostUsd(EMBEDDING_MODEL, searchStats.embeddingTokens),
+        costUsd: searchCost(),
         steps: steps.length,
         toolCalls: toolNames(steps),
       });

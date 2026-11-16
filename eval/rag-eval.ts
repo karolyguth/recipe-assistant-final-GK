@@ -1,7 +1,7 @@
 // RAG szintű értékelés: precision@k, recall@k, MRR és hit@1 a tesztkészleten, több beállítással.
 //   - chunkolás: receptenként egy chunk (éles) / fix 800 karakteres darabok / "##" szekciónként
-//   - embedding modell: text-embedding-3-small (éles) / text-embedding-3-large
-//   - reranking: nincs / cross-encoder q8, 256 token (éles) / cross-encoder fp32, 512 token
+//   - embedding modell: text-embedding-3-small / text-embedding-3-large (éles)
+//   - reranking: nincs / LLM reranker (gpt-4.1-mini, éles)
 //   - élő rendszer: a pgvector + reranking ugyanazzal a kóddal, amit a chat használ
 // Futtatás: pnpm eval:rag   (az embeddingek az eval/.cache mappába kerülnek, újrafuttatáskor nem fizetünk újra)
 import 'dotenv/config';
@@ -14,7 +14,7 @@ import { embedMany } from 'ai';
 import { chunkDocument, extractTitle } from '@/lib/ai/chunking';
 import { findRelevantContent } from '@/lib/ai/embedding';
 import { extractRecipeMetadata, formatRecipeHeader } from '@/lib/ai/recipe-metadata';
-import { rerankScores, type RerankSettings } from '@/lib/ai/rerank';
+import { RERANK_MODEL, rerankScores } from '@/lib/ai/rerank';
 import { dedupe, mean, precisionAt, recallAt, reciprocalRank, round } from './lib/retrieval-metrics';
 
 const ROOT = path.resolve(__dirname, '..');
@@ -25,7 +25,7 @@ const K = 4; // az éles rendszer is 4 receptet ad a modellnek
 const CANDIDATES = 20; // ennyi jelöltet kap a reranker
 const LIST = 10; // ennyi receptig számoljuk a reciprok rangot
 
-type Case = { id: string; lang: 'en' | 'hu'; type: string; query: string; relevant: string[] };
+type Case = { id: string; type: string; query: string; relevant: string[] };
 type Chunk = { recipe: string; text: string };
 type Strategy = 'recipe' | 'fixed' | 'section';
 type Variant = {
@@ -33,18 +33,18 @@ type Variant = {
   label: string;
   strategy: Strategy;
   model: 'text-embedding-3-small' | 'text-embedding-3-large';
-  rerank: RerankSettings | null;
+  rerank: boolean;
   live?: boolean;
 };
 
 const VARIANTS: Variant[] = [
-  { id: 'recipe-small', label: 'Receptenként, 3-small, rerank nélkül', strategy: 'recipe', model: 'text-embedding-3-small', rerank: null },
-  { id: 'fixed-small', label: 'Fix 800 karakter, 3-small, rerank nélkül', strategy: 'fixed', model: 'text-embedding-3-small', rerank: null },
-  { id: 'section-small', label: 'Szekciónként, 3-small, rerank nélkül', strategy: 'section', model: 'text-embedding-3-small', rerank: null },
-  { id: 'recipe-large', label: 'Receptenként, 3-large, rerank nélkül', strategy: 'recipe', model: 'text-embedding-3-large', rerank: null },
-  { id: 'recipe-small-rerank-fp32', label: 'Receptenként, 3-small, rerank fp32 / 512 token', strategy: 'recipe', model: 'text-embedding-3-small', rerank: { dtype: 'fp32', maxTokens: 512 } },
-  { id: 'recipe-small-rerank-q8', label: 'Receptenként, 3-small, rerank q8 / 256 token (éles)', strategy: 'recipe', model: 'text-embedding-3-small', rerank: { dtype: 'q8', maxTokens: 256 } },
-  { id: 'live', label: 'Élő rendszer: pgvector + rerank (a chat kódja)', strategy: 'recipe', model: 'text-embedding-3-small', rerank: { dtype: 'q8', maxTokens: 256 }, live: true },
+  { id: 'recipe-small', label: 'Receptenként, 3-small, rerank nélkül', strategy: 'recipe', model: 'text-embedding-3-small', rerank: false },
+  { id: 'fixed-small', label: 'Fix 800 karakter, 3-small, rerank nélkül', strategy: 'fixed', model: 'text-embedding-3-small', rerank: false },
+  { id: 'section-small', label: 'Szekciónként, 3-small, rerank nélkül', strategy: 'section', model: 'text-embedding-3-small', rerank: false },
+  { id: 'recipe-large', label: 'Receptenként, 3-large, rerank nélkül', strategy: 'recipe', model: 'text-embedding-3-large', rerank: false },
+  { id: 'recipe-small-rerank', label: `Receptenként, 3-small, LLM rerank (${RERANK_MODEL})`, strategy: 'recipe', model: 'text-embedding-3-small', rerank: true },
+  { id: 'recipe-large-rerank', label: `Receptenként, 3-large, LLM rerank (${RERANK_MODEL}) – éles`, strategy: 'recipe', model: 'text-embedding-3-large', rerank: true },
+  { id: 'live', label: 'Élő rendszer: pgvector + LLM rerank (a chat kódja)', strategy: 'recipe', model: 'text-embedding-3-large', rerank: true, live: true },
 ];
 
 // ---------- chunkolási stratégiák ----------
@@ -96,6 +96,16 @@ async function embedAll(model: Variant['model'], texts: string[]): Promise<numbe
   return out;
 }
 
+// A reranker hívásai is cache-elve: újrafuttatáskor ugyanazt a pontozást kapjuk, és nem fizetünk újra
+async function cachedRerank(query: string, docs: string[]): Promise<number[]> {
+  const key = createHash('sha256').update([RERANK_MODEL, query, ...docs].join('\n\u0000\n')).digest('hex').slice(0, 24);
+  const file = path.join(CACHE_DIR, `rerank-${key}.json`);
+  if (existsSync(file)) return JSON.parse(readFileSync(file, 'utf8'));
+  const { scores } = await rerankScores(query, docs);
+  writeFileSync(file, JSON.stringify(scores));
+  return scores;
+}
+
 const cosine = (a: number[], b: number[]) => {
   let dot = 0, na = 0, nb = 0;
   for (let i = 0; i < a.length; i++) {
@@ -142,7 +152,8 @@ async function runVariant(v: Variant, cases: Case[], recipes: ReturnType<typeof 
       .sort((a, b) => b.score - a.score);
     if (v.rerank) {
       const top = order.slice(0, CANDIDATES);
-      const scores = await rerankScores(c.query, top.map(t => t.chunk.text), v.rerank);
+      const scores = await cachedRerank(c.query, top.map(t => t.chunk.text));
+      // Egyenlő pontnál a vektoros sorrend marad (stabil rendezés)
       order = top.map((t, j) => ({ ...t, score: scores[j] })).sort((a, b) => b.score - a.score);
     }
     out.push(score(c, dedupe(order.map(o => o.chunk.recipe)), Date.now() - started));
@@ -172,14 +183,12 @@ async function main() {
   for (const v of VARIANTS) {
     process.stdout.write(`${v.id.padEnd(26)} `);
     all[v.id] = await runVariant(v, cases, recipes);
-    const s = summarize(all[v.id].filter((_, i) => cases[i].lang === 'en'));
-    console.log(`EN  P@${K} ${s.precision}  R@${K} ${s.recall}  MRR ${s.mrr}  hit@1 ${s.hit1}  ${s.ms} ms`);
+    const s = summarize(all[v.id]);
+    console.log(`P@${K} ${s.precision}  R@${K} ${s.recall}  MRR ${s.mrr}  hit@1 ${s.hit1}  ${s.ms} ms`);
   }
 
-  const en = cases.filter(c => c.lang === 'en');
-  const specific = en.filter(c => c.type !== 'broad');
-  const broad = en.filter(c => c.type === 'broad');
-  const hu = cases.filter(c => c.lang === 'hu');
+  const specific = cases.filter(c => c.type !== 'broad');
+  const broad = cases.filter(c => c.type === 'broad');
   const pick = (id: string, subset: Case[]) => all[id].filter(r => subset.some(c => c.id === r.id));
   const row = (v: Variant, subset: Case[]) => {
     const s = summarize(pick(v.id, subset));
@@ -189,43 +198,39 @@ async function main() {
   const chunkCounts = (['recipe', 'fixed', 'section'] as Strategy[]).map(s => `${s}: ${chunksFor(s, recipes).length}`).join(', ');
 
   // Hibák: ahol az éles beállításnál a releváns recept nem az első
-  const prod = 'recipe-small-rerank-q8';
+  const prod = 'recipe-large-rerank';
   const misses = cases
     .map((c, i) => ({ c, r: all[prod][i] }))
     .filter(({ r }) => r.rr < 1)
-    .map(({ c, r }) => `| ${c.id} | ${c.lang} | ${c.query} | ${c.relevant.join(', ')} | ${r.ranked.slice(0, K).join(', ')} |`);
+    .map(({ c, r }) => `| ${c.id} | ${c.query} | ${c.relevant.join(', ')} | ${r.ranked.slice(0, K).join(', ')} |`);
 
   const md = [
     '# RAG szintű értékelés',
     '',
-    `${cases.length} teszteset (${specific.length} pontos és ${broad.length} tág angol kérdés, ${hu.length} magyar), ${recipes.length} recept. Chunkok száma: ${chunkCounts}.`,
+    `${cases.length} teszteset (${specific.length} pontos és ${broad.length} tág kérdés), ${recipes.length} recept. Chunkok száma: ${chunkCounts}.`,
     `Metrikák receptszinten: P@${K} és R@${K} (az éles rendszer ${K} receptet ad a modellnek), MRR (az első releváns recept helye, ${LIST}-ig), Hit@1.`,
+    'Az idő oszlop: a memóriabeli LLM rerank változatoknál a reranker válaszai cache-ből jönnek; a valós keresési idő (embedding + pgvector + LLM rerank) az élő rendszer sorában látszik.',
     `A pontos kérdéseknek 1-2 releváns receptje van, ezért ott a P@${K} felső korlátja kb. 0,3; a tág kérdéseknél 2-5 recept is jó, ott a P@${K} is beszédes.`,
     '',
-    '## Összes angol kérdés (ilyen kérdéssel keres a chat modell)',
+    '## Összes kérdés',
     '',
     header,
-    ...VARIANTS.map(v => row(v, en)),
+    ...VARIANTS.map(v => row(v, cases)),
     '',
-    '## Pontos angol kérdések (egy konkrét étel vagy technika)',
+    '## Pontos kérdések (egy konkrét étel vagy technika)',
     '',
     header,
     ...VARIANTS.map(v => row(v, specific)),
     '',
-    '## Tág angol kérdések (több recept is jó válasz)',
+    '## Tág kérdések (több recept is jó válasz)',
     '',
     header,
     ...VARIANTS.map(v => row(v, broad)),
     '',
-    '## Magyar kérdések fordítás nélkül',
-    '',
-    header,
-    ...VARIANTS.map(v => row(v, hu)),
-    '',
     `## Ahol az éles beállításnál a releváns recept nem az első helyen van`,
     '',
-    `| Eset | Nyelv | Kérdés | Releváns | Első ${K} találat |`,
-    '|---|---|---|---|---|',
+    `| Eset | Kérdés | Releváns | Első ${K} találat |`,
+    '|---|---|---|---|',
     ...misses,
     '',
   ].join('\n');
