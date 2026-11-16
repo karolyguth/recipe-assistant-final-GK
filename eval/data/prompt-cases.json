@@ -1,0 +1,131 @@
+{
+  "description": "Prompt szintű (single-turn) tesztesetek. 'reference': a helyes (ground truth) válasz a receptek szövege alapján, ehhez méri a judge a helyességet (a kurzus single_turn_evaluation módszere); 'expected': az elvárt viselkedés a system prompt szabályai szerint.",
+  "cases": [
+    {
+      "id": "p01",
+      "category": "recipe",
+      "question": "How do I make channa masala?",
+      "expected": "Gives the Channa Masala recipe from the collection with its ingredients and steps, keeping the original quantities.",
+      "reference": "Channa Masala: blend garlic, ginger, 4-6 green chilies, 1 tbsp lemon juice and salt into a paste; fry black mustard seed and cumin seed in oil, then the onion with 1/4 tsp baking soda until deep brown (about 10 minutes, deglazing with water); add the paste, then coriander, black pepper, turmeric and 1 tsp garam masala; add the crushed canned tomatoes, a 28 oz can of chickpeas, cilantro and 1/2 cup water; simmer about 30 minutes until thick; finish with the remaining garam masala and lemon juice."
+    },
+    {
+      "id": "p02",
+      "category": "recipe",
+      "question": "What do I need for the hummus recipe, and how long does it take?",
+      "expected": "Lists the Hummus ingredients from the collection and says it needs an overnight soak plus about 2 hours of simmering.",
+      "reference": "Hummus: 1/2 lb dried chickpeas, baking soda, kosher salt, water, onion, celery, carrot, garlic, bay leaves; tahini sauce from a head of garlic, 2/3 cup lemon juice, 1/2 tsp cumin and 1 cup tahini paste; olive oil, za'atar or paprika to serve. The chickpeas soak overnight and then simmer for about 2 hours."
+    },
+    {
+      "id": "p03",
+      "category": "recipe",
+      "question": "How long do the bagels need to proof?",
+      "expected": "Answers from the Bagels recipe: 12-24 hours of proofing.",
+      "reference": "The bagel dough proofs in the fridge for 12-24 hours (after an hour at room temperature)."
+    },
+    {
+      "id": "p04",
+      "category": "recipe",
+      "question": "What temperature should the oil be for the chicken schnitzel?",
+      "expected": "Answers from the Chicken Schnitzel recipe: 375 °F.",
+      "reference": "Heat the oil in a cast iron skillet to 375 °F."
+    },
+    {
+      "id": "p05",
+      "category": "recipe",
+      "question": "Give me the pad thai sauce ingredients.",
+      "expected": "Lists the Pad Thai sauce from the recipe: palm sugar, water, tamarind paste, fish sauce, with the quantities.",
+      "reference": "Pad Thai sauce: 30 grams palm sugar, 3 tbsp water, 4 tbsp tamarind paste/concentrate and 2 tbsp fish sauce."
+    },
+    {
+      "id": "p06",
+      "category": "ingredients",
+      "question": "I have chickpeas and tahini at home. What can I make?",
+      "expected": "Recommends Hummus (and possibly other chickpea or tahini recipes such as Channa Masala or Lemon Tahini Dressing) from the collection.",
+      "reference": "Hummus uses both chickpeas and tahini; Channa Masala (chickpeas), Lemon Tahini Dressing (tahini) and Vegetarian Chicken Salad (chickpeas) also fit."
+    },
+    {
+      "id": "p07",
+      "category": "ingredients",
+      "question": "What can I cook with tofu?",
+      "expected": "Recommends tofu recipes from the collection, e.g. Sesame Tofu, Sichuan Three-Pepper Tofu, Pad Thai.",
+      "reference": "Tofu recipes in the collection: Sesame Tofu, Sichuan Three-Pepper Tofu, Phat Phrik Khing, Pad Thai and Vegetarian Pho."
+    },
+    {
+      "id": "p08",
+      "category": "ingredients",
+      "question": "Any quick vegetarian dinner under 30 minutes?",
+      "expected": "Recommends a vegetarian recipe from the collection that takes about 30 minutes or less (e.g. Vegetarian Chicken Salad, Black Bean Enchiladas) and does not suggest meat dishes.",
+      "reference": "Vegetarian Chicken Salad (10 minutes) and Black Bean Enchiladas (about 15 minutes) are vegetarian and take under 30 minutes."
+    },
+    {
+      "id": "p09",
+      "category": "technique",
+      "question": "What can I use instead of buttermilk in the diner-style pancakes?",
+      "expected": "Uses the recipe's own note: the same amount of milk, or 1.5 cups yogurt and 1/2 cup water.",
+      "reference": "Use the same amount of milk instead of buttermilk, or 1.5 cups yogurt plus 1/2 cup water (adjusting with a little water if needed)."
+    },
+    {
+      "id": "p10",
+      "category": "technique",
+      "question": "Why do I add baking soda to the chickpeas when making hummus?",
+      "expected": "Explains the technique; anything beyond the recipe text is clearly labelled as general cooking knowledge.",
+      "reference": "The recipe adds baking soda to the soaking water and to the cooking water but does not explain why. From general cooking knowledge: it raises the pH, which softens the chickpea skins so they cook until falling apart and give a very smooth hummus."
+    },
+    {
+      "id": "p11",
+      "category": "technique",
+      "question": "How do I know when the smoked pork shoulder is done?",
+      "expected": "Answers from the Smoked Pork Shoulder recipe; general advice (e.g. internal temperature) is labelled as general cooking knowledge if it is not in the recipe.",
+      "reference": "Smoke until the internal temperature reaches 195-205 °F, then wrap it and rest it in a cooler for an hour."
+    },
+    {
+      "id": "p12",
+      "category": "missing",
+      "question": "Do you have a lasagna recipe?",
+      "expected": "Says honestly that lasagna is not in the collection, offers 1-3 close recipes from the collection, and does NOT write a lasagna recipe from general knowledge.",
+      "reference": "There is no lasagna recipe in the collection. Close alternatives: Homemade Pasta, Dad's Spaghetti Sauce, Mac and Cheese."
+    },
+    {
+      "id": "p13",
+      "category": "missing",
+      "question": "How do I make a chocolate cake?",
+      "expected": "Says there is no chocolate cake (or chocolate dessert) in the collection and does not invent one; may offer what the collection does have.",
+      "reference": "There is no chocolate cake or chocolate dessert in the collection."
+    },
+    {
+      "id": "p14",
+      "category": "missing",
+      "question": "What's your sushi recipe?",
+      "expected": "Says sushi is not in the collection, does not invent a sushi recipe, may suggest close alternatives from the collection.",
+      "reference": "There is no sushi recipe in the collection."
+    },
+    {
+      "id": "p15",
+      "category": "off-topic",
+      "question": "Can you write me a Python function that sorts a list?",
+      "expected": "Politely declines because it is not about cooking and steers back to recipes; does not write code.",
+      "reference": "A polite refusal: the assistant only helps with cooking and the recipes in its collection."
+    },
+    {
+      "id": "p16",
+      "category": "off-topic",
+      "question": "Who won the last football World Cup?",
+      "expected": "Politely declines as off-topic and steers back to recipes.",
+      "reference": "A polite refusal: the assistant only helps with cooking and the recipes in its collection."
+    },
+    {
+      "id": "p17",
+      "category": "false-premise",
+      "question": "Your pad thai recipe uses chicken, right? How much chicken do I need?",
+      "expected": "Corrects the premise: the Pad Thai recipe has tofu, dried shrimp and eggs, no chicken. Does not invent a chicken quantity.",
+      "reference": "The Pad Thai recipe contains no chicken: it uses pressed tofu, dried shrimp and 2 eggs."
+    },
+    {
+      "id": "p18",
+      "category": "false-premise",
+      "question": "How many eggs go into the hummus?",
+      "expected": "Says the Hummus recipe has no eggs; does not invent an egg quantity.",
+      "reference": "The Hummus recipe contains no eggs."
+    }
+  ]
+}

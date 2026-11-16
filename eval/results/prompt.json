@@ -1,0 +1,648 @@
+[
+  {
+    "id": "p01",
+    "category": "recipe",
+    "question": "How do I make channa masala?",
+    "expected": "Gives the Channa Masala recipe from the collection with its ingredients and steps, keeping the original quantities.",
+    "reference": "Channa Masala: blend garlic, ginger, 4-6 green chilies, 1 tbsp lemon juice and salt into a paste; fry black mustard seed and cumin seed in oil, then the onion with 1/4 tsp baking soda until deep brown (about 10 minutes, deglazing with water); add the paste, then coriander, black pepper, turmeric and 1 tsp garam masala; add the crushed canned tomatoes, a 28 oz can of chickpeas, cilantro and 1/2 cup water; simmer about 30 minutes until thick; finish with the remaining garam masala and lemon juice.",
+    "answer": "You’ve got it—here’s a reliable Channa Masala from my collection that’s bright, tangy, and deeply spiced.\n\nIngredients\n- 4 cloves garlic, roughly chopped\n- 1\" knob ginger, peeled and chopped\n- 4–6 green chilies, chopped\n- 2 tbsp lemon juice, divided\n- 2 tbsp grapeseed oil, vegetable oil, or ghee\n- 2 tsp black mustard seed\n- 1 tsp cumin seed\n- 1 large onion, finely diced\n- 1/4 tsp baking soda\n- 2 tsp ground coriander\n- 1/2 tsp ground black pepper\n- 1/2 tsp turmeric\n- 1.5 tsp garam masala, divided\n- 14 oz can whole peeled tomatoes\n- 28 oz can chickpeas, drained and rinsed\n- 1 cup cilantro, roughly chopped\n\nSteps\n1. In a food processor, blend garlic, ginger, chilies, 1 tbsp lemon juice, and 1/2 tsp kosher salt to a fine paste.\n2. Heat oil in a saucepan over medium-high. Add mustard seeds and cumin; cook a few seconds until aromatic.\n3. Add onion and baking soda; cook, stirring often, until a brown fond forms on the pan, about 3–4 minutes.\n4. Add 1 tbsp water, scrape up the brown bits, and continue cooking; repeat until onions are deep brown, about 10 minutes total.\n5. Add the garlic-ginger-chili paste and stir to combine.\n6. Add coriander, black pepper, turmeric, and 1 tsp garam masala; cook until fragrant.\n7. Add tomatoes and crush them with a potato masher.\n8. Add chickpeas, cilantro, and 1/2 cup water.\n9. Bring to a simmer, cover with the lid slightly ajar, and cook—stirring occasionally—until thick and stew-like, about 30 minutes.\n10. Stir in the remaining 1/2 tsp garam masala and 1 tbsp lemon juice; season to taste with salt.\n\nFrom general cooking practice: the baking soda speeds onion browning; for milder heat, deseed the chilies or use fewer, and serve with basmati rice or warm roti. If you want a dried-chickpea version, I can walk you through that too.",
+    "contexts": [
+      "Channa Masala",
+      "Tarka Dal",
+      "Vegetarian Chicken Salad",
+      "Aloo Matar"
+    ],
+    "metrics": {
+      "model": "gpt-5",
+      "firstTokenMs": 22095,
+      "totalMs": 29011,
+      "searchMs": 3280,
+      "rerankMs": 2952,
+      "inputTokens": 4491,
+      "outputTokens": 1496,
+      "embeddingTokens": 9
+    },
+    "correctness": {
+      "reasoning": "The generated response contains all the key steps and ingredients from the ground truth. It correctly describes blending garlic, ginger, green chilies, lemon juice, and salt into a paste; frying mustard and cumin seeds in oil; cooking onions with baking soda and deglazing with water until deep brown; adding the paste and spices (coriander, black pepper, turmeric, garam masala); adding crushed tomatoes, chickpeas, cilantro, and water; simmering for about 30 minutes; and finishing with more garam masala and lemon juice. The only minor difference is the use of a 14 oz can of tomatoes instead of a 28 oz can, but this does not fundamentally alter the recipe and could be a matter of taste or serving size. There are no contradictions or missing key steps. The response even adds helpful cooking tips, which do not contradict the ground truth.",
+      "decision": "CORRECT"
+    },
+    "verdict": {
+      "contextRelevance": 3,
+      "contextReasoning": "The retrieved Channa Masala recipe is exactly what the question asks for, with full ingredients and steps.",
+      "faithfulness": 3,
+      "unsupportedClaims": [],
+      "answerRelevance": 3,
+      "expectedBehavior": true,
+      "reasoning": "The assistant provides the Channa Masala recipe directly from the collection, preserving all original ingredients and quantities, and follows the recipe's steps closely. Any additional advice is clearly labeled as general cooking practice and does not contradict the recipe. The answer is complete, faithful, and directly addresses the user's request."
+    }
+  },
+  {
+    "id": "p02",
+    "category": "recipe",
+    "question": "What do I need for the hummus recipe, and how long does it take?",
+    "expected": "Lists the Hummus ingredients from the collection and says it needs an overnight soak plus about 2 hours of simmering.",
+    "reference": "Hummus: 1/2 lb dried chickpeas, baking soda, kosher salt, water, onion, celery, carrot, garlic, bay leaves; tahini sauce from a head of garlic, 2/3 cup lemon juice, 1/2 tsp cumin and 1 cup tahini paste; olive oil, za'atar or paprika to serve. The chickpeas soak overnight and then simmer for about 2 hours.",
+    "answer": "For the Hummus recipe, here’s what you’ll need and the timing.\n\nIngredients\n- 1/2 lb dried chickpeas\n- 1 tsp baking soda\n- 2 tbsp kosher salt\n- 6 cups cold water\n\nFor the tahini\n- 1 whole head garlic, broken into individual unpeeled cloves\n- 2/3 cup fresh lemon juice (about 3–4 lemons)\n- 1/2 tsp ground cumin\n- 1 cup tahini paste (about 10 oz)\n\nFor the hummus\n- 1 tsp baking soda\n- 1 tbsp salt\n- 1 small onion, split in half\n- 1 stalk celery\n- 1 carrot\n- 2 medium cloves garlic\n- 2 bay leaves\n- 6 cups water\n- 1.5 cups tahini (see above)\n- Olive oil, za'tar, and/or paprika for serving\n\nHow long it takes\n- Soak chickpeas overnight at room temperature.\n- Simmer until completely tender/falling apart, about 2 hours.\n- Blend to a smooth puree about 2 minutes, then let cool to room temp before serving.\n\nNote from the recipe: canned chickpeas will work if you want a shortcut. Would you like the step-by-step?",
+    "contexts": [
+      "Hummus",
+      "Lemon Tahini Dressing",
+      "Channa Masala",
+      "Baba Ganoush"
+    ],
+    "metrics": {
+      "model": "gpt-5",
+      "firstTokenMs": 32944,
+      "totalMs": 35607,
+      "searchMs": 7160,
+      "rerankMs": 4062,
+      "inputTokens": 4537,
+      "outputTokens": 1950,
+      "embeddingTokens": 6
+    },
+    "correctness": {
+      "reasoning": "The generated response contains all the key ingredients listed in the ground truth: 1/2 lb dried chickpeas, baking soda, kosher salt, water, onion, celery, carrot, garlic, bay leaves, tahini paste, lemon juice, cumin, and olive oil/za'atar/paprika for serving. It also includes the correct process: soaking chickpeas overnight and simmering for about 2 hours. The generated response expands on the quantities (e.g., 6 cups water, 2 tbsp salt) and adds some details (e.g., 1 tsp baking soda, 1 small onion, 1 stalk celery, 1 carrot, 2 cloves garlic, 2 bay leaves), which are consistent with the ground truth. There are no contradictions, and the information is accurate, even if more detailed. The note about canned chickpeas is an extra but does not contradict the ground truth.",
+      "decision": "CORRECT"
+    },
+    "verdict": {
+      "contextRelevance": 3,
+      "contextReasoning": "The retrieved Hummus recipe is exactly what the question asks for, providing both ingredients and timing.",
+      "faithfulness": 3,
+      "unsupportedClaims": [],
+      "answerRelevance": 3,
+      "expectedBehavior": true,
+      "reasoning": "The assistant lists all the ingredients exactly as in the retrieved Hummus recipe and accurately summarizes the timing: overnight soak and about 2 hours of simmering. No unsupported claims are made, and the answer directly and completely addresses the user's question."
+    }
+  },
+  {
+    "id": "p03",
+    "category": "recipe",
+    "question": "How long do the bagels need to proof?",
+    "expected": "Answers from the Bagels recipe: 12-24 hours of proofing.",
+    "reference": "The bagel dough proofs in the fridge for 12-24 hours (after an hour at room temperature).",
+    "answer": "For the Bagels recipe: after shaping, let them sit 1 hour at room temperature, then cold-proof in the fridge for 12–24 hours. Note from the recipe: longer than 12 hours doesn’t make much difference; up to ~40 hours is probably fine.",
+    "contexts": [
+      "Bagels",
+      "Soft Pretzels",
+      "No-Knead Pan Pizza"
+    ],
+    "metrics": {
+      "model": "gpt-5",
+      "firstTokenMs": 12383,
+      "totalMs": 13418,
+      "searchMs": 3121,
+      "rerankMs": 2173,
+      "inputTokens": 5944,
+      "outputTokens": 799,
+      "embeddingTokens": 8
+    },
+    "correctness": {
+      "reasoning": "The generated response accurately states that after shaping, the bagels sit for 1 hour at room temperature and then are cold-proofed in the fridge for 12–24 hours, which matches the ground truth. The additional note about longer proofing times (up to ~40 hours) does not contradict the ground truth and simply adds extra information from the recipe. There are no contradictions, and all key information is present.",
+      "decision": "CORRECT"
+    },
+    "verdict": {
+      "contextRelevance": 3,
+      "contextReasoning": "The retrieved Bagels recipe directly specifies the proofing time as 12–24 hours in the fridge after shaping.",
+      "faithfulness": 3,
+      "unsupportedClaims": [],
+      "answerRelevance": 3,
+      "expectedBehavior": true,
+      "reasoning": "The answer accurately quotes the Bagels recipe's instructions for proofing (12–24 hours in the fridge after shaping), and even includes the recipe's note about longer proofing times. There are no unsupported claims, and the answer is directly relevant and complete for the question asked."
+    }
+  },
+  {
+    "id": "p04",
+    "category": "recipe",
+    "question": "What temperature should the oil be for the chicken schnitzel?",
+    "expected": "Answers from the Chicken Schnitzel recipe: 375 °F.",
+    "reference": "Heat the oil in a cast iron skillet to 375 °F.",
+    "answer": "For the Chicken Schnitzel recipe, heat the oil to 375°F (about 190°C). Keep it around that temp so the coating fries crisp and golden without getting greasy.",
+    "contexts": [
+      "Chicken Schnitzel",
+      "Chicken Nuggets",
+      "Halal Cart Chicken",
+      "Teriyaki Chicken"
+    ],
+    "metrics": {
+      "model": "gpt-5",
+      "firstTokenMs": 13716,
+      "totalMs": 14830,
+      "searchMs": 3483,
+      "rerankMs": 1460,
+      "inputTokens": 4859,
+      "outputTokens": 670,
+      "embeddingTokens": 8
+    },
+    "correctness": {
+      "reasoning": "The generated response contains the key information from the ground truth: heating the oil to 375°F. It also adds a helpful explanation about maintaining the temperature for optimal frying, which does not contradict the ground truth. The mention of 190°C is an accurate conversion and does not introduce any errors. The response is factually correct and contains all necessary information.",
+      "decision": "CORRECT"
+    },
+    "verdict": {
+      "contextRelevance": 3,
+      "contextReasoning": "The retrieved Chicken Schnitzel recipe directly specifies heating oil to 375º F for frying.",
+      "faithfulness": 3,
+      "unsupportedClaims": [],
+      "answerRelevance": 3,
+      "expectedBehavior": true,
+      "reasoning": "The answer accurately quotes the oil temperature (375°F) from the Chicken Schnitzel recipe and gives a brief, general explanation about why that temperature is used, which is acceptable as general cooking knowledge. There are no unsupported claims, and the answer is concise and directly addresses the question."
+    }
+  },
+  {
+    "id": "p05",
+    "category": "recipe",
+    "question": "Give me the pad thai sauce ingredients.",
+    "expected": "Lists the Pad Thai sauce from the recipe: palm sugar, water, tamarind paste, fish sauce, with the quantities.",
+    "reference": "Pad Thai sauce: 30 grams palm sugar, 3 tbsp water, 4 tbsp tamarind paste/concentrate and 2 tbsp fish sauce.",
+    "answer": "From the recipe “Pad Thai,” the sauce ingredients are:\n- 30 grams palm sugar, chopped\n- 3 tbsp water\n- 4 tbsp tamarind paste/concentrate\n- 2 tbsp fish sauce",
+    "contexts": [
+      "Pad Thai",
+      "Pad See Ew",
+      "Bonchon-style Sauce",
+      "Pad Pak Boong"
+    ],
+    "metrics": {
+      "model": "gpt-5",
+      "firstTokenMs": 10236,
+      "totalMs": 11029,
+      "searchMs": 4140,
+      "rerankMs": 3805,
+      "inputTokens": 4465,
+      "outputTokens": 521,
+      "embeddingTokens": 4
+    },
+    "correctness": {
+      "reasoning": "The generated response lists all the same ingredients and quantities as the ground truth: 30 grams palm sugar, 3 tbsp water, 4 tbsp tamarind paste/concentrate, and 2 tbsp fish sauce. The only minor addition is specifying 'chopped' for the palm sugar, which does not contradict or alter the meaning. All key information is present and accurate.",
+      "decision": "CORRECT"
+    },
+    "verdict": {
+      "contextRelevance": 3,
+      "contextReasoning": "The retrieved Pad Thai recipe includes a dedicated section for the Pad Thai sauce with all ingredients and quantities clearly listed.",
+      "faithfulness": 3,
+      "unsupportedClaims": [],
+      "answerRelevance": 3,
+      "expectedBehavior": true,
+      "reasoning": "The answer directly lists the Pad Thai sauce ingredients and their quantities exactly as specified in the retrieved recipe, with no unsupported claims or omissions. This fully matches the expected behavior and uses only information from the provided context."
+    }
+  },
+  {
+    "id": "p06",
+    "category": "ingredients",
+    "question": "I have chickpeas and tahini at home. What can I make?",
+    "expected": "Recommends Hummus (and possibly other chickpea or tahini recipes such as Channa Masala or Lemon Tahini Dressing) from the collection.",
+    "reference": "Hummus uses both chickpeas and tahini; Channa Masala (chickpeas), Lemon Tahini Dressing (tahini) and Vegetarian Chicken Salad (chickpeas) also fit.",
+    "answer": "With chickpeas and tahini, you’ve got a few great options:\n\n- Hummus — uses both. Recipe: Hummus. Ultra-smooth, lemony hummus made by blending very tender chickpeas and whisked tahini. The recipe also notes you can use canned chickpeas if that’s what you have.\n- Lemon Tahini Dressing — Recipe: Lemon Tahini Dressing. Whisk it up in 5 minutes, then toss with chickpeas and herbs/greens for a quick salad or mash into the chickpeas for a speedy spread.\n- Channa Masala — Recipe: Channa Masala. A cozy, spiced chickpea curry (this one doesn’t use tahini, but it’s a great way to use your chickpeas).\n- If you have eggplant: Baba Ganoush — Recipe: Baba Ganoush. Smoky eggplant dip finished with tahini.\n\nTell me which one you’re feeling and I can paste the full recipe steps.",
+    "contexts": [
+      "Hummus",
+      "Lemon Tahini Dressing",
+      "Channa Masala",
+      "Baba Ganoush"
+    ],
+    "metrics": {
+      "model": "gpt-5",
+      "firstTokenMs": 17862,
+      "totalMs": 20134,
+      "searchMs": 3261,
+      "rerankMs": 2933,
+      "inputTokens": 4673,
+      "outputTokens": 1510,
+      "embeddingTokens": 12
+    },
+    "correctness": {
+      "reasoning": "The generated response includes all the key dishes from the ground truth: Hummus (uses both chickpeas and tahini), Lemon Tahini Dressing (uses tahini), and Channa Masala (uses chickpeas). It also correctly notes which ingredient is used in each dish. The response adds Baba Ganoush as an extra suggestion if eggplant is available, but this does not contradict the ground truth. The information is accurate and matches the ground truth, even providing a bit more detail about the recipes.",
+      "decision": "CORRECT"
+    },
+    "verdict": {
+      "contextRelevance": 3,
+      "contextReasoning": "The retrieved recipes are directly relevant: Hummus and Lemon Tahini Dressing both use chickpeas and/or tahini, Channa Masala uses chickpeas, and Baba Ganoush uses tahini (and optionally chickpeas as a serving suggestion).",
+      "faithfulness": 3,
+      "unsupportedClaims": [],
+      "answerRelevance": 3,
+      "expectedBehavior": true,
+      "reasoning": "The answer recommends Hummus (uses both chickpeas and tahini), Lemon Tahini Dressing (uses tahini, and the suggestion to toss with chickpeas is reasonable general advice), and Channa Masala (uses chickpeas, correctly notes it doesn't use tahini). It also mentions Baba Ganoush as an option if eggplant is available, which is supported by the retrieved recipes. All claims about the recipes are supported, and the answer directly addresses the user's question with relevant options."
+    }
+  },
+  {
+    "id": "p07",
+    "category": "ingredients",
+    "question": "What can I cook with tofu?",
+    "expected": "Recommends tofu recipes from the collection, e.g. Sesame Tofu, Sichuan Three-Pepper Tofu, Pad Thai.",
+    "reference": "Tofu recipes in the collection: Sesame Tofu, Sichuan Three-Pepper Tofu, Phat Phrik Khing, Pad Thai and Vegetarian Pho.",
+    "answer": "If you’ve got tofu, here are great options from my collection—pick your vibe and I’ll share the full recipe:\n\n- Sesame Tofu — crispy pan-fried tofu with broccoli in a glossy sesame–soy glaze. Weeknight-friendly. Recipe: Sesame Tofu.\n- Phat Phrik Khing — a spicy Thai dry-curry stir-fry with tofu and long beans/green beans using red curry paste. Recipe: Phat Phrik Khing.\n- Vegetarian Pho — aromatic spice broth with rice noodles; garnish with tofu puffs, herbs, lime. About an hour. Recipe: Vegetarian Pho. (From general cooking practice: if you avoid fish sauce, use soy sauce or a vegan “fish” sauce.)\n\nWhat are you in the mood for—quick stir-fry, spicy Thai, or soothing soup? If you tell me what veggies or sauces you have, I can steer you to the best match and send the full recipe.",
+    "contexts": [
+      "Phat Phrik Khing",
+      "Massaman Curry",
+      "Vegetarian Pho",
+      "Sesame Tofu"
+    ],
+    "metrics": {
+      "model": "gpt-5",
+      "firstTokenMs": 19021,
+      "totalMs": 21456,
+      "searchMs": 3157,
+      "rerankMs": 2568,
+      "inputTokens": 4863,
+      "outputTokens": 1485,
+      "embeddingTokens": 9
+    },
+    "correctness": {
+      "reasoning": "The generated response lists three tofu recipes: Sesame Tofu, Phat Phrik Khing, and Vegetarian Pho. These are all present in the ground truth. However, it omits two recipes from the ground truth: Sichuan Three-Pepper Tofu and Pad Thai. There are no contradictions, and the descriptions are accurate, but the response is incomplete as it does not mention all the tofu recipes listed in the ground truth.",
+      "decision": "INCORRECT"
+    },
+    "verdict": {
+      "contextRelevance": 3,
+      "contextReasoning": "The retrieved recipes are all tofu-based or include tofu as a main ingredient, directly matching the user's request.",
+      "faithfulness": 3,
+      "unsupportedClaims": [],
+      "answerRelevance": 3,
+      "expectedBehavior": true,
+      "reasoning": "The assistant recommends Sesame Tofu, Phat Phrik Khing, and Vegetarian Pho, all of which are present in the retrieved recipes and feature tofu as a main ingredient. The only general advice given (about substituting fish sauce in pho) is clearly labeled as such. The answer is complete, directly addresses the question, and does not introduce unsupported claims."
+    }
+  },
+  {
+    "id": "p08",
+    "category": "ingredients",
+    "question": "Any quick vegetarian dinner under 30 minutes?",
+    "expected": "Recommends a vegetarian recipe from the collection that takes about 30 minutes or less (e.g. Vegetarian Chicken Salad, Black Bean Enchiladas) and does not suggest meat dishes.",
+    "reference": "Vegetarian Chicken Salad (10 minutes) and Black Bean Enchiladas (about 15 minutes) are vegetarian and take under 30 minutes.",
+    "answer": "Got you—here are fast vegetarian picks from my collection, all 30 minutes or less:\n\n- Black Bean Enchiladas — About 15 minutes. Tortillas dipped in a warm, creamy blended black-bean sauce and topped with tomatillo salsa, queso fresco, cilantro, and onion.\n- Vegetarian Chicken Salad — 10 minutes. Chickpeas and seitan with dill, celery, scallions, mayo, and red wine vinegar; great piled on rye bread.\n- Sichuan Dry-Fried Green Beans — 15 minutes. Charred green beans with garlic, ginger, dried chilies, and Sichuan peppercorns; from general cooking practice, it’s great over steamed rice.\n\nWhich one sounds good? I can drop the full recipe steps right away. If you’ve got specific ingredients on hand, tell me and I’ll narrow it down.",
+    "contexts": [
+      "Vegetarian Chicken Salad",
+      "Black Bean Enchiladas",
+      "Channa Masala",
+      "Sesame Tofu",
+      "Sichuan Dry-Fried Green Beans"
+    ],
+    "metrics": {
+      "model": "gpt-5",
+      "firstTokenMs": 28070,
+      "totalMs": 30233,
+      "searchMs": 6802,
+      "rerankMs": 5265,
+      "inputTokens": 9845,
+      "outputTokens": 1770,
+      "embeddingTokens": 15
+    },
+    "correctness": {
+      "reasoning": "The generated response includes both 'Vegetarian Chicken Salad (10 minutes)' and 'Black Bean Enchiladas (about 15 minutes)' as vegetarian dishes that take under 30 minutes, matching the ground truth. It also adds an extra dish, 'Sichuan Dry-Fried Green Beans (15 minutes),' which does not contradict the ground truth and is consistent with the criteria (vegetarian, under 30 minutes). The descriptions provided for each dish do not contradict the ground truth and add helpful context. All key information from the ground truth is present and accurate.",
+      "decision": "CORRECT"
+    },
+    "verdict": {
+      "contextRelevance": 3,
+      "contextReasoning": "All three recommended recipes are vegetarian, take 30 minutes or less, and are directly from the retrieved collection.",
+      "faithfulness": 3,
+      "unsupportedClaims": [],
+      "answerRelevance": 3,
+      "expectedBehavior": true,
+      "reasoning": "The assistant recommends three vegetarian recipes (Black Bean Enchiladas, Vegetarian Chicken Salad, Sichuan Dry-Fried Green Beans), all of which are present in the retrieved recipes and have preparation times under 30 minutes. No unsupported claims or invented details are present, and the answer directly addresses the user's request for quick vegetarian dinners."
+    }
+  },
+  {
+    "id": "p09",
+    "category": "technique",
+    "question": "What can I use instead of buttermilk in the diner-style pancakes?",
+    "expected": "Uses the recipe's own note: the same amount of milk, or 1.5 cups yogurt and 1/2 cup water.",
+    "reference": "Use the same amount of milk instead of buttermilk, or 1.5 cups yogurt plus 1/2 cup water (adjusting with a little water if needed).",
+    "answer": "For the Diner-Style Pancakes recipe, you’ve got two built‑in swaps:\n- Use the same amount of regular milk (1.75 cups).\n- Or use 1.5 cups yogurt + 1/2 cup water; add a little extra water if needed until the batter is thick but pourable.\n\nFrom general cooking practice, you can also “sour” milk: for each cup of milk, stir in 1 tablespoon lemon juice or white vinegar, let sit 5–10 minutes, then use 1.75 cups. Kefir also works 1:1.",
+    "contexts": [
+      "Diner-Style Pancakes",
+      "Flour Tortillas"
+    ],
+    "metrics": {
+      "model": "gpt-5",
+      "firstTokenMs": 17492,
+      "totalMs": 19338,
+      "searchMs": 1502,
+      "rerankMs": 1157,
+      "inputTokens": 3115,
+      "outputTokens": 1468,
+      "embeddingTokens": 8
+    },
+    "correctness": {
+      "reasoning": "The generated response includes both key substitutions from the ground truth: using the same amount of milk instead of buttermilk, and using 1.5 cups yogurt plus 1/2 cup water, with the note to adjust with extra water if needed. It also provides additional, accurate alternatives (soured milk and kefir), which do not contradict the ground truth and are commonly accepted substitutions. The extra information is accurate and does not detract from the correctness of the answer.",
+      "decision": "CORRECT"
+    },
+    "verdict": {
+      "contextRelevance": 3,
+      "contextReasoning": "The retrieved Diner-Style Pancakes recipe includes a note with specific buttermilk substitutions.",
+      "faithfulness": 3,
+      "unsupportedClaims": [],
+      "answerRelevance": 3,
+      "expectedBehavior": true,
+      "reasoning": "The answer directly uses the recipe's own note for buttermilk substitutions (same amount of milk, or 1.5 cups yogurt plus 1/2 cup water), and clearly labels additional suggestions as general cooking practice. There are no unsupported claims, and the answer is complete and faithful to the source."
+    }
+  },
+  {
+    "id": "p10",
+    "category": "technique",
+    "question": "Why do I add baking soda to the chickpeas when making hummus?",
+    "expected": "Explains the technique; anything beyond the recipe text is clearly labelled as general cooking knowledge.",
+    "reference": "The recipe adds baking soda to the soaking water and to the cooking water but does not explain why. From general cooking knowledge: it raises the pH, which softens the chickpea skins so they cook until falling apart and give a very smooth hummus.",
+    "answer": "Good eye—our Hummus recipe uses baking soda in both the soak and the cooking water. Here’s why:\n\n- It raises the pH, which breaks down the chickpea skins and cell walls. Result: the beans cook faster and get very soft (to the “falling apart” stage in the recipe), which purées into ultra-smooth, creamy hummus.\n- It helps the skins slip off more easily, reducing graininess.\n\nFrom general cooking practice: rinse the chickpeas well after soaking/cooking to avoid any soapy flavor, and don’t overdo the baking soda or the beans can turn mushy. If you’re starting with canned chickpeas, a brief simmer with a little baking soda can similarly soften them and loosen skins, then rinse before blending.",
+    "contexts": [
+      "Hummus",
+      "Channa Masala",
+      "Baba Ganoush"
+    ],
+    "metrics": {
+      "model": "gpt-5",
+      "firstTokenMs": 16258,
+      "totalMs": 18306,
+      "searchMs": 2074,
+      "rerankMs": 1441,
+      "inputTokens": 4441,
+      "outputTokens": 1331,
+      "embeddingTokens": 16
+    },
+    "correctness": {
+      "reasoning": "The generated response accurately explains that baking soda is added to the soaking and cooking water to raise the pH, which softens the chickpea skins and allows them to cook until falling apart, resulting in a very smooth hummus. This matches the key information in the ground truth. The response also adds extra helpful details (e.g., rinsing to avoid soapy flavor, not overdoing baking soda, and a tip for canned chickpeas), but these do not contradict the ground truth and are factually correct. There are no contradictions or missing key points.",
+      "decision": "CORRECT"
+    },
+    "verdict": {
+      "contextRelevance": 3,
+      "contextReasoning": "The retrieved Hummus recipe specifically uses baking soda in both soaking and cooking chickpeas, directly supporting the question.",
+      "faithfulness": 3,
+      "unsupportedClaims": [],
+      "answerRelevance": 3,
+      "expectedBehavior": true,
+      "reasoning": "The answer accurately explains the use of baking soda as seen in the Hummus recipe (to soften chickpeas and break down skins), and clearly labels additional advice (rinsing, canned chickpeas) as general cooking practice. All claims about the recipe are supported, and the explanation is directly relevant and complete."
+    }
+  },
+  {
+    "id": "p11",
+    "category": "technique",
+    "question": "How do I know when the smoked pork shoulder is done?",
+    "expected": "Answers from the Smoked Pork Shoulder recipe; general advice (e.g. internal temperature) is labelled as general cooking knowledge if it is not in the recipe.",
+    "reference": "Smoke until the internal temperature reaches 195-205 °F, then wrap it and rest it in a cooler for an hour.",
+    "answer": "Smoking a pork shoulder right now? Here’s how to know it’s done.\n\nFrom the recipe “Smoked Pork Shoulder”:\n- Target internal temperature: 195–205°F in the thickest part. That’s the range where collagen has melted and it will shred easily.\n- Rest: Wrap in butcher paper or foil and rest in a cooler for about 1 hour before pulling.\n\nGood doneness cues (from general barbecue practice):\n- Probe tender: A thermometer probe or skewer should slide in and out with almost no resistance, like room‑temperature butter.\n- Shred test: Tug with two forks; it should come apart with little effort.\n- If bone-in: The shoulder blade should wiggle freely and pull out clean.\n\nNotes:\n- Cook by temp and feel, not time. A 2–4 lb shoulder can take 6–8 hours at ~250°F, but the stall around 160°F is normal; many folks wrap at that point to push through.",
+    "contexts": [
+      "Smoked Pork Shoulder",
+      "Carnitas with Salsa Verde",
+      "Smoked Whole Turkey",
+      "Memphis-Style Ribs"
+    ],
+    "metrics": {
+      "model": "gpt-5",
+      "firstTokenMs": 18842,
+      "totalMs": 21833,
+      "searchMs": 2027,
+      "rerankMs": 1696,
+      "inputTokens": 5103,
+      "outputTokens": 1670,
+      "embeddingTokens": 12
+    },
+    "correctness": {
+      "reasoning": "The generated response contains all the key information from the ground truth: it specifies the target internal temperature (195–205°F), instructs to wrap and rest the pork shoulder in a cooler for about an hour, and even adds helpful cues for doneness (probe tender, shred test, bone wiggle) which do not contradict the ground truth. The additional advice about cooking by temperature and the stall is accurate and does not conflict with the ground truth. The response is more detailed but fully aligns with the ground truth instructions.",
+      "decision": "CORRECT"
+    },
+    "verdict": {
+      "contextRelevance": 3,
+      "contextReasoning": "The answer uses the Smoked Pork Shoulder recipe, which is directly relevant to the question.",
+      "faithfulness": 3,
+      "unsupportedClaims": [],
+      "answerRelevance": 3,
+      "expectedBehavior": true,
+      "reasoning": "The answer correctly cites the internal temperature range (195–205°F) and the resting step from the Smoked Pork Shoulder recipe. It clearly labels additional doneness cues (probe tender, shred test, bone wiggle) as general barbecue practice, not from the recipe. There are no unsupported claims, and the answer is complete and directly addresses the question."
+    }
+  },
+  {
+    "id": "p12",
+    "category": "missing",
+    "question": "Do you have a lasagna recipe?",
+    "expected": "Says honestly that lasagna is not in the collection, offers 1-3 close recipes from the collection, and does NOT write a lasagna recipe from general knowledge.",
+    "reference": "There is no lasagna recipe in the collection. Close alternatives: Homemade Pasta, Dad's Spaghetti Sauce, Mac and Cheese.",
+    "answer": "You’re after lasagna—this collection doesn’t include a dedicated lasagna recipe, sorry about that. Here are the closest fits I can offer:\n\n- Dad’s Spaghetti Sauce: a rich tomato-meat sauce that works great as a lasagna filling.\n- Homemade Pasta: fresh pasta dough you can roll into lasagna sheets.\n- Mac and Cheese: a baked pasta casserole that shows the bake-and-bubble technique (different flavors, similar comfort).\n\nIf you want, I can help you assemble a classic lasagna using Dad’s Spaghetti Sauce and either fresh or store-bought sheets.",
+    "contexts": [
+      "Homemade Pasta",
+      "Dad's Spaghetti Sauce",
+      "Mac and Cheese",
+      "Lubia Polo"
+    ],
+    "metrics": {
+      "model": "gpt-5",
+      "firstTokenMs": 25412,
+      "totalMs": 27689,
+      "searchMs": 6659,
+      "rerankMs": 4485,
+      "inputTokens": 15790,
+      "outputTokens": 1640,
+      "embeddingTokens": 8
+    },
+    "correctness": {
+      "reasoning": "The generated response accurately states that there is no dedicated lasagna recipe in the collection, matching the ground truth. It also correctly identifies the closest alternatives: Dad’s Spaghetti Sauce, Homemade Pasta, and Mac and Cheese, which are the same as those listed in the ground truth. The additional suggestion about assembling a lasagna using the available recipes does not contradict the ground truth and is factually accurate. There are no contradictions or missing key information.",
+      "decision": "CORRECT"
+    },
+    "verdict": {
+      "contextRelevance": 3,
+      "contextReasoning": "The assistant correctly identifies that there is no lasagna recipe in the collection and suggests the most relevant alternatives: a pasta dough, a tomato-meat sauce, and a baked pasta casserole.",
+      "faithfulness": 3,
+      "unsupportedClaims": [],
+      "answerRelevance": 3,
+      "expectedBehavior": true,
+      "reasoning": "The assistant honestly states that lasagna is not in the collection and does not fabricate a lasagna recipe. It offers three closely related recipes from the collection and explains their relevance, fully meeting the expected behavior and sticking to the retrieved content."
+    }
+  },
+  {
+    "id": "p13",
+    "category": "missing",
+    "question": "How do I make a chocolate cake?",
+    "expected": "Says there is no chocolate cake (or chocolate dessert) in the collection and does not invent one; may offer what the collection does have.",
+    "reference": "There is no chocolate cake or chocolate dessert in the collection.",
+    "answer": "You’re after a chocolate cake—I don’t have one in my recipe collection. \n\nWant me to:\n- Walk you through a reliable general method (no exact quantities) for a classic cocoa-based chocolate cake with chocolate frosting, from general cooking practice?\n- Or suggest a different dessert from my collection if you tell me what ingredients you have on hand?\n\nIf you want the quick general method now:\n- Prep: Heat oven to 350°F/175°C. Grease and line two 8–9 inch pans (or a 9×13).\n- Dry bowl: Whisk flour, cocoa powder, sugar, baking powder, baking soda, salt.\n- Bloom cocoa: Stir cocoa with hot coffee or hot water to deepen flavor; cool slightly.\n- Wet bowl: Beat eggs, then add oil (or softened butter for a lighter crumb), milk or buttermilk, vanilla. Mix in the bloomed cocoa.\n- Combine: Add dry to wet in two additions, mixing just until smooth. Batter should be pourable.\n- Bake: Divide into pans; bake about 25–35 minutes (toothpick mostly clean, tops spring back).\n- Cool completely before frosting.\n- Simple chocolate frosting: Beat softened butter, powdered sugar, cocoa, pinch of salt, vanilla; thin with milk/cream until spreadable.\n\nTell me your pan size and what ingredients you’ve got (cocoa vs. melted chocolate, milk vs. buttermilk), and I’ll tailor times and tweaks.",
+    "contexts": [],
+    "metrics": {
+      "model": "gpt-5",
+      "firstTokenMs": 24942,
+      "totalMs": 29456,
+      "searchMs": 1198,
+      "rerankMs": 0,
+      "inputTokens": 5336,
+      "outputTokens": 2010,
+      "embeddingTokens": 9
+    },
+    "correctness": {
+      "reasoning": "The generated response correctly states that there is no chocolate cake in the recipe collection, which matches the ground truth. It then offers to provide a general method for making a chocolate cake, which is not in contradiction with the ground truth, as it does not claim this is from the collection. The response also offers to suggest a different dessert from the collection if the user provides ingredients, which is consistent with the ground truth's implication that chocolate desserts are absent from the collection. There are no contradictions or missing key information.",
+      "decision": "CORRECT"
+    },
+    "verdict": {
+      "contextRelevance": 0,
+      "contextReasoning": "No recipes were retrieved, so there is no context for chocolate cake or any dessert.",
+      "faithfulness": 3,
+      "unsupportedClaims": [],
+      "answerRelevance": 3,
+      "expectedBehavior": true,
+      "reasoning": "The assistant correctly states that there is no chocolate cake recipe in the collection and does not invent one. It offers a general method clearly labeled as general cooking practice, and invites the user to request alternatives from the collection. This matches the expected behavior and does not hallucinate any recipes or details from the collection."
+    }
+  },
+  {
+    "id": "p14",
+    "category": "missing",
+    "question": "What's your sushi recipe?",
+    "expected": "Says sushi is not in the collection, does not invent a sushi recipe, may suggest close alternatives from the collection.",
+    "reference": "There is no sushi recipe in the collection.",
+    "answer": "You’re looking for a sushi recipe—my current collection doesn’t include sushi. Here are the closest rice-focused options I do have, in case you want something in that lane:\n\n- Thai fried rice with green beans and basil: Fragrant, wok-charred rice with chilies, fish sauce, and Thai basil—fast, satisfying, and great with a crisp cucumber and lime side.\n- Milagu Sadam (Indian Black Pepper Rice): Comforting, peppery tempered rice with mustard seeds, curry leaves, and cashews—simple and bold.\n\nWant the full recipe for either of those? If you’re set on sushi, I can also share general tips for sushi rice and rolling from general cooking practice.",
+    "contexts": [
+      "Milagu Sadam",
+      "Thai fried rice with green beans and basil"
+    ],
+    "metrics": {
+      "model": "gpt-5",
+      "firstTokenMs": 22703,
+      "totalMs": 24655,
+      "searchMs": 2683,
+      "rerankMs": 1340,
+      "inputTokens": 7243,
+      "outputTokens": 1560,
+      "embeddingTokens": 48
+    },
+    "correctness": {
+      "reasoning": "The generated response accurately states that there is no sushi recipe in the collection, which matches the ground truth. It also offers alternative rice-based recipes, which does not contradict the ground truth and is additional helpful information. The response does not claim to have a sushi recipe, so there is no factual error or contradiction.",
+      "decision": "CORRECT"
+    },
+    "verdict": {
+      "contextRelevance": 3,
+      "contextReasoning": "The retrieved recipes are both rice-based dishes, which are the closest sensible alternatives to sushi in the collection.",
+      "faithfulness": 3,
+      "unsupportedClaims": [],
+      "answerRelevance": 3,
+      "expectedBehavior": true,
+      "reasoning": "The assistant correctly states that sushi is not in the collection and does not invent a sushi recipe. It suggests the two closest rice-based alternatives, accurately describing them based on the retrieved recipes, and offers to provide general sushi advice only as general cooking knowledge. This fully matches the expected behavior and is faithful to the available recipes."
+    }
+  },
+  {
+    "id": "p15",
+    "category": "off-topic",
+    "question": "Can you write me a Python function that sorts a list?",
+    "expected": "Politely declines because it is not about cooking and steers back to recipes; does not write code.",
+    "reference": "A polite refusal: the assistant only helps with cooking and the recipes in its collection.",
+    "answer": "I’m here as your chef assistant, so I can’t help with Python code. But if you tell me what ingredients you’ve got or what you’re craving, I can recommend a recipe from my collection, suggest substitutions, or walk you through the steps. What are you in the mood to cook?",
+    "contexts": [],
+    "metrics": {
+      "model": "gpt-5",
+      "firstTokenMs": 3756,
+      "totalMs": 4986,
+      "searchMs": 0,
+      "rerankMs": 0,
+      "inputTokens": 1075,
+      "outputTokens": 376,
+      "embeddingTokens": 0
+    },
+    "correctness": {
+      "reasoning": "The generated response politely refuses to help with Python code, aligning with the ground truth that the assistant only helps with cooking and recipes in its collection. It further elaborates on what the assistant can do (recommend recipes, suggest substitutions, walk through steps), which is consistent with the assistant's role. There are no contradictions or missing key information compared to the ground truth.",
+      "decision": "CORRECT"
+    },
+    "verdict": {
+      "contextRelevance": 0,
+      "contextReasoning": "No recipes were retrieved, which is appropriate since the question is not about food or cooking.",
+      "faithfulness": 3,
+      "unsupportedClaims": [],
+      "answerRelevance": 3,
+      "expectedBehavior": true,
+      "reasoning": "The assistant correctly recognizes that the question is outside its domain and politely declines, steering the user back to recipe-related topics. There are no unsupported claims, and the response is fully faithful and relevant to the expected behavior."
+    }
+  },
+  {
+    "id": "p16",
+    "category": "off-topic",
+    "question": "Who won the last football World Cup?",
+    "expected": "Politely declines as off-topic and steers back to recipes.",
+    "reference": "A polite refusal: the assistant only helps with cooking and the recipes in its collection.",
+    "answer": "I’m your cooking helper, so I don’t have info on sports results. If you’re hungry though, tell me what you’ve got in the fridge or what you’re craving, and I’ll suggest a recipe or walk you through it.",
+    "contexts": [],
+    "metrics": {
+      "model": "gpt-5",
+      "firstTokenMs": 2630,
+      "totalMs": 3973,
+      "searchMs": 0,
+      "rerankMs": 0,
+      "inputTokens": 1071,
+      "outputTokens": 267,
+      "embeddingTokens": 0
+    },
+    "correctness": {
+      "reasoning": "The generated response politely refuses to provide information on sports results, stating that it is a cooking helper. It also offers to help with recipes, which aligns with the assistant's stated purpose in the ground truth. There is no contradiction, and the key information—that the assistant only helps with cooking and recipes—is present, even though the wording is different.",
+      "decision": "CORRECT"
+    },
+    "verdict": {
+      "contextRelevance": 0,
+      "contextReasoning": "No recipes were retrieved, which is appropriate since the question is not about food or recipes.",
+      "faithfulness": 3,
+      "unsupportedClaims": [],
+      "answerRelevance": 3,
+      "expectedBehavior": true,
+      "reasoning": "The assistant correctly declines to answer the off-topic question and redirects the user to recipe-related help, which matches the expected behavior. There are no unsupported claims, and the answer is fully relevant to the assistant's purpose."
+    }
+  },
+  {
+    "id": "p17",
+    "category": "false-premise",
+    "question": "Your pad thai recipe uses chicken, right? How much chicken do I need?",
+    "expected": "Corrects the premise: the Pad Thai recipe has tofu, dried shrimp and eggs, no chicken. Does not invent a chicken quantity.",
+    "reference": "The Pad Thai recipe contains no chicken: it uses pressed tofu, dried shrimp and 2 eggs.",
+    "answer": "About our Pad Thai recipe: it doesn’t use chicken—it calls for tofu and a bit of dried shrimp.\n\nIf you want to add chicken (general cooking practice, not in the original recipe): use about 6–8 oz (170–225 g) thinly sliced chicken breast or thigh for the 2-serving batch. Stir-fry it in a little oil with a pinch of salt/fish sauce until just cooked, remove, then proceed with the recipe. Add the chicken back in when you add the bean sprouts and chives so it stays tender. You can keep the tofu/dried shrimp or omit them if you prefer chicken-only.",
+    "contexts": [
+      "Pad Thai",
+      "Pad See Ew",
+      "Larb Gai",
+      "Kai Kaphrao Khai Dao"
+    ],
+    "metrics": {
+      "model": "gpt-5",
+      "firstTokenMs": 12982,
+      "totalMs": 14736,
+      "searchMs": 2870,
+      "rerankMs": 2342,
+      "inputTokens": 5012,
+      "outputTokens": 959,
+      "embeddingTokens": 3
+    },
+    "correctness": {
+      "reasoning": "The generated response accurately states that the Pad Thai recipe does not use chicken and instead uses tofu and dried shrimp, which matches the ground truth. It omits mentioning the 2 eggs, but this is a minor omission since the main focus is on the absence of chicken and the presence of tofu and dried shrimp. The additional information about how to add chicken is clearly marked as an optional modification and does not contradict the ground truth. There are no factual inaccuracies or contradictions.",
+      "decision": "CORRECT"
+    },
+    "verdict": {
+      "contextRelevance": 3,
+      "contextReasoning": "The retrieved Pad Thai recipe is directly relevant and clearly shows it does not use chicken.",
+      "faithfulness": 3,
+      "unsupportedClaims": [],
+      "answerRelevance": 3,
+      "expectedBehavior": true,
+      "reasoning": "The assistant correctly points out that the Pad Thai recipe does not use chicken, referencing the actual ingredients (tofu and dried shrimp) from the retrieved recipe. It does not invent a chicken quantity for the original recipe, and only provides a general cooking suggestion for adding chicken, clearly labeled as such. This matches the expected behavior and is fully faithful to the retrieved content."
+    }
+  },
+  {
+    "id": "p18",
+    "category": "false-premise",
+    "question": "How many eggs go into the hummus?",
+    "expected": "Says the Hummus recipe has no eggs; does not invent an egg quantity.",
+    "reference": "The Hummus recipe contains no eggs.",
+    "answer": "None. The Hummus recipe in my collection uses chickpeas, tahini, lemon, and garlic—no eggs. If you meant a garnish, some folks serve hummus with a hard‑boiled egg on top, but it’s not part of this recipe.",
+    "contexts": [
+      "Hummus",
+      "Channa Masala",
+      "Lemon Tahini Dressing",
+      "Baba Ganoush"
+    ],
+    "metrics": {
+      "model": "gpt-5",
+      "firstTokenMs": 9416,
+      "totalMs": 10632,
+      "searchMs": 2440,
+      "rerankMs": 2136,
+      "inputTokens": 4563,
+      "outputTokens": 592,
+      "embeddingTokens": 3
+    },
+    "correctness": {
+      "reasoning": "The generated response accurately states that the hummus recipe contains no eggs, matching the key information from the ground truth. It also provides additional context about garnishing with eggs, but clearly distinguishes that this is not part of the recipe itself. There are no contradictions or missing key facts.",
+      "decision": "CORRECT"
+    },
+    "verdict": {
+      "contextRelevance": 3,
+      "contextReasoning": "The retrieved Hummus recipe is directly relevant and fully covers the ingredients used in hummus.",
+      "faithfulness": 3,
+      "unsupportedClaims": [],
+      "answerRelevance": 3,
+      "expectedBehavior": true,
+      "reasoning": "The answer correctly states that the Hummus recipe contains no eggs, which is fully supported by the retrieved recipe's ingredient list. It also notes that some people garnish hummus with egg as a general practice, but clarifies this is not part of the recipe, maintaining faithfulness and relevance."
+    }
+  }
+]
