@@ -7,7 +7,8 @@ import {
   stepCountIs,
 } from 'ai';
 import { saveConversation } from '@/lib/conversations';
-import { EMBEDDING_MODEL } from '@/lib/ai/embedding';
+import { EMBEDDING_MODEL, type SearchResult } from '@/lib/ai/embedding';
+import { serverError } from '@/lib/api';
 import { addResource, createGetInformation } from '@/lib/ai/tools';
 import { emptySearchStats, recordChatMetric } from '@/lib/monitoring/metrics';
 import { chatCostUsd, embeddingCostUsd } from '@/lib/monitoring/pricing';
@@ -55,6 +56,20 @@ The collection is small: many well-known dishes are NOT in it.
 
 // Legfeljebb 5 keresési kör, az utolsó lépés mindig a válaszé
 const MAX_STEPS = 6;
+
+// A getInformation által visszaadott receptek, ismétlés nélkül, a legjobb rerank pontszámmal
+function retrievedContexts(steps: { toolResults: { toolName: string; output: unknown }[] }[]) {
+  const byTitle = new Map<string, SearchResult>();
+  for (const r of steps.flatMap(s => s.toolResults)) {
+    if (r.toolName !== 'getInformation') continue;
+    for (const hit of (r.output as { results?: SearchResult[] }).results ?? []) {
+      const key = hit.title ?? hit.content.slice(0, 80);
+      const prev = byTitle.get(key);
+      if (!prev || (hit.rerankScore ?? hit.similarity) > (prev.rerankScore ?? prev.similarity)) byTitle.set(key, hit);
+    }
+  }
+  return [...byTitle.values()];
+}
 
 export async function POST(req: Request) {
   // Az id a beszélgetés azonosítója (a böngésző chat küldi); nélküle (pl. evaluációs kliens) nincs mentés
@@ -151,6 +166,32 @@ export async function POST(req: Request) {
       });
     },
   });
+
+  // Nem streamelt JSON mód (Accept: application/json) az evaluációhoz és más eszközökhöz:
+  // ugyanaz a modellhívás és mérés, de a válasz egyben jön, a visszakeresett receptekkel együtt
+  if (req.headers.get('accept')?.includes('application/json')) {
+    try {
+      const [answer, steps, totalUsage] = await Promise.all([result.text, result.steps, result.totalUsage]);
+      return Response.json({
+        messageId: assistantMessageId,
+        answer,
+        contexts: retrievedContexts(steps),
+        toolCalls: steps.flatMap(s => s.toolCalls.map(c => ({ tool: c.toolName, input: c.input }))),
+        metrics: {
+          model: env.CHAT_MODEL,
+          firstTokenMs,
+          totalMs: Date.now() - startedAt,
+          searchMs: searchStats.searchMs,
+          rerankMs: searchStats.rerankMs,
+          inputTokens: totalUsage.inputTokens ?? 0,
+          outputTokens: totalUsage.outputTokens ?? 0,
+          embeddingTokens: searchStats.embeddingTokens,
+        },
+      });
+    } catch (e) {
+      return serverError('Answering', e);
+    }
+  }
 
   return result.toUIMessageStreamResponse({
     originalMessages: messages,
