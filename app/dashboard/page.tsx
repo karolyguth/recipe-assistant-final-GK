@@ -2,6 +2,7 @@ import { ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 
 import { BarChart, LatencyChart } from '@/components/dashboard/charts';
+import { LocalTime } from '@/components/dashboard/local-time';
 import { getDashboardData, parseRange, RANGES, type RangeKey } from '@/lib/monitoring/dashboard';
 import { cn } from '@/lib/utils';
 
@@ -13,7 +14,6 @@ const RANGE_LABELS: Record<RangeKey, string> = { '24h': 'Last 24 hours', '7d': '
 const compact = new Intl.NumberFormat('en', { notation: 'compact', maximumFractionDigits: 1 });
 const sec = (ms: number | null) => (ms === null ? '–' : `${(ms / 1000).toFixed(1)} s`);
 const usd = (v: number) => (v === 0 ? '$0' : v < 0.01 ? `$${v.toFixed(4)}` : `$${v.toFixed(2)}`);
-const time = (iso: string) => new Date(iso).toLocaleString('en-GB', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
 
 function Tile({ label, value, detail }: { label: string; value: string; detail?: string }) {
   return (
@@ -121,7 +121,7 @@ export default async function Dashboard({ searchParams }: { searchParams: { rang
                         <span className="truncate">{p.question}</span>
                       </p>
                       <p className="mt-0.5 text-xs text-muted-foreground">
-                        {time(p.createdAt)} · after {sec(p.totalMs)}
+                        <LocalTime iso={p.createdAt} /> · after {sec(p.totalMs)}
                         {p.error ? ` · ${p.error}` : ''}
                       </p>
                     </li>
@@ -155,7 +155,7 @@ export default async function Dashboard({ searchParams }: { searchParams: { rang
                         <li key={i} className="py-2">
                           <p className="truncate">{n.question ?? '(question not recorded)'}</p>
                           <p className="mt-0.5 text-xs text-muted-foreground">
-                            {time(n.updatedAt)}
+                            <LocalTime iso={n.updatedAt} />
                             {n.totalMs !== null ? ` · answered in ${sec(n.totalMs)}` : ''}
                             {n.comment ? ` · “${n.comment}”` : ' · no comment'}
                           </p>
@@ -188,7 +188,7 @@ export default async function Dashboard({ searchParams }: { searchParams: { rang
                       <td className="max-w-xs truncate py-2 pr-3" title={r.question}>
                         {r.question}
                       </td>
-                      <td className="whitespace-nowrap py-2 pr-3 text-muted-foreground">{time(r.createdAt)}</td>
+                      <td className="whitespace-nowrap py-2 pr-3 text-muted-foreground"><LocalTime iso={r.createdAt} /></td>
                       <td className="py-2 pr-3 text-right tabular-nums">{sec(r.firstTokenMs)}</td>
                       <td className="py-2 pr-3 text-right tabular-nums">{sec(r.totalMs)}</td>
                       <td className="py-2 pr-3 text-right tabular-nums">{sec(r.searchMs)}</td>
