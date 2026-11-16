@@ -1,0 +1,687 @@
+{
+  "description": "LLM által generált kérdések (gpt-4.1-mini), receptenként egy, a kurzus rag_level_evaluation.py módszerével.",
+  "cases": [
+    {
+      "id": "g-aloo-matar",
+      "type": "generated",
+      "query": "How do I make Aloo Matar curry with potatoes and peas from scratch?",
+      "relevant": [
+        "aloo-matar"
+      ]
+    },
+    {
+      "id": "g-austro-hungarian-cream-of-horseradish-soup",
+      "type": "generated",
+      "query": "How do I make Austro-Hungarian cream of horseradish soup with potatoes and horseradish?",
+      "relevant": [
+        "austro-hungarian-cream-of-horseradish-soup"
+      ]
+    },
+    {
+      "id": "g-baba-ganoush",
+      "type": "generated",
+      "query": "How do I make baba ganoush using broiled eggplants and tahini?",
+      "relevant": [
+        "baba-ganoush"
+      ]
+    },
+    {
+      "id": "g-bagels",
+      "type": "generated",
+      "query": "How do I shape and boil homemade bagels before baking them?",
+      "relevant": [
+        "bagels"
+      ]
+    },
+    {
+      "id": "g-barbeque-sauce",
+      "type": "generated",
+      "query": "How do I make a simple ketchup-based BBQ sauce with apple cider vinegar and spices?",
+      "relevant": [
+        "barbeque-sauce"
+      ]
+    },
+    {
+      "id": "g-beef-tacos",
+      "type": "generated",
+      "query": "How do I make quick and flavorful beef tacos with ground beef and spices?",
+      "relevant": [
+        "beef-tacos"
+      ]
+    },
+    {
+      "id": "g-bhindi-fry",
+      "type": "generated",
+      "query": "How do I make Andhra-style Bhindi Fry with okra and spices?",
+      "relevant": [
+        "bhindi-fry"
+      ]
+    },
+    {
+      "id": "g-biryani-shorba",
+      "type": "generated",
+      "query": "How do I make biryani shorba sauce from scratch to serve with biryani?",
+      "relevant": [
+        "biryani-shorba"
+      ]
+    },
+    {
+      "id": "g-black-bean-enchiladas",
+      "type": "generated",
+      "query": "How do you make black bean enchiladas with tomatillo salsa and queso fresco?",
+      "relevant": [
+        "black-bean-enchiladas"
+      ]
+    },
+    {
+      "id": "g-black-pepper-rice",
+      "type": "generated",
+      "query": "How do I make Milagu Sadam, the Indian black pepper rice dish?",
+      "relevant": [
+        "black-pepper-rice"
+      ]
+    },
+    {
+      "id": "g-bonchon-style-sauce",
+      "type": "generated",
+      "query": "How do I make a Bonchon-style sauce with gochujang and what are the key ingredients?",
+      "relevant": [
+        "bonchon-style-sauce"
+      ]
+    },
+    {
+      "id": "g-burning-bike-hot-sauce",
+      "type": "generated",
+      "query": "How do I make Burning Bike Hot Sauce with carrot and habaneros?",
+      "relevant": [
+        "burning-bike-hot-sauce"
+      ]
+    },
+    {
+      "id": "g-carne-asada",
+      "type": "generated",
+      "query": "How do I marinate and cook flank steak to make Carne Asada?",
+      "relevant": [
+        "carne-asada"
+      ]
+    },
+    {
+      "id": "g-carnitas-with-salsa-verde",
+      "type": "generated",
+      "query": "How do I make carnitas with salsa verde, including the steps for cooking the pork and preparing the salsa?",
+      "relevant": [
+        "carnitas-with-salsa-verde"
+      ]
+    },
+    {
+      "id": "g-channa-masala",
+      "type": "generated",
+      "query": "How do I make authentic channa masala with chickpeas and spices?",
+      "relevant": [
+        "channa-masala"
+      ]
+    },
+    {
+      "id": "g-chicken-nuggets",
+      "type": "generated",
+      "query": "How do I make crispy homemade chicken nuggets that taste like McDonald's?",
+      "relevant": [
+        "chicken-nuggets"
+      ]
+    },
+    {
+      "id": "g-chicken-schnitzel",
+      "type": "generated",
+      "query": "How do I make chicken schnitzel with a crispy coating and what ingredients do I need?",
+      "relevant": [
+        "chicken-schnitzel"
+      ]
+    },
+    {
+      "id": "g-chile-colorado",
+      "type": "generated",
+      "query": "How do I make traditional Chile Colorado with pork shoulder and what ingredients do I need?",
+      "relevant": [
+        "chile-colorado"
+      ]
+    },
+    {
+      "id": "g-creamy-chicken-enchiladas",
+      "type": "generated",
+      "query": "How do I make creamy chicken enchiladas with tomatillo and poblano peppers from scratch?",
+      "relevant": [
+        "creamy-chicken-enchiladas"
+      ]
+    },
+    {
+      "id": "g-cucumber-raita",
+      "type": "generated",
+      "query": "How do I make cucumber raita with cumin and green chilies?",
+      "relevant": [
+        "cucumber-raita"
+      ]
+    },
+    {
+      "id": "g-dad's-spaghetti-sauce",
+      "type": "generated",
+      "query": "How do I make a slow-simmered spaghetti sauce with ground beef and a blend of Italian herbs?",
+      "relevant": [
+        "dad's-spaghetti-sauce"
+      ]
+    },
+    {
+      "id": "g-diner-style-pancakes",
+      "type": "generated",
+      "query": "How do I make diner-style pancakes with buttermilk and what are the main steps?",
+      "relevant": [
+        "diner-style-pancakes"
+      ]
+    },
+    {
+      "id": "g-egg-biryani",
+      "type": "generated",
+      "query": "How do I make the gravy for egg biryani and what spices are used?",
+      "relevant": [
+        "egg-biryani"
+      ]
+    },
+    {
+      "id": "g-enchilada-sauce",
+      "type": "generated",
+      "query": "How do I make authentic red enchilada sauce using dried chiles and what ingredients do I need?",
+      "relevant": [
+        "enchilada-sauce"
+      ]
+    },
+    {
+      "id": "g-flour-tortillas",
+      "type": "generated",
+      "query": "How do I make homemade flour tortillas using lard and what are the cooking steps?",
+      "relevant": [
+        "flour-tortillas"
+      ]
+    },
+    {
+      "id": "g-garlic-bread",
+      "type": "generated",
+      "query": "How do I make garlic bread with a garlic butter spread using Italian bread?",
+      "relevant": [
+        "garlic-bread"
+      ]
+    },
+    {
+      "id": "g-garlicky-cabbage-and-fish-sauce",
+      "type": "generated",
+      "query": "How do I make a quick garlicky cabbage side dish with fish sauce?",
+      "relevant": [
+        "garlicky-cabbage-and-fish-sauce"
+      ]
+    },
+    {
+      "id": "g-gobi-manchurian",
+      "type": "generated",
+      "query": "How do I make crispy Gobi Manchurian with a spicy soy-based sauce?",
+      "relevant": [
+        "gobi-manchurian"
+      ]
+    },
+    {
+      "id": "g-guasacaca",
+      "type": "generated",
+      "query": "How do I make traditional Venezuelan guasacaca sauce with avocado and herbs?",
+      "relevant": [
+        "guasacaca"
+      ]
+    },
+    {
+      "id": "g-halal-cart-chicken",
+      "type": "generated",
+      "query": "How do I make the white sauce for Halal Cart Chicken and what ingredients do I need?",
+      "relevant": [
+        "halal-cart-chicken"
+      ]
+    },
+    {
+      "id": "g-halal-cart-red-sauce",
+      "type": "generated",
+      "query": "How do I make the red sauce used in Halal Guys' halal cart, and what ingredients are needed?",
+      "relevant": [
+        "halal-cart-red-sauce"
+      ]
+    },
+    {
+      "id": "g-harissa-hot-sauce",
+      "type": "generated",
+      "query": "How do you make harissa hot sauce from dried guajillo and New Mexico chiles?",
+      "relevant": [
+        "harissa-hot-sauce"
+      ]
+    },
+    {
+      "id": "g-hasselback-butternut-squash",
+      "type": "generated",
+      "query": "How do I make hasselback butternut squash with a maple syrup glaze?",
+      "relevant": [
+        "hasselback-butternut-squash"
+      ]
+    },
+    {
+      "id": "g-homemade-pasta",
+      "type": "generated",
+      "query": "How do I make homemade pasta dough from scratch and cook it properly?",
+      "relevant": [
+        "homemade-pasta"
+      ]
+    },
+    {
+      "id": "g-hummus",
+      "type": "generated",
+      "query": "How do I make authentic Israeli-style hummus from dried chickpeas, including the tahini sauce?",
+      "relevant": [
+        "hummus"
+      ]
+    },
+    {
+      "id": "g-jalepeño-hot-sauce",
+      "type": "generated",
+      "query": "How do I make a homemade jalapeño and serrano hot sauce with vinegar?",
+      "relevant": [
+        "jalepeño-hot-sauce"
+      ]
+    },
+    {
+      "id": "g-kofte-kebabs",
+      "type": "generated",
+      "query": "How do I make kofte kebabs with a spicy harissa seasoning?",
+      "relevant": [
+        "kofte-kebabs"
+      ]
+    },
+    {
+      "id": "g-larb-gai",
+      "type": "generated",
+      "query": "How do I make traditional Thai Larb Gai salad with chicken and herbs, including the galangal paste and toasted rice powder?",
+      "relevant": [
+        "larb-gai"
+      ]
+    },
+    {
+      "id": "g-lemon-tahini-dressing",
+      "type": "generated",
+      "query": "How do I make a lemon tahini dressing and how long does it keep in the fridge?",
+      "relevant": [
+        "lemon-tahini-dressing"
+      ]
+    },
+    {
+      "id": "g-lubia-polo",
+      "type": "generated",
+      "query": "How do I make traditional Persian Lubia Polo with green beans and saffron rice?",
+      "relevant": [
+        "lubia-polo"
+      ]
+    },
+    {
+      "id": "g-mac-and-cheese",
+      "type": "generated",
+      "query": "How do I make baked mac and cheese with a creamy cheese sauce and a crispy breadcrumb topping?",
+      "relevant": [
+        "mac-and-cheese"
+      ]
+    },
+    {
+      "id": "g-masala-green-beans",
+      "type": "generated",
+      "query": "How do I make masala green beans with mustard and cumin seeds?",
+      "relevant": [
+        "masala-green-beans"
+      ]
+    },
+    {
+      "id": "g-massaman-curry",
+      "type": "generated",
+      "query": "How do I make Massaman curry with beef and what ingredients are needed for the curry paste?",
+      "relevant": [
+        "massaman-curry"
+      ]
+    },
+    {
+      "id": "g-memphis-style-ribs",
+      "type": "generated",
+      "query": "How do I make Memphis-style ribs with a dry rub and what is the cooking process on a charcoal grill?",
+      "relevant": [
+        "memphis-style-ribs"
+      ]
+    },
+    {
+      "id": "g-no-knead-pan-pizza",
+      "type": "generated",
+      "query": "How do I make no-knead pan pizza dough and what are the key steps for rising and baking it?",
+      "relevant": [
+        "no-knead-pan-pizza"
+      ]
+    },
+    {
+      "id": "g-oaxacan-black-beans",
+      "type": "generated",
+      "query": "How do I make traditional Frijoles Picosos from Oaxaca using black beans and chiles de árbol?",
+      "relevant": [
+        "oaxacan-black-beans"
+      ]
+    },
+    {
+      "id": "g-pad-see-ew",
+      "type": "generated",
+      "query": "How do I make Pad See Ew with homemade sauce and what are the main steps involved?",
+      "relevant": [
+        "pad-see-ew"
+      ]
+    },
+    {
+      "id": "g-pad-thai",
+      "type": "generated",
+      "query": "How do I make authentic Pad Thai sauce and what ingredients do I need for the dish?",
+      "relevant": [
+        "pad-thai"
+      ]
+    },
+    {
+      "id": "g-phat-phrik-khing",
+      "type": "generated",
+      "query": "How do I make Phat Phrik Khing with tofu and long beans using Thai red curry paste?",
+      "relevant": [
+        "phat-phrik-khing"
+      ]
+    },
+    {
+      "id": "g-pita-bread",
+      "type": "generated",
+      "query": "How do I make homemade pita bread using whole wheat and all-purpose flour?",
+      "relevant": [
+        "pita-bread"
+      ]
+    },
+    {
+      "id": "g-pizza-dough",
+      "type": "generated",
+      "query": "How do I make pizza dough that needs to rest overnight in the fridge?",
+      "relevant": [
+        "pizza-dough"
+      ]
+    },
+    {
+      "id": "g-portuguese-hot-sauce",
+      "type": "generated",
+      "query": "How do I make piri-piri hot sauce similar to the one at The Pit in Bloomfield, NJ?",
+      "relevant": [
+        "portuguese-hot-sauce"
+      ]
+    },
+    {
+      "id": "g-potato-and-green-chili-hash",
+      "type": "generated",
+      "query": "How do I make a potato and green chili hash with chorizo and eggs baked in the oven?",
+      "relevant": [
+        "potato-and-green-chili-hash"
+      ]
+    },
+    {
+      "id": "g-queso-dip",
+      "type": "generated",
+      "query": "How do I make a creamy queso dip with pickled jalapeños and a mix of cheeses?",
+      "relevant": [
+        "queso-dip"
+      ]
+    },
+    {
+      "id": "g-raspberry-and-elderflower-gin-and-tonic",
+      "type": "generated",
+      "query": "How do I make a raspberry and elderflower gin and tonic with fresh thyme?",
+      "relevant": [
+        "raspberry-and-elderflower-gin-and-tonic"
+      ]
+    },
+    {
+      "id": "g-roasted-parsnips-and-carrots",
+      "type": "generated",
+      "query": "How do I make roasted parsnips and carrots with herbs?",
+      "relevant": [
+        "roasted-parsnips-and-carrots"
+      ]
+    },
+    {
+      "id": "g-roti",
+      "type": "generated",
+      "query": "How do I make traditional roti using flour, butter, and water?",
+      "relevant": [
+        "roti"
+      ]
+    },
+    {
+      "id": "g-salami-chips-with-white-bean-dip",
+      "type": "generated",
+      "query": "How do I make crispy salami chips with a garlic white bean dip?",
+      "relevant": [
+        "salami-chips-with-white-bean-dip"
+      ]
+    },
+    {
+      "id": "g-salsa-amarilla",
+      "type": "generated",
+      "query": "How do I make a yellow salsa with yellow tomatoes and chiles?",
+      "relevant": [
+        "salsa-amarilla"
+      ]
+    },
+    {
+      "id": "g-samosa-pie",
+      "type": "generated",
+      "query": "How do I make the pastry and filling for a samosa pie, and what are the baking instructions?",
+      "relevant": [
+        "samosa-pie"
+      ]
+    },
+    {
+      "id": "g-sesame-tofu",
+      "type": "generated",
+      "query": "How do I make crispy sesame tofu with broccoli and a thick sesame sauce?",
+      "relevant": [
+        "sesame-tofu"
+      ]
+    },
+    {
+      "id": "g-sichuan-dry-fried-green-beans",
+      "type": "generated",
+      "query": "How do I make Sichuan dry-fried green beans with that signature blistered texture?",
+      "relevant": [
+        "sichuan-dry-fried-green-beans"
+      ]
+    },
+    {
+      "id": "g-sichuan-three-pepper-tofu",
+      "type": "generated",
+      "query": "How do I make Sichuan Three-Pepper Tofu with the right balance of spices and sauce?",
+      "relevant": [
+        "sichuan-three-pepper-tofu"
+      ]
+    },
+    {
+      "id": "g-smoked-pork-shoulder",
+      "type": "generated",
+      "query": "How do I smoke a pork shoulder using the snake method on a charcoal grill?",
+      "relevant": [
+        "smoked-pork-shoulder"
+      ]
+    },
+    {
+      "id": "g-smoked-whole-turkey",
+      "type": "generated",
+      "query": "How do I prepare and smoke a whole spatchcocked turkey with a dry brine for a flavorful result?",
+      "relevant": [
+        "smoked-whole-turkey"
+      ]
+    },
+    {
+      "id": "g-smoky-jalepeno-and-lime-cranberry-sauce",
+      "type": "generated",
+      "query": "How do I make a smoky jalapeno and lime cranberry sauce with mezcal?",
+      "relevant": [
+        "smoky-jalepeno-and-lime-cranberry-sauce"
+      ]
+    },
+    {
+      "id": "g-smoky-three-chile-salsa",
+      "type": "generated",
+      "query": "How do I make a smoky three-chile salsa with tomatillos and garlic?",
+      "relevant": [
+        "smoky-three-chile-salsa"
+      ]
+    },
+    {
+      "id": "g-soft-pretzels-1",
+      "type": "generated",
+      "query": "How do you make soft pretzels using Alton Brown's recipe, including the steps for boiling and baking?",
+      "relevant": [
+        "soft-pretzels-1",
+        "soft-pretzels-2"
+      ]
+    },
+    {
+      "id": "g-soft-pretzels-2",
+      "type": "generated",
+      "query": "How do I make soft pretzels using beer in the dough and a baking soda dip for baking?",
+      "relevant": [
+        "soft-pretzels-1",
+        "soft-pretzels-2"
+      ]
+    },
+    {
+      "id": "g-spanish-rice",
+      "type": "generated",
+      "query": "How do I make traditional Spanish rice using tomato paste and chicken stock?",
+      "relevant": [
+        "spanish-rice"
+      ]
+    },
+    {
+      "id": "g-spicy-whole-grain-pub-mustard",
+      "type": "generated",
+      "query": "How do I make spicy whole-grain pub mustard with beer and mustard seeds, and how long should it sit before eating?",
+      "relevant": [
+        "spicy-whole-grain-pub-mustard"
+      ]
+    },
+    {
+      "id": "g-stir-fried-morning-glory",
+      "type": "generated",
+      "query": "How do I make Thai-style stir-fried morning glory with garlic and chili?",
+      "relevant": [
+        "stir-fried-morning-glory"
+      ]
+    },
+    {
+      "id": "g-stir-fried-pork-with-hot-basil",
+      "type": "generated",
+      "query": "How do you make stir-fried pork with hot basil and a crispy fried egg on top?",
+      "relevant": [
+        "stir-fried-pork-with-hot-basil"
+      ]
+    },
+    {
+      "id": "g-tarka-dal",
+      "type": "generated",
+      "query": "How do I make Tarka Dal with chana dal and what spices are needed?",
+      "relevant": [
+        "tarka-dal"
+      ]
+    },
+    {
+      "id": "g-teriyaki-chicken",
+      "type": "generated",
+      "query": "How do I make teriyaki chicken with boneless chicken thighs and a homemade sauce?",
+      "relevant": [
+        "teriyaki-chicken"
+      ]
+    },
+    {
+      "id": "g-thai-fried-rice",
+      "type": "generated",
+      "query": "How do I make Thai fried rice with green beans and basil using day-old jasmine rice?",
+      "relevant": [
+        "thai-fried-rice"
+      ]
+    },
+    {
+      "id": "g-thai-pomelo-salad",
+      "type": "generated",
+      "query": "How do I make the dressing and assemble a traditional Thai pomelo salad with toasted coconut and peanuts?",
+      "relevant": [
+        "thai-pomelo-salad"
+      ]
+    },
+    {
+      "id": "g-thin-crust-pizza",
+      "type": "generated",
+      "query": "How do I make a quick thin-crust pizza dough using bread flour and instant yeast?",
+      "relevant": [
+        "thin-crust-pizza"
+      ]
+    },
+    {
+      "id": "g-toasted-guajillo-salsa",
+      "type": "generated",
+      "query": "How do I make a toasted guajillo salsa with dried chiles and garlic?",
+      "relevant": [
+        "toasted-guajillo-salsa"
+      ]
+    },
+    {
+      "id": "g-tomatillo-salsa",
+      "type": "generated",
+      "query": "How do I make tomatillo salsa with serrano peppers and fresh cilantro?",
+      "relevant": [
+        "tomatillo-salsa"
+      ]
+    },
+    {
+      "id": "g-vada",
+      "type": "generated",
+      "query": "How do I make puffy and crispy vada using urad dal?",
+      "relevant": [
+        "vada"
+      ]
+    },
+    {
+      "id": "g-vegetarian-chicken-salad",
+      "type": "generated",
+      "query": "How do I make a vegetarian chicken salad using seitan and chickpeas?",
+      "relevant": [
+        "vegetarian-chicken-salad"
+      ]
+    },
+    {
+      "id": "g-vegetarian-pho",
+      "type": "generated",
+      "query": "How do you make a vegetarian pho broth with spices and what garnishes are recommended?",
+      "relevant": [
+        "vegetarian-pho"
+      ]
+    },
+    {
+      "id": "g-vietnamese-pork-chops",
+      "type": "generated",
+      "query": "How do I make Vietnamese lemongrass pork chops, including the marinade and nuoc cham sauce?",
+      "relevant": [
+        "vietnamese-pork-chops"
+      ]
+    },
+    {
+      "id": "g-yemeni-hot-sauce",
+      "type": "generated",
+      "query": "How do you make traditional Yemeni zhug hot sauce with fresh herbs and spices?",
+      "relevant": [
+        "yemeni-hot-sauce"
+      ]
+    }
+  ]
+}

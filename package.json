@@ -16,7 +16,9 @@
     "db:studio": "drizzle-kit studio",
     "db:check": "drizzle-kit check",
     "eval:rag": "tsx eval/rag-eval.ts",
-    "db:reprocess": "tsx scripts/reprocess.ts"
+    "db:reprocess": "tsx scripts/reprocess.ts",
+    "eval:prompt": "tsx eval/prompt-eval.ts",
+    "eval:generate-rag": "tsx eval/generate-rag-queries.ts"
   },
   "dependencies": {
     "@ai-sdk/openai": "^2.0.23",

@@ -174,7 +174,9 @@ function summarize(results: CaseResult[]) {
 }
 
 async function main() {
-  const { cases } = JSON.parse(readFileSync(path.join(__dirname, 'data/rag-golden.json'), 'utf8')) as { cases: Case[] };
+  // Kézzel írt kérdések (pontos és tág) + LLM által generált kérdések receptenként (a kurzus módszere)
+  const load = (f: string) => (JSON.parse(readFileSync(path.join(__dirname, 'data', f), 'utf8')) as { cases: Case[] }).cases;
+  const cases = [...load('rag-golden.json'), ...load('rag-generated.json')];
   const recipes = loadRecipes();
   const known = new Set(recipes.map(r => r.recipe));
   for (const c of cases) for (const r of c.relevant) if (!known.has(r)) throw new Error(`${c.id}: unknown recipe ${r}`);
@@ -187,8 +189,9 @@ async function main() {
     console.log(`P@${K} ${s.precision}  R@${K} ${s.recall}  MRR ${s.mrr}  hit@1 ${s.hit1}  ${s.ms} ms`);
   }
 
-  const specific = cases.filter(c => c.type !== 'broad');
+  const specific = cases.filter(c => c.type !== 'broad' && c.type !== 'generated');
   const broad = cases.filter(c => c.type === 'broad');
+  const generated = cases.filter(c => c.type === 'generated');
   const pick = (id: string, subset: Case[]) => all[id].filter(r => subset.some(c => c.id === r.id));
   const row = (v: Variant, subset: Case[]) => {
     const s = summarize(pick(v.id, subset));
@@ -207,7 +210,7 @@ async function main() {
   const md = [
     '# RAG szintű értékelés',
     '',
-    `${cases.length} teszteset (${specific.length} pontos és ${broad.length} tág kérdés), ${recipes.length} recept. Chunkok száma: ${chunkCounts}.`,
+    `${cases.length} teszteset (${specific.length} pontos és ${broad.length} tág kézzel írt kérdés, ${generated.length} LLM által generált kérdés receptenként), ${recipes.length} recept. Chunkok száma: ${chunkCounts}.`,
     `Metrikák receptszinten: P@${K} és R@${K} (az éles rendszer ${K} receptet ad a modellnek), MRR (az első releváns recept helye, ${LIST}-ig), Hit@1.`,
     'Az idő oszlop: a memóriabeli LLM rerank változatoknál a reranker válaszai cache-ből jönnek; a valós keresési idő (embedding + pgvector + LLM rerank) az élő rendszer sorában látszik.',
     `A pontos kérdéseknek 1-2 releváns receptje van, ezért ott a P@${K} felső korlátja kb. 0,3; a tág kérdéseknél 2-5 recept is jó, ott a P@${K} is beszédes.`,
@@ -226,6 +229,11 @@ async function main() {
     '',
     header,
     ...VARIANTS.map(v => row(v, broad)),
+    '',
+    '## Generált kérdések (receptenként egy, a kurzus rag_level_evaluation módszerével)',
+    '',
+    header,
+    ...VARIANTS.map(v => row(v, generated)),
     '',
     `## Ahol az éles beállításnál a releváns recept nem az első helyen van`,
     '',
